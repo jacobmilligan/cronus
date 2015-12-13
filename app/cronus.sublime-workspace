@@ -1,0 +1,1114 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bod",
+				"bodyparser〔variable〕"
+			],
+			[
+				"expre",
+				"expressindex	expressindex"
+			],
+			[
+				"exp",
+				"expressfile	expressindex"
+			],
+			[
+				"conn",
+				"connectionStr〔variable〕"
+			],
+			[
+				"parse",
+				"parseTime〔class〕"
+			],
+			[
+				"createSer",
+				"http.createServer"
+			],
+			[
+				"on",
+				"emitter.on"
+			],
+			[
+				"prin",
+				"printResults〔function〕"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"res",
+				"results〔variable〕"
+			],
+			[
+				"get",
+				"http.get"
+			],
+			[
+				"call",
+				"callback〔argument〕"
+			],
+			[
+				"new",
+				"newLines〔variable〕"
+			],
+			[
+				"file",
+				"fileContents〔variable〕"
+			],
+			[
+				"argv",
+				"process.argv"
+			],
+			[
+				"arg",
+				"process.argv"
+			],
+			[
+				"que",
+				"queryString〔variable〕"
+			],
+			[
+				"post",
+				"postData"
+			],
+			[
+				"req",
+				"request〔variable〕"
+			],
+			[
+				"pos",
+				"postDataChunk〔argument〕"
+			],
+			[
+				"handle",
+				"handleRoute"
+			],
+			[
+				"std",
+				"stdout〔argument〕"
+			],
+			[
+				"path",
+				"pathStr"
+			],
+			[
+				"requ",
+				"requestHandlers〔variable〕"
+			],
+			[
+				"expo",
+				"exports"
+			],
+			[
+				"pat",
+				"pathStr"
+			],
+			[
+				"lo",
+				"console.log"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"err",
+				"errMsg〔variable〕"
+			],
+			[
+				"show",
+				"showPopup〔function〕"
+			],
+			[
+				"term",
+				"termOverlay〔variable〕"
+			],
+			[
+				"inde",
+				"indexOf"
+			],
+			[
+				"targ",
+				"targURL〔variable〕"
+			],
+			[
+				"rand",
+				"randomInt〔function〕"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"paren",
+				"parentNode"
+			],
+			[
+				"value",
+				"value=〔attribute〕"
+			],
+			[
+				"back",
+				"background-size"
+			],
+			[
+				"valida",
+				"validated〔variable〕"
+			],
+			[
+				"valid",
+				"validated〔variable〕"
+			],
+			[
+				"email",
+				"emailRE〔variable〕"
+			],
+			[
+				"valie",
+				"validated〔variable〕"
+			],
+			[
+				"vali",
+				"validated〔variable〕"
+			],
+			[
+				"inpu",
+				"inputs〔variable〕"
+			],
+			[
+				"val",
+				"validated〔variable〕"
+			],
+			[
+				"font-size-",
+				"font-size-medium"
+			],
+			[
+				"togg",
+				"toggledPopup〔variable〕"
+			],
+			[
+				"tog",
+				"toggledPopup〔variable〕"
+			],
+			[
+				"toggle",
+				"toggledPopup"
+			],
+			[
+				"re",
+				"removeChild〔function〕"
+			],
+			[
+				"sho",
+				"showTC"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"attac",
+				"attachEvent〔function〕"
+			],
+			[
+				"sub",
+				"submitBtn〔variable〕"
+			],
+			[
+				"app",
+				"appendChild〔function〕"
+			],
+			[
+				"currC",
+				"currClass〔variable〕"
+			],
+			[
+				"curr",
+				"currClass〔variable〕"
+			],
+			[
+				"child",
+				"childNodes"
+			],
+			[
+				"chi",
+				"children〔variable〕"
+			],
+			[
+				"chil",
+				"childNodes"
+			],
+			[
+				"tool",
+				"tooltips〔variable〕"
+			],
+			[
+				"check",
+				"checkInput〔function〕"
+			],
+			[
+				"fin",
+				"findObject"
+			],
+			[
+				"tar",
+				"targLength〔variable〕"
+			],
+			[
+				"par",
+				"parseInt〔function〕"
+			],
+			[
+				"set",
+				"setTimeout〔function〕"
+			],
+			[
+				"form",
+				"formItems〔variable〕"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"html",
+				"htmlspecialchars〔function〕"
+			],
+			[
+				"random",
+				"randomInt"
+			],
+			[
+				"test",
+				"testField〔variable〕"
+			],
+			[
+				"tes",
+				"testSign〔variable〕"
+			],
+			[
+				"a",
+				"default"
+			],
+			[
+				"menu",
+				"menuInit"
+			],
+			[
+				"font-",
+				"font-size-medium"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"b",
+				"both"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"o",
+				"overflow"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"mr",
+				"margin-bottom"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"border-to",
+				"border-top"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"div",
+				"div	Tag"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"bord",
+				"border-width"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"assign",
+				"assignment_2"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"nav",
+				"navBar"
+			],
+			[
+				"opaci",
+				"opacityFrames"
+			],
+			[
+				"cur",
+				"currShadow"
+			],
+			[
+				"remov",
+				"removeChild"
+			],
+			[
+				"cu",
+				"currOpacity"
+			],
+			[
+				"sha",
+				"shadowOn"
+			],
+			[
+				"shado",
+				"shadowDiv〔function〕"
+			],
+			[
+				"border-top",
+				"border-top-color"
+			],
+			[
+				"clea",
+				"clearAllIntervals"
+			],
+			[
+				"pare",
+				"parentLeft〔variable〕"
+			],
+			[
+				"parent",
+				"parentStyles〔variable〕"
+			],
+			[
+				"na",
+				"navbar"
+			],
+			[
+				"el",
+				"elPad"
+			],
+			[
+				"n",
+				"none"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"to",
+				"toggle"
+			],
+			[
+				"sli",
+				"slideMenu〔function〕"
+			],
+			[
+				"inter",
+				"interval"
+			],
+			[
+				"fra",
+				"frameAmt"
+			],
+			[
+				"int",
+				"interval"
+			],
+			[
+				"navB",
+				"navBottom"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"wid",
+				"width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+					""
+				],
+				[
+					"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+					""
+				],
+				[
+					"Packages/C++ Starting Kit/C++ - Starting Kit.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/c++11.sublime-build",
+					""
+				],
+				[
+					"Packages/User/c++11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/c++11.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/User/c++_fltk.sublime-build",
+					""
+				],
+				[
+					"Packages/User/c++_fltk.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/User/c++_fltk.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"jshint",
+				"JSHint: Set Linting Preferences"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package c",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"packade",
+				"Package Control: Disable Package"
+			],
+			[
+				"inst",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"sublimelinter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control ins",
+				"Package Control: Install Package"
+			],
+			[
+				"linter",
+				"SublimeLinter: Toggle Linter"
+			],
+			[
+				"toggle",
+				"SublimeLinter: Toggle Linter"
+			],
+			[
+				"terminal",
+				"Preferences: Terminal Settings – User"
+			],
+			[
+				"prefer",
+				"Preferences: Terminal Settings – Default"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"c++",
+				"Build With: C++ Single File - Run"
+			],
+			[
+				"Snippet: ",
+				"Snippet: html5template"
+			]
+		],
+		"width": 453.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"jsl",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/expressfile.sublime-snippet",
+		"/Users/Jacob/Dev/Repos/cronus/app/models/ex01.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/app.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/models/database.js",
+		"/etc/postgresql.conf",
+		"/Users/Jacob/postgresql.conf",
+		"/Users/Jacob/Dev/Repos/cronus/app/routes/index.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/error.jade",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex13/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex12/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex11/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex10/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex09/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex07/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex08/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex06/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex06/module.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex05/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex04/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex03/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex02/app.js",
+		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex01/program.js",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/Node Completions/node-completions.sublime-completions",
+		"/Users/Jacob/Dev/Repos/node_playground/hello_node/app/upload.html",
+		"/Users/Jacob/Dev/Repos/node_playground/hello_node/app.js",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/Users/Jacob/Dev/Repos/node_playground/hello_node/closure_test.js",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/Default (OSX).sublime-keymap",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/SQL/create.sql",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/footer.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/bottom.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/common.css",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/nav.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_burger.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/js/main.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_components.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/enhancements.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/form_styles/_elements.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_footer.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_main-theme.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/js/enhancements.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/index.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/top.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/register.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_reset.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/form_styles/_structure.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/about.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/helpers/_mixins.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/t_and_c.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/bottom.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/top.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/helpers/_variables.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/head.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/bottom.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_nav.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_buttons.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/form.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/common.scss",
+		"/Users/Jacob/.bashrc",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_typography.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_icons.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/js/burger.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/style.css",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_typography.scss",
+		"/Users/Jacob/.bash_profile",
+		"/Users/Jacob/.bash_login",
+		"/Users/Jacob/.profile",
+		"/etc/profile",
+		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/application.css.scss",
+		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/main.scss",
+		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/styles/pages.scss",
+		"/Users/Jacob/Dev/Repos/ponder/app/controllers/pages_controller.rb",
+		"/Users/Jacob/Dev/Repos/ponder/app/controllers/application_controller.rb",
+		"/Users/Jacob/Dev/Repos/ponder/Gemfile",
+		"/Users/Jacob/Dev/Repos/ponder/config/database.yml",
+		"/Users/Jacob/Dev/Repos/ponder/config/routes.rb",
+		"/Users/Jacob/Dev/Repos/ponder/public/500.html",
+		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/sass/main.css.scss",
+		"/Users/Jacob/Dev/Repos/Uni/Org/concept_handbook/main.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/javascript/main.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/index.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/javascript/mobile_menu.js",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/top.php",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/common.css.map",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/main.scss",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/sass.sublime-build",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/OpenGl.sublime-build",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Package Control.system-ca-bundle",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Installed Packages/SASS Build.sublime-package",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/common.css",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/layouts/footer.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/test.html",
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/.git/config",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Assignment 1/assign1/index.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/window_variables.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/prompt.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/function.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/confirm.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/browser_detection.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/alert.html",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/arrays.html",
+		"/Users/Jacob/Dev/Rails/sample_app/Gemfile",
+		"/Users/Jacob/Dev/Rails/sample_app/test/models/user_test.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/models/user.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151124083238_add_password_digest_to_users.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151124031011_add_index_to_users_email.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/test/test_helper.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/test/fixtures/users.yml",
+		"/Users/Jacob/Dev/Repos/concept_handbook/index.html",
+		"/Users/Jacob/Dev/Repos/concept_handbook/main.js",
+		"/Users/Jacob/Dev/Rails/sample_app/config/initializers/backtrace_silencers.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/config/environments/production.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151122083754_create_users.rb",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Revision/style.css",
+		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Revision/semester_0.5.html",
+		"/Users/Jacob/Dev/Rails/sample_app/app/helpers/application_helper.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/helpers/application_helper_test.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/static_pages/about.html.erb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/application.html.erb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/users/new.html.erb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/static_pages/home.html.erb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/_header.html.erb",
+		"/Users/Jacob/Dev/Rails/sample_app/test/integration/site_layout_test.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/config/routes.rb",
+		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/_footer.html.erb"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"new Date().toDateString() + id",
+			"str",
+			"$",
+			"time",
+			"data",
+			"showTC",
+			"element",
+			"class=\"narrow-p\"",
+			"e",
+			"targLength",
+			"targ.",
+			"targ",
+			"\\(e\\)",
+			"\\(e\\)$",
+			"(e)$",
+			".^e$.",
+			"^*e*$",
+			"^e$",
+			"e*$",
+			"^e",
+			"^e$",
+			"^e*$",
+			"^e",
+			"overlay",
+			"formItems",
+			"numeric",
+			"formItems",
+			"container",
+			"Container",
+			"container",
+			"buildContainer",
+			"shadow",
+			"element",
+			"desktop",
+			"currChild",
+			"tooltip",
+			"chjldNodes",
+			"chjldren",
+			"i",
+			"parent",
+			"Tooltips",
+			"tooltips",
+			"targ.value.length",
+			"checkInput",
+			"btn",
+			"contactForm",
+			"random",
+			"test",
+			"comp",
+			"Comp",
+			"comp",
+			"job-no",
+			"email",
+			"eMail",
+			"email",
+			"mob-num",
+			"l-name",
+			"f-name",
+			"job-no",
+			"15px",
+			"5px",
+			"50",
+			"circle",
+			"burger-item",
+			"font",
+			"padding",
+			"color",
+			"zIn",
+			"0.05",
+			"shadowDiv",
+			"+",
+			"Top",
+			"padding",
+			"parent",
+			"top",
+			"margin",
+			"list",
+			"this",
+			".burger",
+			"querySelector",
+			".burger",
+			"noOfFrames",
+			"frames",
+			"5",
+			"slideMenu",
+			"getPos",
+			"createSlider",
+			"hasTouch",
+			"burger",
+			"tablet",
+			"end",
+			"*\"",
+			"#eaeaea",
+			"$light-grey",
+			"#777",
+			"str",
+			"Str",
+			"str",
+			"reset",
+			"robbin",
+			"teamwork",
+			"control",
+			"locus",
+			"(1",
+			"(2",
+			"Northouse, P. G. (2010)",
+			"marcic, D and",
+			"Samson, D.",
+			"Samson, D. & Daft,",
+			"Samson, D. & Daft",
+			"zaccar",
+			"Griffin",
+			"Griffin, R. W., 2013, Fundamentals of management. 7th edn. United States: Wadsworth Publishing Co",
+			"griff",
+			"cole",
+			"chamber",
+			"Griffin, R.W. 2014 <em>Fundamentals of Management</em>",
+			"Griffin, R.W. 2014 <em>Fundamentals of Management</em>, 7th ed., Mason, Michael Schenk., Hatfield, E., Cacioppo, J.T. & Rapson, R.L. 1994 Emotional Contagion, 1st ed.",
+			"Griffin, R.W. 2014 Fundamentals of Management, 7th ed., Mason, Michael Schenk., Hatfield, E., Cacioppo, J.T. & Rapson, R.L. 1994 Emotional Contagion, 1st ed.",
+			"content",
+			"i",
+			"document.body",
+			"body.",
+			"div",
+			"populateDiv",
+			"loadJSON",
+			"term_link",
+			">\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/html.sublime-build",
+	"project": "cronus.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
