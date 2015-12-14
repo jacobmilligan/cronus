@@ -4,12 +4,13 @@ var router = express.Router();
 
 var db = require('../models/login');
 
-router.get('/login', function(req, res, next) {
-	return res.render('login');
+router.get('/', function(req, res, next) {
+	res.render('login');
+	return
 });
 
-router.post('/login', function(req, res, next) {
-	
+router.post('/', function(req, res, next) {
+
 });
 
 module.exports = router;
