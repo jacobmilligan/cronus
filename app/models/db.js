@@ -14,17 +14,7 @@ function query(sql, param, callback) {
 	});
 }
 
-function selectById(id, callback) {
-	var sql = 'SELECT * FROM users WHERE id = $1';
-	query(sql, [id], function(err, result) {
-		if (err) {
-			return callback(err);
-		}
-		callback(null, result.rows[0]);
-	});
-}
-
 
 module.exports = {
-	selectById: selectById
+	query: query
 };
