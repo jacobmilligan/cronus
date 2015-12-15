@@ -25,7 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session( {
     secret: 'testsesh',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    rolling: true
   } 
 ));
 

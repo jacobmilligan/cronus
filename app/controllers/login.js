@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 			req.session.first_name = user.first_name;
 			req.session.last_name = user.last_name;
 			req.session.email = user.email;
-			
+			req.session.cookie.maxAge = 60000 * 30; //30 mins
 			res.redirect('/users');
 		}
 	})
