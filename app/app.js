@@ -9,7 +9,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var csurf = require('csurf'); //must come after express-session
+var csrf = require('csurf'); //must come after express-session
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +31,7 @@ app.use(session( {
   } 
 ));
 
-
+app.use( csrf() );
 
 // Get defined routes
 require('./config/router')(app);

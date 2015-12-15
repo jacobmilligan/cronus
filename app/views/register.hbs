@@ -1,5 +1,6 @@
 <p>{{msg}}</p>
 <form method="POST">
+	<input type="hidden" name="_csrf" value={{csrfToken}}>
 	<input type="text" placeholder="First Name" name="first_name">
 	<input type="text" placeholder="Last Name" name="last_name">
 	<input type="text" placeholder="eMail address" name="email">

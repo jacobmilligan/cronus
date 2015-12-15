@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 	if ( req.session.user ) {
 		res.redirect('/users');
 	} else {
-		res.render('login');
+		res.render('login', {csrfToken: req.csrfToken});
 	}
 });
 
@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
 			req.session.user = user;
 			req.session.cookie.maxAge = 60000 * 30; //30 mins
 			res.locals.user = user; //Used for sending to view
-
+			console.log(req.session);
 			res.redirect('/users');
 		}
 	})

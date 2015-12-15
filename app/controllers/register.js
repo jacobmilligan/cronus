@@ -7,7 +7,7 @@ var bcrypt = require('bcryptjs');
 
 /* Retreive page. */
 router.get('/', function(req, res, next) {
-	res.render('register');
+	res.render('register', {csrfToken: req.csrfToken});
 });
 
 // Create user
