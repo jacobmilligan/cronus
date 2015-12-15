@@ -13,7 +13,6 @@ router.post('/', function(req, res, next) {
 		if (err) {
 			return next(err);
 		}
-		console.log(user);
 		if ( user === 'pwd' ) {
 			res.render('login', {msg: "Incorrect Password"});
 		} else if (!user) {
