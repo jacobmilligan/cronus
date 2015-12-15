@@ -5,6 +5,7 @@ var db = require('../models/register');
 
 /* Retreive page. */
 router.get('/', function(req, res, next) {
+	console.log(req.session);
 	res.render('register');
 });
 

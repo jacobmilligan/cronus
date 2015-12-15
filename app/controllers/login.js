@@ -18,6 +18,7 @@ router.post('/', function(req, res, next) {
 		} else if (!user) {
 			res.render('login', {msg: "No such user"});
 		} else {
+			req.session.first_name = user.first_name;
 			res.redirect('/users');
 		}
 	})
