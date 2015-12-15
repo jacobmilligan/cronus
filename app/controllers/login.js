@@ -5,7 +5,6 @@ var router = express.Router();
 var db = require('../models/login');
 
 router.get('/', function(req, res, next) {
-	console.log(req.session);
 	if ( req.session.user ) {
 		res.redirect('/users');
 	} else {
@@ -24,6 +23,7 @@ router.post('/', function(req, res, next) {
 			res.render('login', {msg: "No such user"});
 		} else {
 			//Log session
+			delete user.password;
 			req.session.user = user;
 			req.session.cookie.maxAge = 60000 * 30; //30 mins
 
