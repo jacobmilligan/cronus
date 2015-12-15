@@ -4,7 +4,11 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	res.render('users', {name: req.session.first_name});
+	if ( !req.session.email ) {
+		res.redirect('/login');
+	} else {
+		res.render('users', {name: req.session.first_name});
+	}
 });
 
 module.exports = router;

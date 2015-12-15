@@ -5,7 +5,11 @@ var router = express.Router();
 var db = require('../models/login');
 
 router.get('/', function(req, res, next) {
-	res.render('login');
+	if ( req.session.first_name ) {
+		res.redirect('/users');
+	} else {
+		res.render('login');
+	}
 });
 
 router.post('/', function(req, res, next) {
@@ -23,6 +27,7 @@ router.post('/', function(req, res, next) {
 			req.session.last_name = user.last_name;
 			req.session.email = user.email;
 			req.session.cookie.maxAge = 60000 * 30; //30 mins
+
 			res.redirect('/users');
 		}
 	})

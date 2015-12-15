@@ -1,5 +1,6 @@
 'use strict';
 var db = require('./db');
+var bcrypt = require('bcryptjs');
 
 function selectByEmail(email, body, callback) {
 	var sql = 'SELECT * FROM users WHERE email = $1';
@@ -9,7 +10,7 @@ function selectByEmail(email, body, callback) {
 		}
 		if ( result.rowCount === 0 ) {
 			callback(null, result.rows[0]);
-		} else if ( body.password === result.rows[0].password ) {
+		} else if ( bcrypt.compareSync(body.password, result.rows[0].password) ) {
 			callback(null, result.rows[0]);
 		} else {
 			callback(null, 'pwd');
