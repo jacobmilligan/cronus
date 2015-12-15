@@ -7,7 +7,6 @@ var bcrypt = require('bcryptjs');
 
 /* Retreive page. */
 router.get('/', function(req, res, next) {
-	console.log(req.session);
 	res.render('register');
 });
 

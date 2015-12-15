@@ -4,10 +4,10 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-	if ( !req.session.email ) {
+	if ( !req.session.user ) {
 		res.redirect('/login');
 	} else {
-		res.render('users', {name: req.session.first_name});
+		res.render('users', {name: req.session.user.first_name});
 	}
 });
 
