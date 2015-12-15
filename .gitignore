@@ -1,2 +1,6 @@
+.sass-cache/
 /resources/
 /SQL/
+npm-debug.log
+cronus.sublime-project
+cronus.sublime-workspace
