@@ -26,6 +26,7 @@ router.post('/', function(req, res, next) {
 			delete user.password;
 			req.session.user = user;
 			req.session.cookie.maxAge = 60000 * 30; //30 mins
+			res.locals.user = user; //Used for sending to view
 
 			res.redirect('/users');
 		}
