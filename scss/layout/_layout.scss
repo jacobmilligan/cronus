@@ -1,0 +1,13 @@
+body {
+	font-family: OpenSans-Reg;
+}
+
+.title {
+	font-size: $font-size-xxlarge;
+	font-family: bariol-reg;
+	&:before {
+		font-family: fontello;
+		content: "\E800";
+		color: black;
+	}
+}

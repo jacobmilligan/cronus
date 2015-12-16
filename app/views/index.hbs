@@ -1,3 +1,8 @@
-<h1>{{title}}</h1>
-<a href="login">login</a>
-<a href="register">register</a>
+<h1 class="title">{{title}}</h1>
+
+{{#if loggedIn}}
+	YO!
+{{else}}
+	<a href="login">login</a>
+	<a href="register">register</a>
+{{/if}}

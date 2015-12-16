@@ -1,5 +1,16 @@
 @import 'vendor/bourbon/bourbon';
 @import 'vendor/neat/neat';
 
+// Helpers
 @import 'helpers/variables';
+
+// Base files
+@import 'base/reset';
+@import 'base/typography';
+
+// Theme
 @import 'themes/main-theme';
+
+//Layouts
+@import 'layout/layout';
+@import 'layout/navigation';

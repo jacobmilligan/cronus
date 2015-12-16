@@ -4,11 +4,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	if ( req.session.user ) {
-		res.redirect('/users');
-	} else {
-		res.render('index', { title: "Cronus" });
-	}
+		var loggedIn = ( req.session.user ) ? true : false;
+		res.render('index', { loggedIn: loggedIn, title: "cronus" });
 });
 
 module.exports = router;
