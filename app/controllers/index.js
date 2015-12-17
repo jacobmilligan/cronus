@@ -4,8 +4,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-		var loggedIn = ( req.session.user ) ? true : false;
-		res.render('index', { loggedIn: loggedIn });
+	console.log(req.csrfToken);
+	
+		res.render('index', { loggedIn: res.locals.loggedIn });
 });
 
 module.exports = router;

@@ -33,6 +33,14 @@ app.use(session( {
   } 
 ));
 
+// Set locals, must come before csrf call
+app.use(function(req, res, next) {
+  if (req.session.user) {
+    res.locals.loggedIn = true;
+  }
+  next();
+});
+
 app.use( csrf() );
 
 // Get defined routes
