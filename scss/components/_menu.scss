@@ -22,8 +22,9 @@
 
 	.menu-right {
 		i {
-			@include span-columns(1);
+			@include span-columns(2);
 			margin-top: 15px;
+			margin-right: -25px;
 			color: $inverted-font-color;
 		}
 	}
