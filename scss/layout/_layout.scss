@@ -1,13 +1,19 @@
 body {
 	font-family: OpenSans-Reg;
+	color: $primary-font-color;
+	font-size: $font-size-regular;
 }
 
-.title {
-	font-size: $font-size-xxlarge;
-	font-family: bariol-reg;
-	&:before {
-		font-family: fontello;
-		content: "\E800";
-		color: black;
+a {
+	color: $accent-color;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
 	}
+}
+
+.content {
+	margin-top: 100px;
+	padding: 18px;
 }

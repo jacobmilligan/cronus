@@ -1,8 +1,15 @@
+$visual-grid: false !global;
+$visual-grid-color: red !global;
+$visual-grid-index: front !global;
+
+@import 'vendor/normalize/normalize';
 @import 'vendor/bourbon/bourbon';
 @import 'vendor/neat/neat';
+@import 'vendor/font-awesome/font-awesome';
 
 // Helpers
 @import 'helpers/variables';
+@import 'helpers/mixins';
 
 // Base files
 @import 'base/reset';
@@ -14,3 +21,6 @@
 //Layouts
 @import 'layout/layout';
 @import 'layout/navigation';
+
+//Components
+@import 'components/link';
