@@ -16,7 +16,8 @@ function computeHeight(element) {
 	var elMargin = elStyles.getPropertyValue('margin').toString();
 	elMargin = elMargin.substring(0, elMargin.indexOf('px'));
 
-	var result = parseFloat(elHeight) + parseFloat(elMargin);
+	var result = Number(elHeight) + Number(elMargin);
+	console.log(result);
 	return result;
 }
 
@@ -75,6 +76,7 @@ function computeHeight(element) {
 		maxHeight = computeHeight(sliderChildren[1]) * liCount;
 
 		if ( toggled ) {
+			console.log(maxHeight);
 			slideTimer = setInterval(function() {
 				if ( currHeight > maxHeight - 15 ) {
 					currHeight += 0.5;
