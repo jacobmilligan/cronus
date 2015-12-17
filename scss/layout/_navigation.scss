@@ -1,62 +1,30 @@
-@include media(max-width 550px) {
-	nav {
-		@include outer-container(100%);
-		@include padding(10px 1rem 10px 1rem);
-		@include box-shadowing;
-		position: absolute;
-		top: 0;
-		background-color: $primary-color-dark;
-		height: 100px;
-		line-height: 40px;
+nav {
+	@include outer-container(100%);
+	@include span-columns(12);
+	@include padding(10px 1rem 10px 1rem);
+	@include box-shadowing;
+	position: absolute;
+	top: 0;
+	background-color: $primary-color-dark;
+	height: 100px;
+	line-height: 40px;
+}
+
+.title {
+	@include span-columns(8);
+	font-family: bariol-reg;
+
+	img {
+		@include size(70px);
+		@include span-columns(3);
+		margin-top: 5px;
 	}
 
-	.title {
-		@include span-columns(8);
-		font-family: bariol-reg;
-
-		img {
-			@include size(70px);
-			@include span-columns(3);
-			margin-top: 5px;
-		}
-
-		h1 {
-			@include span-columns(6);
-			@include pad(5px);
-			margin-top: 15px;
-			font-size: $font-size-xxlarge;
-			color: $inverted-font-color;
-		}
-	}
-
-	@include direction-context(right-to-left) {
-		.nav-list {
-			@include span-columns(7);
-			@include omega;
-			padding: 0;
-			margin: 0;
-			margin-top: -10px;
-			margin-right: -10px;
-			background-color: $primary-color-dark;
-			text-align: center;
-			height: 0;
-
-			a {
-				color: $inverted-font-color;
-			}
-
-			li {
-				margin: 25px;
-				list-style-type: none;
-			}
-		}
-
-		nav {
-			i {
-				@include span-columns(1);
-				margin-top: 10px;
-				color: $inverted-font-color;
-			}
-		}
+	h1 {
+		@include span-columns(6);
+		@include pad(5px);
+		margin-top: 15px;
+		font-size: $font-size-xxlarge;
+		color: $inverted-font-color;
 	}
 }
