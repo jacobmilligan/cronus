@@ -9,12 +9,21 @@ menu;
 },{"./modules/menu":2}],2:[function(require,module,exports){
 'use strict';
 
-function detectTouch(element, event) {
-	if ( 'ontouchstart' in window ) {
-		element.addEventListener('touch', event);
+function detectTouch(element, event, add) {
+	if (add) {
+		if ( 'ontouchstart' in window ) {
+			element.addEventListener('touch', event);
+		} else {
+			element.addEventListener('click', event);
+		}
 	} else {
-		element.addEventListener('click', event);
+		if ( 'ontouchstart' in window ) {
+			element.removeEventListener('touch', event);
+		} else {
+			element.removeEventListener('click', event);
+		}
 	}
+	
 }
 
 function computeHeight(element) {
@@ -40,7 +49,7 @@ function computeHeight(element) {
 	}
 
 	for ( i = 0; i < menus.length; i++ ) {
-		detectTouch(menus[i], slideMenu);
+		detectTouch(menus[i], slideMenu, true);
 	}
 
 	var slideTimer;
@@ -108,7 +117,7 @@ function computeHeight(element) {
 		}
 
 		if ( toggled && targ === 'activate-menu' ) {
-			detectTouch(content, slideMenu);
+			detectTouch(content, slideMenu, true);
 			slideTimer = setInterval(function() {
 				if ( currHeight > maxHeight - 15 ) {
 					currHeight += 0.5;
@@ -125,6 +134,7 @@ function computeHeight(element) {
 				}
 			}, speed);
 		} else {
+			detectTouch(content, slideMenu, false);
 			slideTimer = setInterval(function() {
 				if ( currHeight <= minHeight ) {
 					slider.style.height = 0 + 'px';
