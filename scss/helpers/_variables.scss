@@ -12,10 +12,14 @@ $inverted-font-color: #F8F8F8;
 $shadow-color: rgba(0, 0, 0, 0.4);
 
 //Font variables
-$font-size-xxlarge: 5rem;
-$font-size-xlarge:	4rem;
-$font-size-large:	3rem;
+$font-size-huge: 5rem;
+$font-size-xxlarge: 4rem;
+$font-size-xlarge:	3rem;
+$font-size-large:	2.5rem;
 $font-size-medium:	2rem;
 $font-size-regular:	1.8rem;
 $font-size-small:	1.3rem;
 $font-size-xsmall:	1rem;
+
+//Grid items
+$grid-item-height: 14em;

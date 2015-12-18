@@ -1,8 +1,45 @@
+$link-grid-colors:
+	$accent-color,
+	$primary-color-light;
+
 .hover-opacity {
 	
 	@include transition(opacity 0.3s ease);
 
 	&:hover {
 		opacity: 0.8;
+	}
+}
+
+.link-grid {
+
+	@include transition(all 0.2s ease-in-out);
+	@include span-columns(10);
+	@include shift(1);
+	text-align: center;
+	padding: 2em;
+	height: $grid-item-height;
+	color: $inverted-font-color;
+	border-radius: 5px;
+
+	@for $i from 1 through length($link-grid-colors) {
+
+		&:nth-child(#{$i}) {
+			$list-background-color: nth($link-grid-colors, $i);
+			background-color: $list-background-color;
+
+			&:hover {
+				text-decoration: none;
+				background-color: shade($list-background-color, 10%);
+			}
+		}
+	}
+
+	i {
+		display: block;
+	}
+
+	h1 {
+		font-size: $font-size-large;
 	}
 }
