@@ -24,7 +24,6 @@ function computeHeight(element) {
 
 	var menus = document.getElementsByClassName('activate-menu');
 	var content = document.getElementsByClassName('content')[0];
-	detectTouch(content, slideMenu);
 	var menuColors = [];
 
 	for (var i = 0; i < menus.length; i++) {
@@ -35,14 +34,12 @@ function computeHeight(element) {
 		detectTouch(menus[i], slideMenu);	
 	}
 
-	var toggled = false;
 	var slideTimer;
 	var currHeight = 1;
 
 	function slideMenu(event) {
 		clearInterval(slideTimer);
-
-		toggled = !toggled;
+		//toggled = !toggled;
 		
 		var maxHeight = 0;
 		var minHeight = 0;
@@ -59,6 +56,9 @@ function computeHeight(element) {
 				slider = siblings[i];
 			}
 		}
+
+		var toggled = ( slider.id === 'active-menu' ) ? false : true;
+		slider.id = ( toggled ) ? 'active-menu' : '';
 
 		if (toggled) {
 			slider.style.display = 'block';
@@ -84,6 +84,7 @@ function computeHeight(element) {
 		}
 
 		if ( toggled && targ === 'activate-menu' ) {
+			detectTouch(content, slideMenu);
 			slideTimer = setInterval(function() {
 				if ( currHeight > maxHeight - 15 ) {
 					currHeight += 0.5;
