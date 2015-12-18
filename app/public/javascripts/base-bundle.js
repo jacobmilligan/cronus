@@ -66,15 +66,15 @@ function computeHeight(element) {
 
 		var siblings = event.target.parentNode.parentNode.childNodes;
 		var slider;
-
-		if ( event.target.className === 'content') {
-			slider = document.getElementById('active-menu');
-		} else {
+		console.log(event.target.className);
+		if ( event.target.parentNode.className === 'activate-menu' || event.target.className === 'activate-menu' ) {
 			for ( i = 0; i < siblings.length; i++ ) {
 				if ( siblings[i].className === 'nav-list') {
 					slider = siblings[i];
 				}
 			}
+		} else {
+			slider = document.getElementById('active-menu');
 		}
 
 		var toggled = ( !slider.id ) ? true : false;

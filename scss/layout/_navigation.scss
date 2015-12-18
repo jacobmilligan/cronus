@@ -12,7 +12,6 @@ nav {
 
 .title {
 	@include span-columns(8);
-	font-family: bariol-reg;
 
 	img {
 		@include size(70px);

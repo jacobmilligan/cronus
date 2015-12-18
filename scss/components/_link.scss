@@ -17,8 +17,8 @@ $link-grid-colors:
 	@include span-columns(10);
 	@include shift(1);
 	text-align: center;
-	padding: 2em;
-	height: $grid-item-height;
+	@include padding (2em 2em 1.3em 2em);
+	height: auto;
 	color: $inverted-font-color;
 	border-radius: 5px;
 
@@ -37,9 +37,6 @@ $link-grid-colors:
 
 	i {
 		display: block;
-	}
-
-	h1 {
-		font-size: $font-size-large;
+		margin-bottom: -15px;
 	}
 }

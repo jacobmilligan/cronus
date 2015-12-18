@@ -15,7 +15,46 @@ a {
 
 .content {
 	margin-top: 102px;
-	padding: 18px;
 	@include outer-container();
 	@include size(100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: bariol-reg;
+}
+
+h1 {
+	font-size: $font-size-xxlarge;
+	text-align: center;
+}
+
+h2 {
+	font-size: $font-size-xlarge;
+}
+
+h3 {
+	font-size: $font-size-large;
+}
+
+h4 {
+	font-size: $font-size-large;
+}
+
+p {
+	font-family: OpenSans-Reg;
+	font-size: $font-size-regular;
+}
+
+section {
+	@include span-columns(12);
+	@include omega();
+	@include padding(50px 18px 50px 18px);
+}
+
+.sctn-light {
+	background-color: $base-background-color;
+}
+
+.sctn-dark {
+	background-color: $primary-color-dark;
 }
