@@ -11,6 +11,8 @@ select {
   display: block;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  @include span-columns(8);
+  @include shift(2);
 }
 
 label {
@@ -36,16 +38,15 @@ select[multiple=multiple] {
   font-family: $base-font-family;
   font-size: $base-font-size;
   margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
+  padding: $base-spacing / 1.5;
   transition: border-color $base-duration $base-timing;
-  width: 100%;
 
   &:hover {
     border-color: shade($base-border-color, 20%);
   }
 
   &:focus {
-    border-color: $action-color;
+    border-color: $secondary-accent-color;
     box-shadow: $form-box-shadow-focus;
     outline: none;
   }

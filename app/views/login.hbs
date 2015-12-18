@@ -1,8 +1,10 @@
-<p>{{msg}}</p>
-<p>Please login.</p>
-<form method="POST">
-	<input type="hidden" name="_csrf" value={{csrfToken}}>
-	<input type="text" placeholder="Your eMail address" name="email">
-	<input type="password" placeholder="Your password" name="password">
-	<input type="submit" value="Submit"></input>
-</form>
+<section class="sctn-light">
+	<p>{{msg}}</p>
+	<p>Please login.</p>
+	<form method="POST">
+		<input type="hidden" name="_csrf" value={{csrfToken}}>
+		<input type="text" placeholder="Your eMail address" name="email">
+		<input type="password" placeholder="Your password" name="password">
+		<input type="submit" value="Submit"></input>
+	</form>
+</section>

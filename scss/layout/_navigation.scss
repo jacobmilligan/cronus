@@ -21,8 +21,7 @@ nav {
 
 	h1 {
 		@include span-columns(6);
-		@include pad(5px);
-		margin-top: 15px;
+		@include pad(10px);
 		font-size: $font-size-huge;
 		color: $inverted-font-color;
 	}

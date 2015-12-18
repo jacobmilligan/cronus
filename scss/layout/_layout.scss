@@ -20,10 +20,6 @@ a {
 	height: auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: bariol-reg;
-}
-
 h1 {
 	font-size: $font-size-xxlarge;
 	text-align: center;
@@ -42,7 +38,6 @@ h4 {
 }
 
 p {
-	font-family: OpenSans-Reg;
 	font-size: $font-size-regular;
 }
 
@@ -54,6 +49,10 @@ section {
 	@include span-columns(12);
 	@include omega();
 	@include padding(50px 18px 50px 18px);
+	input {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
 }
 
 .sctn-light {
@@ -66,16 +65,5 @@ section {
 
 	p {
 		@include span-columns(12 of 12);
-	}
-}
-
-.register {
-	@include span-columns(12);
-
-	input {
-		@include span-columns(8 of 12);
-		@include shift(2);
-		margin-top: 10px;
-		margin-bottom: 10px;
 	}
 }

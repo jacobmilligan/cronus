@@ -2,18 +2,19 @@ $visual-grid: false !global;
 $visual-grid-color: red !global;
 $visual-grid-index: front !global;
 
-@import 'vendor/normalize/normalize';
-@import 'vendor/bourbon/bourbon';
-@import 'vendor/neat/neat';
-@import 'vendor/font-awesome/font-awesome';
+// Base files
+@import 'base/reset';
+@import 'base/typography';
 
 // Helpers
 @import 'helpers/variables';
 @import 'helpers/mixins';
 
-// Base files
-@import 'base/reset';
-@import 'base/typography';
+@import 'vendor/normalize/normalize';
+@import 'vendor/bourbon/bourbon';
+@import 'vendor/neat/neat';
+@import 'vendor/bitters/base';
+@import 'vendor/font-awesome/font-awesome';
 
 // Theme
 @import 'themes/main-theme';
