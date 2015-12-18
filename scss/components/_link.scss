@@ -1,7 +1,3 @@
-$link-grid-colors:
-	$accent-color,
-	$primary-color-light;
-
 .hover-opacity {
 	
 	@include transition(opacity 0.3s ease);
@@ -20,13 +16,19 @@ $link-grid-colors:
 	@include padding (2em 2em 1.3em 2em);
 	height: auto;
 	color: $inverted-font-color;
-	border-radius: 5px;
+	border-radius: 2px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	@include border-width(1px);
+	@include border-style(solid);
 
 	@for $i from 1 through length($link-grid-colors) {
 
 		&:nth-child(#{$i}) {
 			$list-background-color: nth($link-grid-colors, $i);
 			background-color: $list-background-color;
+			border-color: darken($list-background-color, 25%);
+			@include shadow-btn($list-background-color);
 
 			&:hover {
 				text-decoration: none;
