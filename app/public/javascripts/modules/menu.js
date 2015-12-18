@@ -31,7 +31,7 @@ function computeHeight(element) {
 	}
 
 	for ( i = 0; i < menus.length; i++ ) {
-		detectTouch(menus[i], slideMenu);	
+		detectTouch(menus[i], slideMenu);
 	}
 
 	var slideTimer;
@@ -39,7 +39,6 @@ function computeHeight(element) {
 
 	function slideMenu(event) {
 		clearInterval(slideTimer);
-		//toggled = !toggled;
 		
 		var maxHeight = 0;
 		var minHeight = 0;
@@ -49,16 +48,35 @@ function computeHeight(element) {
 
 		var siblings = event.target.parentNode.parentNode.childNodes;
 		var slider;
-		var icon = event.target;
 
-		for ( i = 0; i < siblings.length; i++ ) {
-			if ( siblings[i].className === 'nav-list') {
-				slider = siblings[i];
+		if ( event.target.className === 'content') {
+			slider = document.getElementById('active-menu');
+		} else {
+			for ( i = 0; i < siblings.length; i++ ) {
+				if ( siblings[i].className === 'nav-list') {
+					slider = siblings[i];
+				}
 			}
 		}
 
 		var toggled = ( !slider.id ) ? true : false;
 		slider.id = ( toggled ) ? 'active-menu' : '';
+
+		var navChildren = slider.parentNode.childNodes;
+		var icon;
+
+		for ( i = 0; i < navChildren.length; i++) {
+			if ( navChildren[i].className === 'activate-menu' ) {
+				if ( navChildren[i].childNodes.length > 0 ) {
+					icon = navChildren[i].childNodes[0];
+				} else {
+					icon = navChildren[i];
+				}
+			}
+		}
+
+		console.log(icon);
+
 
 		if (toggled) {
 			slider.style.display = 'block';
