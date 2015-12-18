@@ -17,21 +17,23 @@ function computeHeight(element) {
 	elMargin = elMargin.substring(0, elMargin.indexOf('px'));
 
 	var result = Number(elHeight) + Number(elMargin);
-	console.log(result);
 	return result;
 }
 
 (function() {
 
 	var menus = document.getElementsByClassName('activate-menu');
+	var content = document.getElementsByClassName('content')[0];
+	console.log(content);
+	detectTouch(content, slideMenu);
 	var menuColors = [];
+
 	for (var i = 0; i < menus.length; i++) {
 		menuColors.push(window.getComputedStyle(menus[i], null).getPropertyValue('color'));
 	}
 
 	for ( i = 0; i < menus.length; i++ ) {
-		detectTouch(menus[i], slideMenu);
-		
+		detectTouch(menus[i], slideMenu);	
 	}
 
 	var toggled = false;
@@ -76,7 +78,6 @@ function computeHeight(element) {
 		maxHeight = computeHeight(sliderChildren[1]) * liCount;
 
 		if ( toggled ) {
-			console.log(maxHeight);
 			slideTimer = setInterval(function() {
 				if ( currHeight > maxHeight - 15 ) {
 					currHeight += 0.5;

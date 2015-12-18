@@ -14,6 +14,8 @@ a {
 }
 
 .content {
-	margin-top: 100px;
+	margin-top: 102px;
 	padding: 18px;
+	@include outer-container();
+	@include size(100%);
 }
