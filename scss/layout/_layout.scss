@@ -16,7 +16,8 @@ a {
 .content {
 	margin-top: 102px;
 	@include outer-container();
-	@include size(100%);
+	width: 100%;
+	height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,6 +46,10 @@ p {
 	font-size: $font-size-regular;
 }
 
+input {
+
+}
+
 .center {
 	text-align: center;
 }
@@ -65,5 +70,16 @@ section {
 
 	p {
 		@include span-columns(12 of 12);
+	}
+}
+
+.register {
+	@include span-columns(12);
+
+	input {
+		@include span-columns(8 of 12);
+		@include shift(2);
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 }
