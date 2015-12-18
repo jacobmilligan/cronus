@@ -66,7 +66,7 @@ function computeHeight(element) {
 			}
 		}
 
-		var toggled = ( slider.id === 'active-menu' ) ? false : true;
+		var toggled = ( !slider.id ) ? true : false;
 		slider.id = ( toggled ) ? 'active-menu' : '';
 
 		if (toggled) {
