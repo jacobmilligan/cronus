@@ -84,9 +84,6 @@ function computeHeight(element) {
 			}
 		}
 
-		console.log(icon);
-
-
 		if (toggled) {
 			slider.style.display = 'block';
 			icon.style.color = "#CC4C37";
