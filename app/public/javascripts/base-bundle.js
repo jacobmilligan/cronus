@@ -33,7 +33,6 @@ function computeHeight(element) {
 
 	var menus = document.getElementsByClassName('activate-menu');
 	var content = document.getElementsByClassName('content')[0];
-	console.log(content);
 	detectTouch(content, slideMenu);
 	var menuColors = [];
 
@@ -85,8 +84,15 @@ function computeHeight(element) {
 		}
 
 		maxHeight = computeHeight(sliderChildren[1]) * liCount;
+		var targ;
 
-		if ( toggled ) {
+		if ( event.target.className === 'activate-menu' ) {
+			targ = 'activate-menu';
+		} else if ( event.target.parentNode.className === 'activate-menu' ) {
+			targ = 'activate-menu';
+		}
+
+		if ( toggled && targ === 'activate-menu' ) {
 			slideTimer = setInterval(function() {
 				if ( currHeight > maxHeight - 15 ) {
 					currHeight += 0.5;
