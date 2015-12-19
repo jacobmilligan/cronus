@@ -10,6 +10,7 @@
 .link-grid {
 
 	@include transition(all 0.2s ease-in-out);
+	@include row;
 	@include span-columns(10);
 	@include shift(1);
 	text-align: center;
@@ -17,8 +18,8 @@
 	height: auto;
 	color: $inverted-font-color;
 	border-radius: 2px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	@include border-width(1px);
 	@include border-style(solid);
 
@@ -40,4 +41,8 @@
 	i {
 		display: block;
 	}
+}
+
+.link-p-under {
+	clear: both;
 }

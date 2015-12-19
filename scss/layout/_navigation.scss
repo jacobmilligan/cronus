@@ -2,7 +2,6 @@ nav {
 	@include outer-container(100%);
 	@include span-columns(12);
 	@include padding(10px 1rem 10px 1rem);
-	@include box-shadowing;
 	position: absolute;
 	top: 0;
 	background-color: $primary-color-dark;
