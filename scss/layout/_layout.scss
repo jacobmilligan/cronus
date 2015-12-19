@@ -41,6 +41,11 @@ p {
 	font-size: $font-size-regular;
 }
 
+hr {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 section {
 	@include span-columns(12);
 	@include omega();
