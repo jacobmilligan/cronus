@@ -1,8 +1,6 @@
 .form-msg {
+	@include span-columns(6);
+	@include shift(3);
 	background-color: $accent-color;
-
-	span {
-		margin: 10px;
-	}
-
+	padding: 20px;
 }

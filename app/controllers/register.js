@@ -18,7 +18,6 @@ router.post('/', function(req, res, next) {
 			res.render('register', {error: true, msg: err});
 			return next(err);
 		}
-		res.render('register', {msg: user});
 	});
 });
 
