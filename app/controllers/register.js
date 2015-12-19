@@ -12,9 +12,10 @@ router.get('/', function(req, res, next) {
 
 // Create user
 router.post('/', function(req, res, next) {
-	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+	req.body.password = (req.body.password.length > 6) ? bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)) : "";
 	db(req.body, function(err, user) {
 		if (err) {
+			res.render('register', {error: true, msg: err});
 			return next(err);
 		}
 		res.render('register', {msg: user});

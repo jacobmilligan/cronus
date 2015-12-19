@@ -1,5 +1,10 @@
+<section class="sctn-dark-gradient">
+	<h1>Get started with <span class="accent">Cronus</span> for free.</h1>
+</section>
 <section class="sctn-light">
-	<p>{{msg}}</p>
+	{{#if error}}
+		<p class="form-msg">{{msg}}</p>
+	{{/if}}
 	<form method="POST" class="register">
 		<input type="hidden" name="_csrf" value={{csrfToken}}>
 		<input type="text" placeholder="eMail address" name="email">
