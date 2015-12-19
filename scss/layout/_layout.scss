@@ -41,10 +41,6 @@ p {
 	font-size: $font-size-regular;
 }
 
-.center {
-	text-align: center;
-}
-
 section {
 	@include span-columns(12);
 	@include omega();
@@ -60,7 +56,7 @@ section {
 }
 
 .sctn-dark {
-	background-color: $primary-color-dark;
+	background-color: shade($primary-color, 20%);
 	color: $inverted-font-color;
 
 	p {

@@ -7,7 +7,7 @@
 // Shadows
 
 @mixin box-shadowing {
-	box-shadow: 5px 0 7px 5px $shadow-color;
+	box-shadow: 0 10px 10px 0 $shadow-color;
 }
 
 @mixin shadow-btn($color) {
