@@ -18,12 +18,14 @@ router.get('/', function(req, res, next) {
 
 // Create user
 router.post('/', function(req, res, next) {
-	req.body.password = (req.body.password.length > 6) ? bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)) : "";
 	db(req.body, function(err, user) {
 		if (err) {
-			req.session.error = true;
-			req.session.msg = err;
-			res.redirect('register');
+			req.flash('msg', err);
+			res.locals.msg = req.flash('msg');
+			res.locals.email = req.body.email;
+			res.locals.firstName = req.body.first_name;
+			res.locals.lastName = req.body.last_name;
+			res.render('register', {'csrfToken': req.csrfToken});
 		} else {
 			res.redirect('login');
 		}

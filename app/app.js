@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var csrf = require('csurf'); //must come after express-session
 var hbs = require('hbs');
+var flash = require('connect-flash');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,6 +33,8 @@ app.use(session( {
     rolling: true
   } 
 ));
+
+app.use(flash());
 
 // Set locals, must come before csrf call
 app.use(function(req, res, next) {

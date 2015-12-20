@@ -2,10 +2,13 @@
 
 var db = require('./db');
 var validate = require('../helpers/validation');
+var bcrypt = require('bcryptjs');
 
 function createUser(postBody, callback) {
 	var body = [];
 	var errStr = "";
+	errStr = validate.register(postBody);
+	postBody.password = (postBody.password.length > 6) ? bcrypt.hashSync(postBody.password, bcrypt.genSaltSync(10)) : "";
 	// make body into array
 	for ( var key in postBody ) {
 		if ( key != '_csrf' ) {
@@ -13,8 +16,7 @@ function createUser(postBody, callback) {
 		}
 	}
 
-	errStr = validate.register(postBody);
-
+	
 	if ( errStr.length > 0 ) {
 		return callback(errStr);
 	}
@@ -27,7 +29,13 @@ function createUser(postBody, callback) {
 
 	db.query(sql, body, function(err, result) {
 		if (err) {
-			return callback(err);
+			var dbErr;
+			switch(err.constraint) {
+				case ( 'users_email_key' ) :
+					dbErr = "That email address already exists";
+					break;
+			}
+			return callback(dbErr);
 		}
 		return callback(null, body);
 	});

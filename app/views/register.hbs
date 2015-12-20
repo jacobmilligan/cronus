@@ -2,15 +2,15 @@
 	<h1>Get started with <span class="accent">Cronus</span> for free.</h1>
 </section>
 <section class="sctn-light">
-	{{#if error}}
+	{{#if msg}}
 		<p class="form-msg">{{msg}}</p>
 	{{/if}}
 	<form method="POST" class="register">
-		<input type="hidden" name="_csrf" value={{csrfToken}}>
-		<input type="text" placeholder="Email address" name="email">
+		<input type="hidden" name="_csrf" value={{csrfToken}} id="csrf">
+		<input type="text" placeholder="Email address" name="email" value={{email}}>
 		<input type="password" placeholder="password" name="password">
-		<input type="text" placeholder="First Name" name="first_name">
-		<input type="text" placeholder="Last Name (optional)" name="last_name">
-		<input type="submit" value="Submit"></input>
+		<input type="text" placeholder="First Name" name="first_name" value={{firstName}}>
+		<input type="text" placeholder="Last Name (optional)" name="last_name" value={{lastName}}>
+		<input type="submit" value="Submit" class="frm-submit"></input>
 	</form>
 </section>
