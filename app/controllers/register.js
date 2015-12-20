@@ -17,6 +17,8 @@ router.post('/', function(req, res, next) {
 		if (err) {
 			res.render('register', {error: true, msg: err});
 			return next(err);
+		} else {
+			res.redirect('login');
 		}
 	});
 });

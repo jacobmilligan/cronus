@@ -30,8 +30,6 @@ function register(val) {
 					errStr = errStr.replace("\"last_name\"", "Last Name");
 					break;
 			}
-		} else {
-			return null;
 		}
 	});
 	return errStr;

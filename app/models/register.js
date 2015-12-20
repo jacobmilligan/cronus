@@ -8,7 +8,7 @@ function createUser(postBody, callback) {
 	var errStr = "";
 	// make body into array
 	for ( var key in postBody ) {
-		if ( key > 0 ) {
+		if ( key != '_csrf' ) {
 			body.push(postBody[key]);
 		}
 	}
@@ -31,6 +31,7 @@ function createUser(postBody, callback) {
 		}
 		return callback(null, body);
 	});
+
 }
 
 module.exports = createUser;
