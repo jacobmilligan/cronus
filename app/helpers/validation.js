@@ -18,7 +18,7 @@ function register(val) {
 			errStr = err.details[0].message;
 			switch (err.details[0].path) {
 				case "email":
-					errStr = errStr.replace("\"email\"", "eMail");
+					errStr = errStr.replace("\"email\"", "Email Address");
 					break;
 				case "password":
 					errStr = errStr.replace("\"password\"", "Password") + " and must be at least 6 characters long";
