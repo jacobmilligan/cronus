@@ -1,19 +1,19 @@
 'use strict';
 
 var db = require('./db');
+var validate = require('../helpers/validation');
 
 function createUser(postBody, callback) {
 	var body = [];
 	var errStr = "";
 	// make body into array
 	for ( var key in postBody ) {
-		if ( postBody[key].length <= 0 ) {
-			errStr += key + " is required.\n";
-		}
-		if ( key > 0 ) {
+		if ( key != '_csrf' ) {
 			body.push(postBody[key]);
 		}
 	}
+
+	errStr = validate.register(postBody);
 
 	if ( errStr.length > 0 ) {
 		return callback(errStr);
@@ -29,9 +29,9 @@ function createUser(postBody, callback) {
 		if (err) {
 			return callback(err);
 		}
-
 		return callback(null, body);
 	});
+
 }
 
 module.exports = createUser;

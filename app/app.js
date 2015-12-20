@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session( {
-    secret: 'testsesh',
+    secret: 'c7898789r907890o876098n86758u8098098s',
     resave: false,
     saveUninitialized: false,
     rolling: true
