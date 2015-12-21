@@ -64,6 +64,11 @@ section {
 .no-footer {
 	position: absolute;
 	height: 90%;
+
+	p {
+		@include span-columns(12);
+		text-align: center;
+	}
 }
 
 .sctn-dark {
