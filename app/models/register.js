@@ -16,7 +16,6 @@ function createUser(postBody, callback) {
 		}
 	}
 
-	
 	if ( errStr.length > 0 ) {
 		return callback(errStr);
 	}

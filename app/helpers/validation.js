@@ -3,13 +3,13 @@
 var joi = require('joi');
 
 // Setup validation schemas
-var registerSchema = {
+var registerSchema = joi.object().keys({
 	_csrf: joi.string(),
 	email: joi.string().email(),
   	password: joi.string().min(6),
-  	first_name: joi.string().required(),
-  	last_name: joi.string()
-};
+  	first_name: joi.string(),
+  	last_name: joi.string().allow('')
+}).optionalKeys('last_name');
 
 function register(val) {
 	var errStr = "";

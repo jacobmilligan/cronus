@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 		delete req.session.error;
 		delete req.session.msg;
 	} else {
+		res.locals.title = "Register account";
 		res.render('register', {error: false, csrfToken: req.csrfToken});
 	}
 });
