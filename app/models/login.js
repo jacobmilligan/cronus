@@ -15,11 +15,11 @@ function selectByEmail(email, body, callback) {
 			return callback(err);
 		}
 		if ( result.rowCount === 0 ) {
-			callback(null, result.rows[0]);
+			return callback(null, result.rows[0]);
 		} else if ( bcrypt.compareSync(body.password, result.rows[0].password) ) {
-			callback(null, result.rows[0]);
+			return callback(null, result.rows[0]);
 		} else {
-			callback(null, 'pwd');
+			return callback(null, 'pwd');
 		}
 
 	});

@@ -20,8 +20,7 @@ router.post('/', function(req, res, next) {
 			res.locals.msg = req.flash('msg');
 			res.locals.email = req.body.email;
 			res.render('login', {'csrfToken': req.csrfToken});
-		}
-		if ( user === 'pwd' ) {
+		} else if ( user === 'pwd' ) {
 			req.flash('msg', "Incorrect password");
 			res.locals.msg = req.flash('msg');
 			res.locals.email = req.body.email;
