@@ -4,10 +4,8 @@ var bcrypt = require('bcryptjs');
 var validate = require('../helpers/validation');
 
 function selectByEmail(email, body, callback) {
-	var bodyParts = body;
-	delete bodyParts.remember;
-	
-	var errStr = validate.login(bodyParts);
+
+	var errStr = validate.login(body);
 
 	if ( errStr.length > 0 ) {
 		return callback(errStr);

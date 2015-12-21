@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	console.log(req.body);
+	console.log(req.body.remember);
 	db(req.body.email, req.body, function(err, user) {
 		if (err) {
 			req.flash('msg', err);
@@ -35,7 +35,11 @@ router.post('/', function(req, res, next) {
 			//Log session
 			delete user.password;
 			req.session.user = user;
-			req.session.cookie.maxAge = 30 * 1000; //30 mins
+			if ( req.body.remember === 'on' ) {
+				req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; //One month
+			} else {
+				req.session.cookie.maxAge = 30 * 1000; //30 mins
+			}
 			res.redirect('/users');
 		}
 	});

@@ -14,7 +14,8 @@ var registerSchema = joi.object().keys({
 var loginSchema = joi.object().keys({
 	_csrf: joi.string(),
 	email: joi.string().email(),
-	password: joi.string().min(6)
+	password: joi.string().min(6),
+	remember: joi.any().optional()
 });
 
 function login(val) {
