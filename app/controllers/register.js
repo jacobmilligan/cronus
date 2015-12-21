@@ -7,14 +7,8 @@ var bcrypt = require('bcryptjs');
 
 /* Retreive page. */
 router.get('/', function(req, res, next) {
-	if ( req.session.error ) {
-		res.render('register', {error: req.session.error, msg: req.session.msg, csrfToken: req.csrfToken});
-		delete req.session.error;
-		delete req.session.msg;
-	} else {
-		res.locals.title = "Register account";
-		res.render('register', {error: false, csrfToken: req.csrfToken});
-	}
+	res.locals.title = "Register account";
+	res.render('register', {error: false, csrfToken: req.csrfToken});
 });
 
 // Create user

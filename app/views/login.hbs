@@ -1,5 +1,7 @@
 <section class="sctn-light">
-	<p>{{msg}}</p>
+	{{#if msg}}
+		<p class="form-msg">{{msg}}</p>
+	{{/if}}
 	<p>Please login.</p>
 	<form method="POST">
 		<input type="hidden" name="_csrf" value={{csrfToken}}>
