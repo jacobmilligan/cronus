@@ -4,7 +4,11 @@ var bcrypt = require('bcryptjs');
 var validate = require('../helpers/validation');
 
 function selectByEmail(email, body, callback) {
-	var errStr = validate.login(body);
+	var bodyParts = body;
+	delete bodyParts.remember;
+	
+	var errStr = validate.login(bodyParts);
+
 	if ( errStr.length > 0 ) {
 		return callback(errStr);
 	}

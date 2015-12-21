@@ -36,9 +36,22 @@
 		display: block;
 	}
 
-	input, label, select {
+	input, select {
 		@include fill-parent;
 		@include shift(0);
+	}
+
+	label {
+		margin: 0;
+		margin-top: 8px;
+		@include span-columns(8);
+		text-align: left;
+		font-size: $font-size-small;
+		color: $secondary-font-color;
+	}
+
+	input[type=checkbox] {
+		@include span-columns(1);
 	}
 
 	.form-info {
