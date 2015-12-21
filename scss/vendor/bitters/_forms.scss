@@ -11,8 +11,7 @@ select {
   display: block;
   font-family: $base-font-family;
   font-size: $base-font-size;
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
 }
 
 label {

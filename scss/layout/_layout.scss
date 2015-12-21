@@ -63,7 +63,7 @@ section {
 
 .no-footer {
 	position: absolute;
-	height: 90%;
+	min-height: 90%;
 
 	p {
 		@include span-columns(12);

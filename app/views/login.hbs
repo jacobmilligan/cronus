@@ -1,8 +1,8 @@
 <section class="sctn-dark-gradient no-footer">
+	<h1>Login to your <span class="accent">Cronus</span> dashboard.</h1>
 	{{#if msg}}
 		<p class="form-msg">{{msg}}</p>
 	{{/if}}
-	<h1>Login to your <span class="accent">Cronus</span> dashboard.</h1>
 	<form method="POST" class="form-grid">
 		<input type="hidden" name="_csrf" value={{csrfToken}}>
 		<input type="text" placeholder="Your eMail address" name="email" value={{email}}>

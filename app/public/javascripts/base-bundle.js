@@ -8,13 +8,13 @@ var menu = require('./modules/menu');
 function detectTouch(element, event, add) {
 	if (add) {
 		if ( 'ontouchstart' in window ) {
-			element.addEventListener('touch', event);
+			element.addEventListener('touchstart', event);
 		} else {
 			element.addEventListener('click', event);
 		}
 	} else {
 		if ( 'ontouchstart' in window ) {
-			element.removeEventListener('touch', event);
+			element.removeEventListener('touchstart', event);
 		} else {
 			element.removeEventListener('click', event);
 		}

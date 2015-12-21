@@ -1,6 +1,6 @@
 .form-msg {
 	@include span-columns(10);
-	@include shift(1);
+	@include shift(0);
 	color: $inverted-font-color;
 	background-color: $accent-color;
 	text-align: center;
@@ -10,9 +10,8 @@
 .form-grid {
 
 	@include transition(all 0.2s ease-in-out);
-	@include span-columns(10);
+	@include span-columns(12);
 	@include outer-container();
-	@include shift(1);
 	text-align: center;
 	@include padding (2em 2em 1.3em 2em);
 	height: auto;
