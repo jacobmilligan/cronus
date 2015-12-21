@@ -9,7 +9,31 @@ var registerSchema = joi.object().keys({
   	password: joi.string().min(6),
   	first_name: joi.string(),
   	last_name: joi.string().allow('')
-}).optionalKeys('last_name');
+});
+
+var loginSchema = joi.object().keys({
+	_csrf: joi.string(),
+	email: joi.string().email(),
+	password: joi.string().min(6)
+});
+
+function login(val) {
+	var errStr = "";
+	joi.validate(val, loginSchema, function(err, result) {
+		if (err) {
+			errStr = err.details[0].message;
+			switch (err.details[0].path) {
+				case "email":
+					errStr = errStr.replace("\"email\"", "Email Address");
+					break;
+				case "password":
+					errStr = errStr.replace("\"password\"", "Password");
+					break;
+			}
+		}
+	});
+	return errStr;
+}
 
 function register(val) {
 	var errStr = "";
@@ -36,5 +60,6 @@ function register(val) {
 }
 
 module.exports = {
-	register: register
+	register: register,
+	login: login
 };

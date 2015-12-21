@@ -33,7 +33,7 @@
     <div class="content">
       {{{body}}}
     </div>
-    {{> footer }}
+    {{#if displayFooter}} {{> footer }} {{/if}}
     <script type="text/javascript" src="/javascripts/base-bundle.js"></script>
   </body>
 </html>

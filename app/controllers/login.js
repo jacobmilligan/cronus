@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 	if ( req.session.user ) {
 		res.redirect('/users');
 	} else {
+		res.locals.displayFooter = false;
 		res.render('login', {csrfToken: req.csrfToken});
 	}
 });
@@ -15,12 +16,21 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	db(req.body.email, req.body, function(err, user) {
 		if (err) {
-			return next(err);
+			req.flash('msg', err);
+			res.locals.msg = req.flash('msg');
+			res.locals.email = req.body.email;
+			res.render('login', {'csrfToken': req.csrfToken});
 		}
 		if ( user === 'pwd' ) {
-			res.render('login', {msg: "Incorrect Password"});
+			req.flash('msg', "Incorrect password");
+			res.locals.msg = req.flash('msg');
+			res.locals.email = req.body.email;
+			res.render('login', {'csrfToken': req.csrfToken});
 		} else if (!user) {
-			res.render('login', {msg: "No such user"});
+			req.flash('msg', "No such user");
+			res.locals.msg = req.flash('msg');
+			res.locals.email = req.body.email;
+			res.render('login', {'csrfToken': req.csrfToken});
 		} else {
 			//Log session
 			delete user.password;

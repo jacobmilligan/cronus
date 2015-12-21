@@ -6,3 +6,43 @@
 	text-align: center;
 	padding: 20px;
 }
+
+.form-grid {
+
+	@include transition(all 0.2s ease-in-out);
+	@include span-columns(10);
+	@include outer-container();
+	@include shift(1);
+	text-align: center;
+	@include padding (2em 2em 1.3em 2em);
+	height: auto;
+	color: $primary-font-color;
+	border-radius: 2px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	@include border-width(1px);
+	@include border-style(solid);
+	background-color: tint($divider-color, 50%);
+	border-color: darken($divider-color, 25%);
+	@include shadow-btn($divider-color);
+
+	&:hover {
+		text-decoration: none;
+		@include shadow-btn($divider-color);
+		border-color: darken($divider-color, 25%);
+		background-color: $inverted-font-color;
+	}
+
+	i {
+		display: block;
+	}
+
+	input, label, select {
+		@include fill-parent;
+		@include shift(0);
+	}
+
+	.form-info {
+		color: $secondary-font-color;
+	}
+}

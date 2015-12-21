@@ -14,7 +14,7 @@ a {
 }
 
 .content {
-	margin-top: 100px;
+	padding-top: 100px;
 	@include outer-container(100%);
 	width: 100%;
 	height: auto;
@@ -59,19 +59,16 @@ section {
 .sctn-dark-gradient {
 	@include linear-gradient($primary-color-dark, tint($primary-color-dark, 10%));
 	color: $inverted-font-color;
+}
 
-	p {
-		@include span-columns(12 of 12);
-	}
+.no-footer {
+	position: absolute;
+	height: 90%;
 }
 
 .sctn-dark {
 	background-color: $primary-color-dark;
 	color: $inverted-font-color;
-
-	p {
-		@include span-columns(12 of 12);
-	}
 }
 
 .sctn-medium {

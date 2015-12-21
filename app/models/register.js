@@ -6,8 +6,7 @@ var bcrypt = require('bcryptjs');
 
 function createUser(postBody, callback) {
 	var body = [];
-	var errStr = "";
-	errStr = validate.register(postBody);
+	var errStr = validate.register(postBody);
 	postBody.password = (postBody.password.length > 6) ? bcrypt.hashSync(postBody.password, bcrypt.genSaltSync(10)) : "";
 	// make body into array
 	for ( var key in postBody ) {

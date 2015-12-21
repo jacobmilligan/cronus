@@ -7,6 +7,7 @@ var bcrypt = require('bcryptjs');
 
 /* Retreive page. */
 router.get('/', function(req, res, next) {
+	res.locals.displayFooter = false;
 	res.locals.title = "Register account";
 	res.render('register', {error: false, csrfToken: req.csrfToken});
 });
