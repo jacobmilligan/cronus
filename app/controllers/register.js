@@ -9,6 +9,7 @@ var bcrypt = require('bcryptjs');
 router.get('/', function(req, res, next) {
 	res.locals.displayFooter = false;
 	res.locals.title = "Register account";
+	res.locals.msg = req.session.msg;
 	res.render('register', {error: false, csrfToken: req.csrfToken});
 });
 
@@ -17,11 +18,11 @@ router.post('/', function(req, res, next) {
 	db(req.body, function(err, user) {
 		if (err) {
 			req.flash('msg', err);
-			res.locals.msg = req.flash('msg');
-			res.locals.email = req.body.email;
-			res.locals.firstName = req.body.first_name;
-			res.locals.lastName = req.body.last_name;
-			res.render('register', {'csrfToken': req.csrfToken});
+			req.session.msg = req.flash('msg');
+			req.session.frmmail = req.body.email;
+			req.session.firstName = req.body.first_name;
+			req.session.lastName = req.body.last_name;
+			res.redirect('register');
 		} else {
 			res.redirect('login');
 		}

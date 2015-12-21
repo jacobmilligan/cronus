@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 	if ( !req.session.user ) {
 		res.redirect('/login');
 	} else {
+		res.locals.displayFooter = true;
 		res.render('users', {name: req.session.user.first_name});
 	}
 });

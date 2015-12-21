@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
 			//Log session
 			delete user.password;
 			req.session.user = user;
-			req.session.cookie.maxAge = 60000 * 30; //30 mins
+			req.session.cookie.maxAge = 30 * 1000; //30 mins
 			res.redirect('/users');
 		}
 	});

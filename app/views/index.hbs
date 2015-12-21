@@ -1,20 +1,23 @@
-{{#if loggedIn}}
-	<a href="users">Go to dashboard</a>
-{{else}}
-	<section class="sctn-dark-gradient">
-		<h1><span class="accent">Cronus</span> is a <span class="accent">simple</span> way to track <span class="accent">time</span> and <span class="accent">billables</span></h1>
-		<p class="center">Track any time-bound task. Create projects, sub-projects, activities and attach billable rates to each one.</p>
-	</section>
-	<section class="sctn-light">
+<section class="sctn-dark-gradient">
+	<h1><span class="accent">Cronus</span> is a <span class="accent">simple</span> way to track <span class="accent">time</span> and <span class="accent">billables</span></h1>
+	<p class="center">Track any time-bound task. Create projects, sub-projects, activities and attach billable rates to each one.</p>
+</section>
+<section class="sctn-light">
+	{{#if loggedIn}}
+		<a href="users" class="link-grid">
+			<i class="fa fa-tasks fa-3x"></i>
+			<h2>Go to your dashboard</h2>
+		</a>
+	{{else}}
 		<a href="register" class="link-grid">
 			<i class="fa fa-tasks fa-3x"></i>
-			<h2>Start tracking your projects.</h2>
+			<h2>Start tracking your projects</h2>
 		</a>
 		<p class="center link-p-under">
 			Get started with Cronus - register an account for free and start timing.
 		</p>
-		<hr>
-	</section>
-	<section class="sctn-medium">
-	</section>
-{{/if}}
+	{{/if}}	
+	<hr>
+</section>
+<section class="sctn-medium">
+</section>

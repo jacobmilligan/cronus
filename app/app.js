@@ -12,6 +12,8 @@ var session = require('express-session');
 var csrf = require('csurf'); //must come after express-session
 var hbs = require('hbs');
 var flash = require('connect-flash');
+var pgSession = require('connect-pg-simple')(session);
+var pg = require('pg');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +29,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session( {
+    store: new pgSession({
+      pg: pg,
+      conString: process.env.DATABASE_URL || 'postgres://localhost:5432/cronus',
+      tableName: 'session'
+    }),
     secret: 'c7898789r907890o876098n86758u8098098s',
     resave: false,
     saveUninitialized: false,

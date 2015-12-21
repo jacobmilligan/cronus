@@ -59,6 +59,14 @@ section {
 .sctn-dark-gradient {
 	@include linear-gradient($primary-color-dark, tint($primary-color-dark, 10%));
 	color: $inverted-font-color;
+
+	input {
+		color: $primary-font-color;
+	}
+
+	input[type=submit], input[type=reset] {
+		color: $inverted-font-color;
+	}
 }
 
 .no-footer {
