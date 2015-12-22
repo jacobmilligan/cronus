@@ -30,9 +30,11 @@
   </head>
   <body>
     {{> header }}
+    <!-- Start content -->
     <div class="content">
       {{{body}}}
     </div>
+    <!-- End content -->
     {{#if displayFooter}} {{> footer }} {{/if}}
     <script type="text/javascript" src="/javascripts/base-bundle.js"></script>
   </body>
