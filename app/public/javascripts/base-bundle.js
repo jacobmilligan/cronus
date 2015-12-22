@@ -71,7 +71,6 @@ function computeHeight(element) {
 
 		var siblings = event.target.parentNode.parentNode.childNodes;
 		var slider;
-		console.log(event.target.className);
 		if ( event.target.parentNode.className === 'activate-menu' || event.target.className === 'activate-menu' ) {
 			for ( i = 0; i < siblings.length; i++ ) {
 				if ( siblings[i].className === 'nav-list') {
@@ -163,6 +162,7 @@ function computeHeight(element) {
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
 
 		getProjects();
+		console.log("obj");
 	}
 
 	function getProjects() {

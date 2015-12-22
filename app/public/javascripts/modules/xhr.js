@@ -5,6 +5,7 @@
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
 
 		getProjects();
+		console.log("obj");
 	}
 
 	function getProjects() {
