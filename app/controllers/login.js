@@ -6,7 +6,7 @@ var db = require('../models/login');
 
 router.get('/', function(req, res, next) {
 	if ( req.session.user ) {
-		res.redirect('/users');
+		res.redirect('/dashboard');
 	} else {
 		res.locals.displayFooter = false;
 		res.render('login', {csrfToken: req.csrfToken});
@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
 			} else {
 				req.session.cookie.maxAge = 30 * 1000; //30 mins
 			}
-			res.redirect('/users');
+			res.redirect('/dashboard');
 		}
 	});
 });
