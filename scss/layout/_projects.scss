@@ -5,3 +5,77 @@
 #no-projects {
 	display: none;
 }
+
+.dollar-amt {
+	text-align: left;
+	@include row;
+	@include span-columns(2);
+	@include shift(-0.5);
+}
+
+@include direction-context(right-to-left) {
+	.project-settings {
+		@include span-columns(2);
+		@include transition(all 0.2s ease-in-out);
+		@include shift(-0.75);
+		font-size: $font-size-xlarge;
+		margin-top: -10px;
+
+		&:hover {
+			text-decoration: none;
+			color: tint($primary-color, 15%);
+		}
+
+		&:before {
+			font-family: FontAwesome;
+			content: "\f013";
+		}
+	}
+}
+
+.project-grid {
+
+	@include transition(all 0.2s ease-in-out);
+	@include span-columns(12);
+	text-align: center;
+	@include padding (1em 2em 1.3em 2em);
+	height: auto;
+	color: $inverted-font-color;
+	border-radius: 2px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	@include border-width(1px);
+	@include border-style(solid);
+
+	@for $i from 1 through length($link-grid-colors) {
+
+		&:nth-child(#{$i}) {
+			$list-background-color: nth($link-grid-colors, $i);
+			background-color: $list-background-color;
+			border-color: darken($list-background-color, 25%);
+			@include shadow-btn($list-background-color);
+
+			&:hover {
+				text-decoration: none;
+				background-color: shade($list-background-color, 10%);
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+		cursor: pointer;
+	}
+
+	h2 {
+		margin-top: 40px;
+	}
+
+	i {
+		display: block;
+	}
+
+	.project-info {
+		color: $secondary-font-color;
+	}
+}

@@ -177,10 +177,11 @@ function computeHeight(element) {
 
 					if ( projRes.length > 0 ) {
 						projects.style.display = 'block';
+
 						for (var i = 0; i < projRes.length; i++) {
-							projects.innerHTML += projRes[i].project_name;
-							projects.innerHTML += projRes[i].description;
+							buildProject(projRes[i], projects);
 						}
+
 					} else {
 						noProjects.style.display = 'block';
 					}
@@ -192,8 +193,27 @@ function computeHeight(element) {
 			projReq.send();
 	}
 
-	function buildProject() {
-		
+	function buildProject(pendingProject, parent) {
+		var newItem = document.createElement('div');
+		newItem.className = 'project-grid';
+		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
+		htmlString += "<a class=\"project-settings\"></a>";
+		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
+		htmlString += "<p>" + pendingProject.description + "</p>\n";
+
+		// Uncomment when db joins tags onto query
+		/*
+		if ( pendingProject.tags.length > 0 ) {
+			htmlString += "<ul class=\"project-tag-list\">";
+			for ( var j = 0; j < pendingProject.tags.length; j++ ) {
+				htmlString += "<li>" + pendingProject.tags[j] + "</li>";
+			}
+			htmlString += "</ul>";
+		}
+		*/
+
+		newItem.innerHTML = htmlString;
+		parent.appendChild(newItem);
 	}
 
 }());
