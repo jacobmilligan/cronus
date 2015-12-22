@@ -4,6 +4,174 @@
 		"selected_items":
 		[
 			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"ne",
+				"next"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"err",
+				"errStr〔variable〕"
+			],
+			[
+				"login",
+				"loginSchema〔variable〕"
+			],
+			[
+				"sho",
+				"showErrMsg〔function〕"
+			],
+			[
+				"get",
+				"getElementById〔function〕"
+			],
+			[
+				"on",
+				"onload〔variable〕"
+			],
+			[
+				"sub",
+				"submitBtns〔variable〕"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"re",
+				"re	require"
+			],
+			[
+				"registe",
+				"registerSchema〔variable〕"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"var",
+				"vertical-align"
+			],
+			[
+				"na",
+				"navChildren"
+			],
+			[
+				"nav",
+				"navChildren〔variable〕"
+			],
+			[
+				"sli",
+				"slider〔variable〕"
+			],
+			[
+				"hbs",
+				"hbsHelpers"
+			],
+			[
+				"ma",
+				"maxHeight"
+			],
+			[
+				"slider",
+				"sliderChildren〔variable〕"
+			],
+			[
+				"menu",
+				"menuColors〔variable〕"
+			],
+			[
+				"slid",
+				"slideMenu〔function〕"
+			],
+			[
+				"slide",
+				"slideMenu〔function〕"
+			],
+			[
+				"cur",
+				"currHeight〔variable〕"
+			],
+			[
+				"new",
+				"newTimer〔variable〕"
+			],
+			[
+				"el",
+				"elPad"
+			],
+			[
+				"al",
+				"alt	Attr"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"list-s",
+				"list-style-type"
+			],
+			[
+				"m",
+				"margin"
+			],
+			[
+				"hea",
+				"header	Tag"
+			],
+			[
+				"call",
+				"callback〔argument〕"
+			],
+			[
+				"cal",
+				"callback"
+			],
+			[
+				"resu",
+				"resultStr〔variable〕"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
 				"bod",
 				"bodyparser〔variable〕"
 			],
@@ -28,10 +196,6 @@
 				"http.createServer"
 			],
 			[
-				"on",
-				"emitter.on"
-			],
-			[
 				"prin",
 				"printResults〔function〕"
 			],
@@ -42,18 +206,6 @@
 			[
 				"res",
 				"results〔variable〕"
-			],
-			[
-				"get",
-				"http.get"
-			],
-			[
-				"call",
-				"callback〔argument〕"
-			],
-			[
-				"new",
-				"newLines〔variable〕"
 			],
 			[
 				"file",
@@ -120,14 +272,6 @@
 				"min-height"
 			],
 			[
-				"mar",
-				"margin"
-			],
-			[
-				"err",
-				"errMsg〔variable〕"
-			],
-			[
 				"show",
 				"showPopup〔function〕"
 			],
@@ -148,20 +292,8 @@
 				"randomInt〔function〕"
 			],
 			[
-				"pad",
-				"padding"
-			],
-			[
-				"ma",
-				"margin-bottom"
-			],
-			[
 				"fon",
 				"font-family"
-			],
-			[
-				"font",
-				"font-size"
 			],
 			[
 				"paren",
@@ -170,10 +302,6 @@
 			[
 				"value",
 				"value=〔attribute〕"
-			],
-			[
-				"back",
-				"background-size"
 			],
 			[
 				"valida",
@@ -220,24 +348,12 @@
 				"toggledPopup"
 			],
 			[
-				"re",
-				"removeChild〔function〕"
-			],
-			[
-				"sho",
-				"showTC"
-			],
-			[
 				"add",
 				"addEventListener"
 			],
 			[
 				"attac",
 				"attachEvent〔function〕"
-			],
-			[
-				"sub",
-				"submitBtn〔variable〕"
 			],
 			[
 				"app",
@@ -316,10 +432,6 @@
 				"default"
 			],
 			[
-				"menu",
-				"menuInit"
-			],
-			[
 				"font-",
 				"font-size-medium"
 			],
@@ -346,22 +458,6 @@
 			[
 				"b",
 				"both"
-			],
-			[
-				"in",
-				"inline-block"
-			],
-			[
-				"margin",
-				"margin-right"
-			],
-			[
-				"marg",
-				"margin-left"
-			],
-			[
-				"te",
-				"text-align"
 			],
 			[
 				"border-",
@@ -396,10 +492,6 @@
 				"div	Tag"
 			],
 			[
-				"tex",
-				"text-align"
-			],
-			[
 				"border-co",
 				"border-color"
 			],
@@ -416,114 +508,110 @@
 				"assignment_2"
 			],
 			[
-				"padd",
-				"padding"
-			],
-			[
-				"nav",
-				"navBar"
-			],
-			[
 				"opaci",
 				"opacityFrames"
 			],
 			[
-				"cur",
-				"currShadow"
-			],
-			[
 				"remov",
 				"removeChild"
-			],
-			[
-				"cu",
-				"currOpacity"
-			],
-			[
-				"sha",
-				"shadowOn"
-			],
-			[
-				"shado",
-				"shadowDiv〔function〕"
-			],
-			[
-				"border-top",
-				"border-top-color"
-			],
-			[
-				"clea",
-				"clearAllIntervals"
-			],
-			[
-				"pare",
-				"parentLeft〔variable〕"
-			],
-			[
-				"parent",
-				"parentStyles〔variable〕"
-			],
-			[
-				"na",
-				"navbar"
-			],
-			[
-				"el",
-				"elPad"
-			],
-			[
-				"n",
-				"none"
-			],
-			[
-				"le",
-				"left"
-			],
-			[
-				"margi",
-				"margin"
-			],
-			[
-				"to",
-				"toggle"
-			],
-			[
-				"sli",
-				"slideMenu〔function〕"
-			],
-			[
-				"inter",
-				"interval"
-			],
-			[
-				"fra",
-				"frameAmt"
-			],
-			[
-				"int",
-				"interval"
-			],
-			[
-				"navB",
-				"navBottom"
-			],
-			[
-				"list",
-				"list-style-type"
-			],
-			[
-				"wid",
-				"width"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "app/config/router.js",
+			"settings":
+			{
+				"buffer_size": 437,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layout.hbs",
+			"settings":
+			{
+				"buffer_size": 2410,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/index.js",
+			"settings":
+			{
+				"buffer_size": 375,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/views/index.hbs",
 			"settings":
 			{
-				"buffer_size": 47,
+				"buffer_size": 836,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/login.js",
+			"settings":
+			{
+				"buffer_size": 1358,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/app.js",
+			"settings":
+			{
+				"buffer_size": 2193,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/dashboard.js",
+			"settings":
+			{
+				"buffer_size": 348,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scss/layout/_layout.scss",
+			"settings":
+			{
+				"buffer_size": 1317,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/dashboard.hbs",
+			"settings":
+			{
+				"buffer_size": 81,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/dashboard.js",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scss/layout/_footer.scss",
+			"settings":
+			{
+				"buffer_size": 1566,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scss/base/_reset.scss",
+			"settings":
+			{
+				"buffer_size": 87,
 				"line_ending": "Unix"
 			}
 		}
@@ -623,13 +711,29 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "insta",
+		"height": 107.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
+				"Snippet: add",
+				"Snippet: addEventListener"
+			],
+			[
+				"Snippet: get",
+				"Snippet: getElementsByClassName"
+			],
+			[
 				"insta",
 				"Package Control: Install Package"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"pacl",
+				"Package Control: List Packages"
 			],
 			[
 				"prv",
@@ -716,13 +820,14 @@
 				"Snippet: html5template"
 			]
 		],
-		"width": 453.0
+		"width": 558.0
 	},
 	"console":
 	{
 		"height": 126.0,
 		"history":
 		[
+			"view.settings().get('font_face')",
 			"jsl",
 			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
@@ -738,22 +843,108 @@
 	},
 	"expanded_folders":
 	[
+		"/Users/Jacob/Dev/Repos/cronus",
+		"/Users/Jacob/Dev/Repos/cronus/app",
 		"/Users/Jacob/Dev/Repos/cronus/app/bin",
+		"/Users/Jacob/Dev/Repos/cronus/app/config",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers",
+		"/Users/Jacob/Dev/Repos/cronus/app/helpers",
 		"/Users/Jacob/Dev/Repos/cronus/app/models",
 		"/Users/Jacob/Dev/Repos/cronus/app/public",
-		"/Users/Jacob/Dev/Repos/cronus/app/public/stylesheets",
-		"/Users/Jacob/Dev/Repos/cronus/app/routes",
-		"/Users/Jacob/Dev/Repos/cronus/app/views"
+		"/Users/Jacob/Dev/Repos/cronus/app/views",
+		"/Users/Jacob/Dev/Repos/cronus/scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/base",
+		"/Users/Jacob/Dev/Repos/cronus/scss/helpers",
+		"/Users/Jacob/Dev/Repos/cronus/scss/layout",
+		"/Users/Jacob/Dev/Repos/cronus/scss/themes",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/bitters",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/normalize"
 	],
 	"file_history":
 	[
+		"/Users/Jacob/.bashrc",
+		"/Users/Jacob/Dev/Repos/cronus/.gitattributes",
+		"/Users/Jacob/Dev/Repos/cronus/.gitignore",
+		"/Users/Jacob/Dev/Repos/cronus/.git/info/exclude",
+		"/Users/Jacob/Dev/Repos/cronus/gitignore",
+		"/Users/Jacob/Dev/Repos/cronus/scss/base/_reset.scss",
+		"/Users/Jacob/Dev/Repos/cronus/app/models/login.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/index.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/main.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/modules/menu.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/app.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/helpers/validation.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/logout.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/index.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/app/models/db.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/login.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/register.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/models/register.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/modules/helpers.js",
+		"/Users/Jacob/Dev/Repos/cronus/scss/components/_menu.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/layout/_layout.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/bitters/_forms.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/components/_form.scss",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/register.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/users.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/layout.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/bitters/_variables.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/helpers/_variables.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/components/_link.scss",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/validation.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/modules/form_validation.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/config/router.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/base-bundle.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/bin/www",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/ajax_response.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/error.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/app/controllers/login.js",
+		"/Users/Jacob/Dev/Repos/cronus/scss/layout/_navigation.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/style.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/layout/_footer.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/helpers/_mixins.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/themes/_main-theme.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/bitters/_typography.scss",
+		"/Users/Jacob/bin/statsCalc.js",
+		"/Users/Jacob/bin/statsCalc.html",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/bitters/_buttons.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/base/_typography.scss",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/partials/header.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/partials/footer.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/scss/components/_buttons.scss",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/normalize/_normalize.scss",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/Users/Jacob/cronus.sh",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/javascripts/menu.js",
+		"/Users/Jacob/nodemon.json",
+		"/Users/Jacob/Dev/Repos/cronus/app/nodemon.json",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/partials/test.hbs",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/font-awesome/_variables.scss",
+		"/Users/Jacob/Dev/Repos/cronus/app/public/stylesheets/style.css",
+		"/Users/Jacob/Dev/Repos/cronus/cronus.sublime-workspace",
+		"/Users/Jacob/Dev/Repos/cronus/app/views/users.hbs",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/newcontroller.sublime-snippet",
+		"/Users/Jacob/Dev/Repos/cronus/app/routes/index.js",
+		"/Users/Jacob/Dev/Repos/cronus/app/routes/login.js",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Handlebars.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/SCSS.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/C++.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Sass.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/JSON (JavaScriptNext).sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/JSON.sublime-settings",
+		"/Users/Jacob/Library/Application Support/Sublime Text 3/Installed Packages/JavaScriptNext - ES6 Syntax.sublime-package",
+		"/Users/Jacob/Dev/Repos/cronus/app/routes/users.js",
+		"/Users/Jacob/Dev/Repos/cronus/SQL/create_users.sql",
+		"/Users/Jacob/Dev/Repos/cronus/scss/vendor/_bootstrap.scss",
+		"/Users/Jacob/.profile",
+		"/Users/Jacob/.bash_profile",
 		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/expressfile.sublime-snippet",
 		"/Users/Jacob/Dev/Repos/cronus/app/models/ex01.js",
-		"/Users/Jacob/Dev/Repos/cronus/app/app.js",
 		"/Users/Jacob/Dev/Repos/cronus/app/models/database.js",
 		"/etc/postgresql.conf",
 		"/Users/Jacob/postgresql.conf",
-		"/Users/Jacob/Dev/Repos/cronus/app/routes/index.js",
 		"/Users/Jacob/Dev/Repos/cronus/app/views/error.jade",
 		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex13/app.js",
 		"/Users/Jacob/Dev/Repos/node_playground/learnyournode/ex12/app.js",
@@ -774,7 +965,6 @@
 		"/Users/Jacob/Dev/Repos/node_playground/hello_node/app.js",
 		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
 		"/Users/Jacob/Dev/Repos/node_playground/hello_node/closure_test.js",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
 		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/Default (OSX).sublime-keymap",
 		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/SQL/create.sql",
 		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/footer.html",
@@ -800,91 +990,44 @@
 		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/bottom.html",
 		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/top.html",
 		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/helpers/_variables.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/head.html",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/bottom.php",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_nav.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_buttons.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/form.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/common.scss",
-		"/Users/Jacob/.bashrc",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/themes/_typography.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_icons.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/js/burger.js",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/style.css",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/partials/_typography.scss",
-		"/Users/Jacob/.bash_profile",
-		"/Users/Jacob/.bash_login",
-		"/Users/Jacob/.profile",
-		"/etc/profile",
-		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/application.css.scss",
-		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/main.scss",
-		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/styles/pages.scss",
-		"/Users/Jacob/Dev/Repos/ponder/app/controllers/pages_controller.rb",
-		"/Users/Jacob/Dev/Repos/ponder/app/controllers/application_controller.rb",
-		"/Users/Jacob/Dev/Repos/ponder/Gemfile",
-		"/Users/Jacob/Dev/Repos/ponder/config/database.yml",
-		"/Users/Jacob/Dev/Repos/ponder/config/routes.rb",
-		"/Users/Jacob/Dev/Repos/ponder/public/500.html",
-		"/Users/Jacob/Dev/Repos/ponder/app/assets/stylesheets/sass/main.css.scss",
-		"/Users/Jacob/Dev/Repos/Uni/Org/concept_handbook/main.js",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/javascript/main.js",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/index.html",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/jacob_milligan/javascript/mobile_menu.js",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/top.php",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/common.css.map",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/sass/main.scss",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/sass.sublime-build",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/OpenGl.sublime-build",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Package Control.system-ca-bundle",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/Users/Jacob/Library/Application Support/Sublime Text 3/Installed Packages/SASS Build.sublime-package",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/common.css",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/layouts/footer.html",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/test.html",
-		"/Users/Jacob/Dev/Repos/Uni/Webdev/assign2/.git/config",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Assignment 1/assign1/index.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/window_variables.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/prompt.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/function.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/confirm.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/browser_detection.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/alert.html",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Javascript Examples/JavascriptExamples Folder/arrays.html",
-		"/Users/Jacob/Dev/Rails/sample_app/Gemfile",
-		"/Users/Jacob/Dev/Rails/sample_app/test/models/user_test.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/models/user.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151124083238_add_password_digest_to_users.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151124031011_add_index_to_users_email.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/test/test_helper.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/test/fixtures/users.yml",
-		"/Users/Jacob/Dev/Repos/concept_handbook/index.html",
-		"/Users/Jacob/Dev/Repos/concept_handbook/main.js",
-		"/Users/Jacob/Dev/Rails/sample_app/config/initializers/backtrace_silencers.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/config/environments/production.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/db/migrate/20151122083754_create_users.rb",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Revision/style.css",
-		"/Users/Jacob/Uni/First Year/Semester 2/Creating Web Applications/Revision/semester_0.5.html",
-		"/Users/Jacob/Dev/Rails/sample_app/app/helpers/application_helper.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/helpers/application_helper_test.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/static_pages/about.html.erb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/application.html.erb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/users/new.html.erb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/static_pages/home.html.erb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/_header.html.erb",
-		"/Users/Jacob/Dev/Rails/sample_app/test/integration/site_layout_test.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/config/routes.rb",
-		"/Users/Jacob/Dev/Rails/sample_app/app/views/layouts/_footer.html.erb"
+		"/Users/Jacob/Dev/Repos/Uni/Webdev/assignment_2/assign2/layouts/head.html"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
+			"/Users/Jacob/Dev/Repos/cronus/app, -*/node_modules/*, -*/models/*, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/, -*/node_modules/*, -*/models/*, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -*/node_modules/*, -*/models/*, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -*/node_modules/*, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -*node_modules*, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -node_modules, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -/Users/Jacob/Dev/Repos/cronus/app, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.scss, -*.css.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.scss, -*.scss.orig, -*.css",
+			"*.js, *.html",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.scss, -*.scss.orig, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.scss, -*.scss.orig,",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.css, -*.css.orig",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.css, -*.orig",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js, -*.css",
+			"/Users/Jacob/Dev/Repos/cronus/app/bin, /Users/Jacob/Dev/Repos/cronus/app/config, /Users/Jacob/Dev/Repos/cronus/app/controllers, /Users/Jacob/Dev/Repos/cronus/app/helpers, /Users/Jacob/Dev/Repos/cronus/app/models, /Users/Jacob/Dev/Repos/cronus/app/public, /Users/Jacob/Dev/Repos/cronus/app/views, /Users/Jacob/Dev/Repos/cronus/app/app.js",
+			"/Users/Jacob/Dev/Repos/cronus/app, -/Users/Jacob/Dev/Repos/cronus/app/node_modules",
+			"/Users/Jacob/Dev/Repos/cronus/app,- -/Users/Jacob/Dev/Repos/cronus/app/node_modules",
+			"/Users/Jacob/Dev/Repos/cronus/app",
+			"/Users/Jacob/Dev/Repos/cronus/app -/Users/Jacob/Dev/Repos/cronus/app/node_modules",
+			"app",
+			"app -node_modules",
+			"app/ -node_modules/",
+			"/app/ -node_modules/",
+			"-node_modules/",
+			""
 		]
 	},
 	"find_state":
@@ -892,6 +1035,61 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"footer",
+			"height",
+			"users",
+			"}",
+			",",
+			"res",
+			"locals",
+			"$primary-color-light",
+			"$primary-color",
+			"$list-background-color",
+			"$list-background-color,",
+			"p",
+			"req.body",
+			"_error",
+			"logout",
+			"detectTouch",
+			"res",
+			"25",
+			"section",
+			"images/",
+			"detectTouch(",
+			"icon",
+			"console.log",
+			"var i",
+			"fps",
+			"d",
+			"c",
+			"b",
+			"t",
+			"10",
+			"5",
+			"Things",
+			"elPad",
+			"elHeight",
+			"toggle",
+			"menuBar",
+			"Terminal.app ",
+			"span",
+			"OpenSans",
+			"bariol_regular",
+			"..",
+			"fonts/",
+			"fonts",
+			"font",
+			"register",
+			"first_name",
+			"paramArray,",
+			"param",
+			"First",
+			"login",
+			"selectById",
+			"get",
+			"button",
+			"name",
+			"bourbon",
 			"new Date().toDateString() + id",
 			"str",
 			"$",
@@ -964,69 +1162,15 @@
 			"shadowDiv",
 			"+",
 			"Top",
-			"padding",
-			"parent",
-			"top",
-			"margin",
-			"list",
-			"this",
-			".burger",
-			"querySelector",
-			".burger",
-			"noOfFrames",
-			"frames",
-			"5",
-			"slideMenu",
-			"getPos",
-			"createSlider",
-			"hasTouch",
-			"burger",
-			"tablet",
-			"end",
-			"*\"",
-			"#eaeaea",
-			"$light-grey",
-			"#777",
-			"str",
-			"Str",
-			"str",
-			"reset",
-			"robbin",
-			"teamwork",
-			"control",
-			"locus",
-			"(1",
-			"(2",
-			"Northouse, P. G. (2010)",
-			"marcic, D and",
-			"Samson, D.",
-			"Samson, D. & Daft,",
-			"Samson, D. & Daft",
-			"zaccar",
-			"Griffin",
-			"Griffin, R. W., 2013, Fundamentals of management. 7th edn. United States: Wadsworth Publishing Co",
-			"griff",
-			"cole",
-			"chamber",
-			"Griffin, R.W. 2014 <em>Fundamentals of Management</em>",
-			"Griffin, R.W. 2014 <em>Fundamentals of Management</em>, 7th ed., Mason, Michael Schenk., Hatfield, E., Cacioppo, J.T. & Rapson, R.L. 1994 Emotional Contagion, 1st ed.",
-			"Griffin, R.W. 2014 Fundamentals of Management, 7th ed., Mason, Michael Schenk., Hatfield, E., Cacioppo, J.T. & Rapson, R.L. 1994 Emotional Contagion, 1st ed.",
-			"content",
-			"i",
-			"document.body",
-			"body.",
-			"div",
-			"populateDiv",
-			"loadJSON",
-			"term_link",
-			">\n"
+			"padding"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"dashboard"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1037,24 +1181,260 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/index.hbs",
+					"file": "app/config/router.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47,
+						"buffer_size": 437,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								46,
-								46
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/layout.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2250,
+								2250
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/index.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 836,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								414
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/controllers/login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1252,
+								1252
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/controllers/dashboard.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "scss/layout/_layout.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1317,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								829,
+								829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 418.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/dashboard.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 81,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								52,
+								52
 							]
 						],
 						"settings":
@@ -1065,7 +1445,93 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/models/dashboard.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "scss/layout/_footer.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1566,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								404,
+								404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "scss/base/_reset.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 87,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41,
+								41
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
 					"type": "text"
 				}
 			]
