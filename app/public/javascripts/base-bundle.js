@@ -23,8 +23,37 @@ function detectTouch(element, event, add) {
 	
 }
 
+function mixColor(base, color, weight) {
+  function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
+  function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal 
+
+  var percentChange = (typeof(weight) !== 'undefined') ? weight : 50; // set the percent to 50%, if that argument is omitted
+
+  var result = "#";
+
+  for(var i = 0; i <= 5; i += 2) { // loop through each of the 3 hex pairs—red, green, and blue
+    var v1 = h2d(base.substr(i, 2)), // extract the current pairs
+        v2 = h2d(color.substr(i, 2)),
+
+        // combine the current pairs from each source color, according to the specified percent
+        val = d2h(Math.floor(v2 + (v1 - v2) * (percentChange / 100.0))); 
+
+    while(val.length < 2) { val = '0' + val; } // prepend a '0' if val results in a single digit
+
+    result += val; // concatenate val to our new result string
+  }
+
+  return result; // PROFIT!
+}
+
+function tint(color, percent) {
+	color = color.replace('#', '');
+	return mixColor('ffffff', color, percent);
+}
+
 module.exports = {
-	detectTouch: detectTouch
+	detectTouch: detectTouch,
+	tint: tint
 };
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -157,46 +186,61 @@ function computeHeight(element) {
 },{"./helpers":2}],4:[function(require,module,exports){
 'use strict';
 
+var helpers = require('./helpers');
+
 (function() {
 
+	// Run xhr automatically on dashboard load
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
 
 		getProjects();
 		console.log("obj");
 	}
 
+
 	function getProjects() {
 		var projects = document.getElementById('projects');
-			var noProjects = document.getElementById('no-projects');
+		var noProjects = document.getElementById('no-projects');
 
-			var projReq = new XMLHttpRequest();
+		var projReq = new XMLHttpRequest();
 
-			projReq.onreadystatechange = function() {
-				if ( projReq.readyState === 4 && projReq.status === 200 ) {
-					var projRes = JSON.parse(projReq.responseText);
+		projReq.onreadystatechange = function() {
+			if ( projReq.readyState === 4 && projReq.status === 200 ) {
+				var projRes = JSON.parse(projReq.responseText);
 
-					if ( projRes.length > 0 ) {
-						projects.style.display = 'block';
+				// Display projects if there are any
+				if ( projRes.length > 0 ) {
+					projects.style.display = 'block';
 
-						for (var i = 0; i < projRes.length; i++) {
-							buildProject(projRes[i], projects);
-						}
-
-					} else {
-						noProjects.style.display = 'block';
+					for (var i = 0; i < projRes.length; i++) {
+						buildProject(projRes[i], projects);
 					}
 
+				} else {
+					noProjects.style.display = 'block';
 				}
-			};
 
-			projReq.open('GET', 'projects');
-			projReq.send();
+			}
+		};
+
+		projReq.open('GET', 'projects');
+		projReq.send();
 	}
 
 	function buildProject(pendingProject, parent) {
 		var newItem = document.createElement('div');
 		newItem.className = 'project-grid';
+		newItem.style.borderLeftColor = '#' + pendingProject.color;
+
+		newItem.addEventListener('mouseover', function() {
+			newItem.style.backgroundColor = helpers.tint(pendingProject.color, 95);
+		});
+		newItem.addEventListener('mouseout', function() {
+			newItem.style.backgroundColor = '#f7f7f7';
+		});
+
 		pendingProject.default_value = pendingProject.default_value.replace('$', '');
+
 		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
 		htmlString += "<a class=\"project-settings\"></a>";
 		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
@@ -218,4 +262,4 @@ function computeHeight(element) {
 	}
 
 }());
-},{}]},{},[1]);
+},{"./helpers":2}]},{},[1]);

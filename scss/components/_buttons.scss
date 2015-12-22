@@ -1,0 +1,23 @@
+.btn {
+	outline: none;
+}
+
+.create {
+	background-color: tint($primary-color, 25%);
+	margin: 10px;
+	margin-top: 5px;
+	color: $inverted-font-color;
+	@include padding(10px 15px);
+	border: 0.5px solid $primary-color;
+	@include shadow-btn-light($primary-color);
+	@include transition(all 0.2s ease);
+	cursor: pointer;
+
+	&:hover {
+		background-color: $primary-color;
+	}
+
+	&:focus {
+		background-color: $base-green;
+	}
+}
