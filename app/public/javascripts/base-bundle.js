@@ -2,7 +2,8 @@
 'use strict';
 
 var menu = require('./modules/menu');
-},{"./modules/menu":3}],2:[function(require,module,exports){
+var xhr = require('./modules/xhr');
+},{"./modules/menu":3,"./modules/xhr":4}],2:[function(require,module,exports){
 'use strict';
 
 function detectTouch(element, event, add) {
@@ -154,4 +155,28 @@ function computeHeight(element) {
 		}
 	}
 }());
-},{"./helpers":2}]},{},[1]);
+},{"./helpers":2}],4:[function(require,module,exports){
+'use strict';
+
+(function() {
+
+	if ( window.location.href.indexOf('dashboard') > -1 ) {
+		var projects = document.getElementById('projects');
+		var noProjects = document.getElementById('no-projects');
+
+		var projReq = new XMLHttpRequest();
+
+		projReq.onreadystatechange = function() {
+			if ( projReq.readyState === 4 && projReq.status === 200 ) {
+				var projRes = JSON.parse(projReq.responseText);
+				projects.style.display = 'block';
+				projects.innerHTML = projRes;
+			}
+		};
+
+		projReq.open('GET', 'projects');
+		projReq.send();
+	}
+
+}());
+},{}]},{},[1]);
