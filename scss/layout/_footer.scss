@@ -7,6 +7,8 @@
   $footer-color: $inverted-font-color;
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
+  position: relative;
+  bottom: 0;
 
   @include linear-gradient(desaturate($primary-color-dark, 30%), desaturate($primary-color-dark, 10%));
   padding: ($base-spacing * 2) $gutter;

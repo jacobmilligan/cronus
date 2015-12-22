@@ -18,6 +18,7 @@ a {
 	@include outer-container(100%);
 	width: 100%;
 	height: auto;
+	min-height: 55%;
 }
 
 h1 {
@@ -57,7 +58,7 @@ section {
 }
 
 .sctn-dark-gradient {
-	@include linear-gradient($primary-color-dark, tint($primary-color-dark, 10%));
+	@include linear-gradient($primary-color-dark, tint($primary-color-dark, 18%));
 	color: $inverted-font-color;
 
 	input {
