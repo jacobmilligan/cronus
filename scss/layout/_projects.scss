@@ -11,6 +11,16 @@
 	@include row;
 	@include span-columns(2);
 	@include shift(-0.5);
+	margin-top: -10px;
+
+	&:before {
+		font-family: FontAwesome;
+		vertical-align: middle;
+		content: "\f155";
+		margin-right: 3px;
+		color: tint($base-green, 10%);
+		font-size: $font-size-xlarge;
+	}
 }
 
 @include direction-context(right-to-left) {

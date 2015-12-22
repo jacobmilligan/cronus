@@ -196,6 +196,7 @@ function computeHeight(element) {
 	function buildProject(pendingProject, parent) {
 		var newItem = document.createElement('div');
 		newItem.className = 'project-grid';
+		pendingProject.default_value = pendingProject.default_value.replace('$', '');
 		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
 		htmlString += "<a class=\"project-settings\"></a>";
 		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
