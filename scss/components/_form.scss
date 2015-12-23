@@ -101,10 +101,12 @@
 	background-color: $base-background-color;
 	@include span-columns(11);
 	@include shift(0.5);
+	@include transition(opacity 0.1s ease-in-out);
 	border-radius: 5px;
 	padding: 5px;
 	position: relative;
 	cursor: default;
+	opacity: 0;
 
 	.color-item {
 		position: relative;

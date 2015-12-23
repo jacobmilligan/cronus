@@ -17,6 +17,12 @@ function detectTouch(element, event, add) {
 	
 }
 
+function getTransitionTime(element) {
+	var opacityLength = window.getComputedStyle(element, null).getPropertyValue('transition');
+	opacityLength = opacityLength.substring(opacityLength.indexOf('0'), opacityLength.indexOf('s'));
+	return ( Number(opacityLength) * 1000 );
+}
+
 function mixColor(base, color, weight) {
   function d2h(d) { return d.toString(16); }  // convert a decimal value to hex
   function h2d(h) { return parseInt(h, 16); } // convert a hex value to decimal 
@@ -47,5 +53,6 @@ function tint(color, percent) {
 
 module.exports = {
 	detectTouch: detectTouch,
-	tint: tint
+	tint: tint,
+	getTransitionTime: getTransitionTime
 };
