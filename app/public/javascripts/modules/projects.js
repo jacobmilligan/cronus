@@ -18,6 +18,8 @@ var helpers = require('./helpers');
 		var selectedColor = document.getElementsByClassName('selected-color')[0];
 		var defaultColor = window.getComputedStyle( selectedColor ).getPropertyValue('background-color');
 		var btnBorderColor = window.getComputedStyle(labelBtn).getPropertyValue('border-color');
+		var moneyInput = document.getElementById('project-amt');
+		moneyInput.addEventListener('input', handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItem, displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
@@ -167,6 +169,19 @@ var helpers = require('./helpers');
 			}, fadeInterval);
 
 		labelBtn.style.borderColor = btnBorderColor.toString();
+	}
+
+	function handleMoney(event) {
+		var strToAppend = event.target.value.replace('$', '');
+		event.target.value = "";
+
+		if ( isNaN(strToAppend) ) {
+			strToAppend = strToAppend.substring(0, strToAppend.length - 1);
+		}
+
+		if ( strToAppend.length > 0 ) {
+			event.target.value = "$" + strToAppend;
+		}
 	}
 
 }());
