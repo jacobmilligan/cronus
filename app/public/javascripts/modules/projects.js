@@ -11,9 +11,12 @@ var helpers = require('./helpers');
 	}
 
 	if ( document.getElementById('new-project') ) {
+
 		var newItem = document.getElementById('new-project');
 		var projectWindow = document.getElementsByClassName('project-overlay')[0];
 		var labelBtn = document.getElementsByClassName('select-colors')[0];
+		var selectedColor = document.getElementsByClassName('selected-color')[0];
+		var defaultColor = window.getComputedStyle( selectedColor ).getPropertyValue('background-color');
 		var btnBorderColor = window.getComputedStyle(labelBtn).getPropertyValue('border-color');
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItem, displayCreateProject, true);
@@ -95,12 +98,16 @@ var helpers = require('./helpers');
 
 				var inputs = [document.getElementById('project-name'), document.getElementById('project-description')];
 
-				projectWindow.style.opacity = 0;
-				labelContainer.style.visibility = 'hidden';
+				labelContainer.style.opacity = 0;
+				labelContainer.style.display = 'none';
 				labelBtn.style.borderColor = btnBorderColor.toString();
+				labelBtn.removeAttribute('id');
+
+				projectWindow.style.opacity = 0;
 				projectWindow.removeAttribute('id');
 
 				setTimeout(function() {
+					selectedColor.style.backgroundColor = defaultColor;
 					projectWindow.style.visibility = 'hidden';
 					for (var i = 0; i < inputs.length; i++) {
 						inputs[i].value = "";
@@ -133,12 +140,12 @@ var helpers = require('./helpers');
 			var fadeInterval = helpers.getTransitionTime(labelContainer);
 
 			setTimeout(function() {
-				labelContainer.style.visibility = 'hidden';
+				labelContainer.style.display = 'none';
 			}, fadeInterval);
 
 		} else {
 			this.id = 'labels-toggled';
-			labelContainer.style.visibility = 'visible';
+			labelContainer.style.display = 'block';
 			labelContainer.style.opacity = 1;
 			labelBtn.style.borderColor = '#346ca5';
 		}
@@ -147,12 +154,18 @@ var helpers = require('./helpers');
 
 	function attachColor() {
 		/*jshint validthis: true */
-		var selectedColor = document.getElementsByClassName('selected-color')[0];
 		var pendingColor = window.getComputedStyle(this).getPropertyValue('background-color');
 		selectedColor.style.backgroundColor = pendingColor;
 		var labelContainer = document.getElementsByClassName('color-list')[0];
 		labelBtn.removeAttribute('id');
 		labelContainer.style.opacity = 0;
+
+		var fadeInterval = helpers.getTransitionTime(labelContainer);
+
+			setTimeout(function() {
+				labelContainer.style.display = 'none';
+			}, fadeInterval);
+
 		labelBtn.style.borderColor = btnBorderColor.toString();
 	}
 
