@@ -5,7 +5,7 @@
 	{{/if}}
 	<form method="POST" class="register">
 		<input type="hidden" name="_csrf" value={{csrfToken}} id="csrf">
-		<input type="text" placeholder="Email address" name="email" value={{frmEmail}}>
+		<input type="email" placeholder="Email address" name="email" value={{frmEmail}}>
 		<input type="password" placeholder="password" name="password">
 		<input type="text" placeholder="First Name" name="first_name" value={{firstName}}>
 		<input type="text" placeholder="Last Name (optional)" name="last_name" value={{lastName}}>
