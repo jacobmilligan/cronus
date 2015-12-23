@@ -10,6 +10,10 @@
 	box-shadow: 0 10px 10px 0 $shadow-color;
 }
 
+@mixin btn-shadowing($weight) {
+	box-shadow: 0 $weight $weight 0 $shadow-color;
+}
+
 @mixin shadow-btn($color) {
 	box-shadow: inset 0px 0px 1px 1px darken($color, 10%);
 }

@@ -6,11 +6,13 @@ var helpers = require('./helpers');
 
 	// Run xhr automatically on dashboard load
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
-
 		getProjects();
-		console.log("obj");
 	}
 
+	if ( document.getElementById('new-project') ) {
+		var newItem = document.getElementById('new-project');
+		helpers.detectTouch(newItem, createProject, true);
+	}
 
 	function getProjects() {
 		var projects = document.getElementById('projects');
@@ -41,6 +43,7 @@ var helpers = require('./helpers');
 		projReq.send();
 	}
 
+	// Build a new project card
 	function buildProject(pendingProject, parent) {
 		var newItem = document.createElement('div');
 		newItem.className = 'project-grid';
@@ -73,6 +76,13 @@ var helpers = require('./helpers');
 
 		newItem.innerHTML = htmlString;
 		parent.appendChild(newItem);
+	}
+
+	function createProject() {
+
+		
+
+
 	}
 
 }());

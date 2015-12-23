@@ -17,3 +17,7 @@ body {
 .inline {
 	display: inline;
 }
+
+.secondary {
+	color: shade($secondary-font-color, 30%);
+}

@@ -58,3 +58,92 @@
 		color: $secondary-font-color;
 	}
 }
+
+.select-colors {
+	@include transition(border 0.1s ease-in-out);
+	@include span-columns(3 of 12);
+	position: relative;
+	height: 50px;
+	width: 150px;
+	padding: 7px 60px 7px 7px;
+	@include border-style(solid);
+	@include border-width(1px);
+	border-radius: 4px;
+	border-color: tint($divider-color, 40%);
+	background-color: tint($base-background-color, 15%);
+	@include btn-shadowing(1px);
+	cursor: pointer;
+
+	&:hover {
+		border-color: $divider-color;
+	}
+}
+
+.selected-color {
+	width: 75%;
+	height: 100%;
+	background-color: $accent-color;
+	border-radius: 2px;
+
+	&:after {
+		position: relative;
+		font-family: FontAwesome;
+		font-size: $font-size-regular;
+		content: "\f02b \00a0 label";
+		margin-left: 70px;
+		top: 4px;
+		color: shade($secondary-font-color, 10%);
+		@include transition(color 0.1s ease-in-out);
+	}
+}
+
+.color-list {
+	background-color: $base-background-color;
+	@include span-columns(11);
+	@include shift(0.5);
+	border-radius: 5px;
+	padding: 5px;
+	position: relative;
+
+	.blue {
+		background-color: $primary-color;
+	}
+
+	.red {
+		background-color: $accent-color;
+	}
+
+	.green {
+		background-color: $base-green;
+	}
+
+	.yellow {
+		background-color: $base-amber;
+	}
+
+	.purple {
+		background-color: $base-purple;
+	}
+
+	.cyan {
+		background-color: $base-cyan;
+	}
+
+	&:before {
+		@include position(absolute, 0 1em 0 0);
+		color: $base-background-color;
+		top: -0.9em;
+		left: -60%;
+		font-family: FontAwesome;
+		font-size: $font-size-huge;
+		content: "\f0d8";
+	}
+
+}
+
+.color-item {
+	@include span-columns(3.35 of 11);
+	margin: 8px;
+	height: 50px;
+	border-radius: 2px;
+}
