@@ -197,7 +197,9 @@ var helpers = require('./helpers');
 
 	if ( document.getElementById('new-project') ) {
 		var newItem = document.getElementById('new-project');
-		helpers.detectTouch(newItem, createProject, true);
+		var projectWindow = document.getElementsByClassName('project-overlay')[0];
+		helpers.detectTouch(projectWindow, displayCreateProject, true);
+		helpers.detectTouch(newItem, displayCreateProject, true);
 	}
 
 	function getProjects() {
@@ -264,11 +266,8 @@ var helpers = require('./helpers');
 		parent.appendChild(newItem);
 	}
 
-	function createProject() {
-
-		
-
-
+	function displayCreateProject(event) {
+		projectWindow.style.display = 'block';
 	}
 
 }());

@@ -104,29 +104,65 @@
 	border-radius: 5px;
 	padding: 5px;
 	position: relative;
+	cursor: default;
+
+	.color-item {
+		position: relative;
+		@include span-columns(3.35 of 11);
+		margin: 8px;
+		height: 50px;
+		border-radius: 2px;
+		z-index: 5;
+		@include transition(background 0.1s ease-out);
+		cursor: pointer;
+	}
 
 	.blue {
 		background-color: $primary-color;
+
+		&:hover {
+			background-color: tint($primary-color, 15%);
+		}
 	}
 
 	.red {
 		background-color: $accent-color;
+
+		&:hover {
+			background-color: tint($accent-color, 15%);
+		}
 	}
 
 	.green {
 		background-color: $base-green;
+
+		&:hover {
+			background-color: tint($base-green, 15%);
+		}
 	}
 
 	.yellow {
 		background-color: $base-amber;
+
+		&:hover {
+			background-color: tint($base-amber, 25%);
+		}
 	}
 
 	.purple {
 		background-color: $base-purple;
+
+		&:hover {
+			background-color: tint($base-purple, 15%);
+		}
 	}
 
 	.cyan {
 		background-color: $base-cyan;
+
+		&:hover {
+			background-color: tint($base-cyan, 25%);
+		}
 	}
 
 	&:before {
@@ -137,13 +173,7 @@
 		font-family: FontAwesome;
 		font-size: $font-size-huge;
 		content: "\f0d8";
+		z-index: 2;
 	}
 
-}
-
-.color-item {
-	@include span-columns(3.35 of 11);
-	margin: 8px;
-	height: 50px;
-	border-radius: 2px;
 }
