@@ -51,8 +51,22 @@ function tint(color, percent) {
 	return mixColor('ffffff', color, percent);
 }
 
+function rgbToHex(rgb) {
+	rgb = rgb.replace('rgb(', '');
+	rgb = rgb.replace(')', '');
+	rgb = rgb.split(',');
+	var vals = {
+		r: parseInt(rgb[0]),
+		g: parseInt(rgb[1]),
+		b: parseInt(rgb[2])
+	};
+	var result = vals.r.toString(16) + vals.g.toString(16) + vals.b.toString(16);
+	return result.toUpperCase();
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
-	getTransitionTime: getTransitionTime
+	getTransitionTime: getTransitionTime,
+	rgbToHex: rgbToHex
 };

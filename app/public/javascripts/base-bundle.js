@@ -57,10 +57,24 @@ function tint(color, percent) {
 	return mixColor('ffffff', color, percent);
 }
 
+function rgbToHex(rgb) {
+	rgb = rgb.replace('rgb(', '');
+	rgb = rgb.replace(')', '');
+	rgb = rgb.split(',');
+	var vals = {
+		r: parseInt(rgb[0]),
+		g: parseInt(rgb[1]),
+		b: parseInt(rgb[2])
+	};
+	var result = vals.r.toString(16) + vals.g.toString(16) + vals.b.toString(16);
+	return result.toUpperCase();
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
-	getTransitionTime: getTransitionTime
+	getTransitionTime: getTransitionTime,
+	rgbToHex: rgbToHex
 };
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -217,7 +231,7 @@ var helpers = require('./helpers');
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItem, displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
-		helpers.detectTouch(addProjectBtn, createProject, true);
+		helpers.detectTouch(addProjectBtn, sendProject, true);
 	}
 
 	function getProjects() {
@@ -381,7 +395,10 @@ var helpers = require('./helpers');
 
 }());
 
-function createProject(event) {
-	
+function sendProject(event) {
+	var pName = document.getElementById('project-name');
+	var pDesc = document.getElementById('project-description');
+	var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
+	console.log(helpers.rgbToHex(labelColor));
 }
 },{"./helpers":2}]},{},[1]);

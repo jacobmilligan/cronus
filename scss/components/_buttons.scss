@@ -30,3 +30,7 @@ button {
 		background-color: $base-green;
 	}
 }
+
+.btn-container {
+	@include span-columns(12);
+}

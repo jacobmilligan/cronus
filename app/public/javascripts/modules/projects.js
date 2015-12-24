@@ -24,7 +24,7 @@ var helpers = require('./helpers');
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItem, displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
-		helpers.detectTouch(addProjectBtn, createProject, true);
+		helpers.detectTouch(addProjectBtn, sendProject, true);
 	}
 
 	function getProjects() {
@@ -188,6 +188,9 @@ var helpers = require('./helpers');
 
 }());
 
-function createProject(event) {
-	
+function sendProject(event) {
+	var pName = document.getElementById('project-name');
+	var pDesc = document.getElementById('project-description');
+	var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
+	console.log(helpers.rgbToHex(labelColor));
 }
