@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 		res.redirect('/login');
 	} else {
 		res.locals.displayFooter = true;
-		res.render('dashboard', {name: req.session.user.first_name});
+		res.render('dashboard', {name: req.session.user.first_name, csrfToken: req.csrfToken});
 	}
 });
 

@@ -189,8 +189,25 @@ var helpers = require('./helpers');
 }());
 
 function sendProject(event) {
-	var pName = document.getElementById('project-name');
-	var pDesc = document.getElementById('project-description');
 	var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
-	console.log(helpers.rgbToHex(labelColor));
+
+	var projectData = {
+		_csrf: document.getElementById('csrf').value,
+		project_name: document.getElementById('project-name').value,
+		description: document.getElementById('project-description').value,
+		default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
+		color: helpers.rgbToHex(labelColor)
+	};
+	// Do tags logic here
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "projects");
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.setRequestHeader('csrfToken', projectData._csrf);
+	xhr.onreadystatechange = function() {
+		if ( xhr.readyState === 4 && xhr.status === 200 ) {
+			console.log(xhr.responseText);	
+		}
+	};
+	xhr.send(JSON.stringify(projectData) );
 }
