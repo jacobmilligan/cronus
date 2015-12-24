@@ -212,10 +212,12 @@ var helpers = require('./helpers');
 		var defaultColor = window.getComputedStyle( selectedColor ).getPropertyValue('background-color');
 		var btnBorderColor = window.getComputedStyle(labelBtn).getPropertyValue('border-color');
 		var moneyInput = document.getElementById('project-amt');
+		var addProjectBtn = document.getElementById('add-project');
 		moneyInput.addEventListener('input', handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItem, displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
+		helpers.detectTouch(addProjectBtn, createProject, true);
 	}
 
 	function getProjects() {
@@ -378,4 +380,8 @@ var helpers = require('./helpers');
 	}
 
 }());
+
+function createProject(event) {
+	
+}
 },{"./helpers":2}]},{},[1]);
