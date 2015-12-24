@@ -12,6 +12,11 @@ function getProjects(id, callback) {
 	});
 }
 
+function addProjects(user, body, callback) {
+	var sql = "INSERT INTO projects (project_name, user_id, description, default_value, color) VALUES ($1, $2, $3, $4, $5)";
+}
+
 module.exports = {
-	getProjects: getProjects
+	getProjects: getProjects,
+	addProjects: addProjects
 };
