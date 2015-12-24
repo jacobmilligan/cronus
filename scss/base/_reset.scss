@@ -6,4 +6,6 @@ html {
 body {
 	font-size: 1.6rem;
 	height: 100%;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }

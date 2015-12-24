@@ -181,7 +181,12 @@
 }
 
 .tooltip-element {
+	@include span-columns(12);
+	width: auto;
+	height: auto;
 	position: relative;
+	text-align: center;
+	padding: 0;
 
 	&:focus, 
 	&:hover .tooltip {
@@ -193,11 +198,11 @@
 .tooltip {
 	visibility: hidden;
 	@include transition(all 0.2s ease-in-out);
-	@include position(absolute, null 9em -13em 0);
+	@include position(absolute, null 0 5.4em 0);
 	max-width: 12em;
 	height: auto;
 	padding: 0.5em;
-	margin: 0 auto;
+	margin: auto;
 	@include border-style(solid);
 	@include border-width(1px);
 	@include btn-shadowing(1px);
