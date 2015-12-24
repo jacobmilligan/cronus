@@ -230,3 +230,7 @@
 		margin: 0;
 	}
 }
+
+.tags {
+	@include span-columns(12);
+}
