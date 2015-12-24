@@ -291,7 +291,7 @@ var helpers = require('./helpers');
 				var fadeInterval = helpers.getTransitionTime(projectWindow);
 				var labelContainer = document.getElementsByClassName('color-list')[0];
 
-				var inputs = [document.getElementById('project-name'), document.getElementById('project-description')];
+				var inputs = document.getElementsByClassName('form-input');
 
 				labelContainer.style.opacity = 0;
 				labelContainer.style.display = 'none';

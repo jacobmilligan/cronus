@@ -1,12 +1,17 @@
 <div class="project-overlay">
 	<div class="project-modal">
 		<h3 class="secondary">New Project</h3>
-		<input type="text" name="project_name" id="project-name" placeholder="Project name">
-		<textarea name="description" id="project-description" placeholder="Description"></textarea>
+		<input type="text" name="project_name" id="project-name" placeholder="Project name" class="form-input">
+		<textarea name="description" id="project-description" placeholder="Description" class="form-input"></textarea>
 		<div class="select-colors">
 			<div class="selected-color"></div>
 		</div>
-		<input type="text" name="default_amt" id="project-amt" placeholder="$0.00">
+		<div class="tooltip-element">
+			<div class="tooltip">
+				<p>Set the default billable amount for all tasks of this project.</p>
+			</div>
+			<input type="text" name="default_amt" id="project-amt" placeholder="$0.00" class="form-input">
+		</div>
 	</div>
 	<ul class="color-list">
 		<li class="color-item blue"></li>

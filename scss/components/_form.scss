@@ -179,3 +179,49 @@
 	}
 
 }
+
+.tooltip-element {
+	position: relative;
+
+	&:focus, 
+	&:hover .tooltip {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+.tooltip {
+	visibility: hidden;
+	@include transition(all 0.2s ease-in-out);
+	@include position(absolute, null 9em -13em 0);
+	max-width: 12em;
+	height: auto;
+	padding: 0.5em;
+	margin: 0 auto;
+	@include border-style(solid);
+	@include border-width(1px);
+	@include btn-shadowing(1px);
+	border-radius: 4px;
+	border-color: $light-gray;
+	text-align: center;
+	line-height: 1.5em;
+	background-color: lighten($light-gray, 10%);
+	opacity: 0;
+
+	&:after {
+		@include position(absolute, null 0 null 0);
+		border: 8px solid transparent;
+		color: lighten($light-gray, 10%);
+		content: '▼';
+		font-size: 1.4em;
+		margin-left: -8px;
+		margin-top: -2px;
+		text-align: center;
+		text-shadow: 0 2px 2px $shadow-color;
+	}
+
+	p {
+		font-size: $font-size-xsmall;
+		margin: 0;
+	}
+}
