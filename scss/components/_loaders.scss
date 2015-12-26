@@ -54,7 +54,7 @@
 		border-style: solid;
 		@include border-width(0 3px 22px 3px);
 		@include border-color(transparent transparent $primary-color-dark transparent);
-		@include animation(rotate-clock 2s infinite);
+		@include animation(rotate-clock 1s infinite);
 		content: "";
 		display: inline-block;
 		vertical-align: middle;

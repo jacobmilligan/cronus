@@ -240,8 +240,6 @@ var helpers = require('./helpers');
 
 		var projReq = new XMLHttpRequest();
 
-
-
 		projReq.onreadystatechange = function() {
 			if ( projReq.readyState === 4 && projReq.status === 200 ) {
 				var projRes = JSON.parse(projReq.responseText);
@@ -250,7 +248,7 @@ var helpers = require('./helpers');
 				// Display projects if there are any
 				if ( projRes.length > 0 ) {
 					projects.style.display = 'block';
-					//loader.style.display = 'none';
+					loader.style.display = 'none';
 
 					for (var i = 0; i < projRes.length; i++) {
 						buildProject(projRes[i], projects);
@@ -306,7 +304,6 @@ var helpers = require('./helpers');
 		if ( document.getElementById('toggled-new-project') ) {
 			
 			if ( event.target.id === 'toggled-new-project' ) {
-
 				var fadeInterval = helpers.getTransitionTime(projectWindow);
 				var labelContainer = document.getElementsByClassName('color-list')[0];
 
@@ -330,6 +327,7 @@ var helpers = require('./helpers');
 			}
 
 		} else {
+			console.log("obj");
 			projectWindow.style.visibility = 'visible';
 			projectWindow.style.opacity = 1;
 			projectWindow.id = 'toggled-new-project';
@@ -396,30 +394,55 @@ var helpers = require('./helpers');
 		}
 	}
 
+	function sendProject(event) {
+		var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
+
+		var projectData = {
+			_csrf: document.getElementById('csrf').value,
+			project_name: document.getElementById('project-name').value,
+			description: document.getElementById('project-description').value,
+			default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
+			color: helpers.rgbToHex(labelColor)
+		};
+		// Do tags logic here
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "projects");
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('csrfToken', projectData._csrf);
+		xhr.onreadystatechange = function() {
+			if ( xhr.readyState === 4 && xhr.status === 200 ) {
+				var projectCards = document.getElementsByClassName('project-grid');
+				console.log(projectCards);
+				for (var i = 0; i < projectCards.length; i++) {
+					projectCards[i].parentNode.removeChild(projectCards[i]);
+				}
+				projectCards[0].parentNode.removeChild(projectCards[0]);
+			}
+		};
+		xhr.send( JSON.stringify(projectData) );
+
+		var fadeInterval = helpers.getTransitionTime(projectWindow);
+		var labelContainer = document.getElementsByClassName('color-list')[0];
+
+		var inputs = document.getElementsByClassName('form-input');
+
+		labelContainer.style.opacity = 0;
+		labelContainer.style.display = 'none';
+		labelBtn.style.borderColor = btnBorderColor.toString();
+		labelBtn.removeAttribute('id');
+
+		setTimeout(function() {
+			selectedColor.style.backgroundColor = defaultColor;
+			projectWindow.style.opacity = 0;
+			projectWindow.removeAttribute('id');
+			projectWindow.style.visibility = 'hidden';
+			for (var i = 0; i < inputs.length; i++) {
+				inputs[i].value = "";
+			}
+			getProjects();
+		}, fadeInterval);
+	}
+
 }());
-
-function sendProject(event) {
-	var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
-
-	var projectData = {
-		_csrf: document.getElementById('csrf').value,
-		project_name: document.getElementById('project-name').value,
-		description: document.getElementById('project-description').value,
-		default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
-		color: helpers.rgbToHex(labelColor)
-	};
-	// Do tags logic here
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "projects");
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.setRequestHeader('csrfToken', projectData._csrf);
-	xhr.onreadystatechange = function() {
-		console.log(xhr.responseText);
-		if ( xhr.readyState === 4 && xhr.status === 200 ) {
-			console.log(xhr.responseText);	
-		}
-	};
-	xhr.send(JSON.stringify(projectData) );
-}
 },{"./helpers":2}]},{},[1]);
