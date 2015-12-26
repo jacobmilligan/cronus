@@ -8,11 +8,8 @@ var helpers = require('./helpers');
 	// Run xhr automatically on dashboard load
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
 		getProjects();
-	}
 
-	if ( document.getElementById('new-project') ) {
-
-		var newItem = document.getElementById('new-project');
+		var newItem = document.getElementsByClassName('new-project');
 		var projectWindow = document.getElementsByClassName('project-overlay')[0];
 		var labelBtn = document.getElementsByClassName('select-colors')[0];
 		var selectedColor = document.getElementsByClassName('selected-color')[0];
@@ -20,9 +17,11 @@ var helpers = require('./helpers');
 		var btnBorderColor = window.getComputedStyle(labelBtn).getPropertyValue('border-color');
 		var moneyInput = document.getElementById('project-amt');
 		var addProjectBtn = document.getElementById('add-project');
+
 		moneyInput.addEventListener('input', handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
-		helpers.detectTouch(newItem, displayCreateProject, true);
+		helpers.detectTouch(newItem[0], displayCreateProject, true);
+		helpers.detectTouch(newItem[1], displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
 		helpers.detectTouch(addProjectBtn, sendProject, true);
 	}
@@ -37,14 +36,20 @@ var helpers = require('./helpers');
 			if ( projReq.readyState === 4 && projReq.status === 200 ) {
 				var projRes = JSON.parse(projReq.responseText);
 				var loader = document.getElementsByClassName('loader')[0];
-
+				loader.style.display = 'none';
 				// Display projects if there are any
 				if ( projRes.length > 0 ) {
 					projects.style.display = 'block';
-					loader.style.display = 'none';
+					noProjects.style.display = 'none';
 
 					for (var i = 0; i < projRes.length; i++) {
 						buildProject(projRes[i], projects);
+					}
+
+					var projectSettingsBtns = document.getElementsByClassName('project-settings');
+
+					for (i = 0; i < projectSettingsBtns.length; i++) {
+						helpers.detectTouch(projectSettingsBtns[i], showProjectSettings, true);
 					}
 
 				} else {
@@ -73,7 +78,9 @@ var helpers = require('./helpers');
 		pendingProject.default_value = pendingProject.default_value.replace('$', '');
 
 		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
-		htmlString += "<a class=\"project-settings\"></a>";
+		htmlString += "<div class=\"dropdown-menu\"><a class=\"project-settings\"></a>";
+
+		htmlString += "</div>";
 		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
 		htmlString += "<p>" + pendingProject.description + "</p>\n";
 
@@ -87,6 +94,8 @@ var helpers = require('./helpers');
 			htmlString += "</ul>";
 		}
 		*/
+
+		htmlString += "<a href=\"tasks\"><button style=\"background-color:#" + pendingProject.color + "\">Go to tasks</button></a>";
 
 		newItem.innerHTML = htmlString;
 		parent.appendChild(newItem);
@@ -120,7 +129,6 @@ var helpers = require('./helpers');
 			}
 
 		} else {
-			console.log("obj");
 			projectWindow.style.visibility = 'visible';
 			projectWindow.style.opacity = 1;
 			projectWindow.id = 'toggled-new-project';
@@ -187,7 +195,7 @@ var helpers = require('./helpers');
 		}
 	}
 
-	function sendProject(event) {
+	function sendProject() {
 		var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
 
 		var projectData = {
@@ -206,7 +214,6 @@ var helpers = require('./helpers');
 		xhr.onreadystatechange = function() {
 			if ( xhr.readyState === 4 && xhr.status === 200 ) {
 				var projectCards = document.getElementsByClassName('project-grid');
-				console.log(projectCards);
 				for (var i = 0; i < projectCards.length; i++) {
 					projectCards[i].parentNode.removeChild(projectCards[i]);
 				}
@@ -238,3 +245,7 @@ var helpers = require('./helpers');
 	}
 
 }());
+
+function showProjectSettings(event) {
+
+}
