@@ -7,3 +7,15 @@
 	<p class="no-projects-msg secondary">Add a new project and start timing your tasks.</p>
 </section>
 {{> newproject }}
+
+<script id="projectcard-template" type="text/x-handlebars-template">
+	<div class="project-grid" style="border-left-color:#{{color}};">
+		<span class="dollar-amt">{{default_value}}</span>
+		<div class="dropdown-menu">
+			<a class="project-settings"></a>
+		</div>
+		<h2>{{project_name}}</h2>
+		<p>{{description}}<p>
+		<a href="tasks"><button style="background-color:#{{color}}">Go to tasks</button></a>
+	</div>
+</script>

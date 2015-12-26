@@ -207,6 +207,7 @@ function computeHeight(element) {
 },{"./helpers":2}],4:[function(require,module,exports){
 'use strict';
 
+var helpers = require('../templates/templates');
 var helpers = require('./helpers');
 
 // Project page functions
@@ -242,6 +243,7 @@ var helpers = require('./helpers');
 		projReq.onreadystatechange = function() {
 			if ( projReq.readyState === 4 && projReq.status === 200 ) {
 				var projRes = JSON.parse(projReq.responseText);
+
 				var loader = document.getElementsByClassName('loader')[0];
 				loader.style.display = 'none';
 				// Display projects if there are any
@@ -249,9 +251,12 @@ var helpers = require('./helpers');
 					projects.style.display = 'block';
 					noProjects.style.display = 'none';
 
+
 					for (var i = 0; i < projRes.length; i++) {
-						buildProject(projRes[i], projects);
+						//buildProject(projRes[i], projects);
 					}
+
+					projects.innerHTML = "";
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
 
@@ -456,4 +461,23 @@ var helpers = require('./helpers');
 function showProjectSettings(event) {
 
 }
-},{"./helpers":2}]},{},[1]);
+},{"../templates/templates":6,"./helpers":2}],5:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<span class=\"dollar-amt\">"
+    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
+    + "</span>\n<div class=\"dropdown-menu\">\n	<a class=\"project-settings\"></a>\n</div>\n<h2>"
+    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
+    + "</h2>\n<p>"
+    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
+    + "<p>\n<a href=\"tasks\"><button style=\"background-color:#"
+    + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
+    + "\">Go to tasks</button></a>";
+},"useData":true});
+})();
+},{}],6:[function(require,module,exports){
+require('./projectcards');
+},{"./projectcards":5}]},{},[1]);

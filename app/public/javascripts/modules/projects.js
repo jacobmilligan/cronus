@@ -1,5 +1,6 @@
 'use strict';
 
+var helpers = require('../templates/templates');
 var helpers = require('./helpers');
 
 // Project page functions
@@ -35,6 +36,7 @@ var helpers = require('./helpers');
 		projReq.onreadystatechange = function() {
 			if ( projReq.readyState === 4 && projReq.status === 200 ) {
 				var projRes = JSON.parse(projReq.responseText);
+
 				var loader = document.getElementsByClassName('loader')[0];
 				loader.style.display = 'none';
 				// Display projects if there are any
@@ -42,9 +44,12 @@ var helpers = require('./helpers');
 					projects.style.display = 'block';
 					noProjects.style.display = 'none';
 
+
 					for (var i = 0; i < projRes.length; i++) {
-						buildProject(projRes[i], projects);
+						//buildProject(projRes[i], projects);
 					}
+
+					projects.innerHTML = "";
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
 
