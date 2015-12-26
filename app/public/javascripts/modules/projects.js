@@ -33,13 +33,17 @@ var helpers = require('./helpers');
 
 		var projReq = new XMLHttpRequest();
 
+
+
 		projReq.onreadystatechange = function() {
 			if ( projReq.readyState === 4 && projReq.status === 200 ) {
 				var projRes = JSON.parse(projReq.responseText);
+				var loader = document.getElementsByClassName('loader')[0];
 
 				// Display projects if there are any
 				if ( projRes.length > 0 ) {
 					projects.style.display = 'block';
+					//loader.style.display = 'none';
 
 					for (var i = 0; i < projRes.length; i++) {
 						buildProject(projRes[i], projects);
@@ -51,7 +55,6 @@ var helpers = require('./helpers');
 
 			}
 		};
-
 		projReq.open('GET', 'projects');
 		projReq.send();
 	}
@@ -205,6 +208,7 @@ function sendProject(event) {
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.setRequestHeader('csrfToken', projectData._csrf);
 	xhr.onreadystatechange = function() {
+		console.log(xhr.responseText);
 		if ( xhr.readyState === 4 && xhr.status === 200 ) {
 			console.log(xhr.responseText);	
 		}

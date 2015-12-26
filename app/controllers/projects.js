@@ -13,8 +13,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	projectModel.sendProjects(req.session.user, req.body, function(err, success) {
-		//this return 500 error for some reason. Fix plz
+	var dataToInsert = [req.body.project_name, req.session.user.id, req.body.description, req.body.default_value, req.body.color];
+	console.log(dataToInsert);
+	projectModel.addProjects(dataToInsert, function(err, success) {
+		if ( err ) {
+			res.send(err);
+		} else {
+			res.send(success);
+		}
 	});
 });
 
