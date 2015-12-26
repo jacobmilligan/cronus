@@ -1,7 +1,7 @@
 'use strict';
 
-var helpers = require('../templates/templates');
 var helpers = require('./helpers');
+var templates = require('../templates');
 
 // Project page functions
 (function() {
@@ -47,9 +47,11 @@ var helpers = require('./helpers');
 
 					for (var i = 0; i < projRes.length; i++) {
 						//buildProject(projRes[i], projects);
+						projRes[i].default_value = projRes[i].default_value.replace('$', '');
+						projects.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
+						console.log(document.getElementsByClassName('project-grid')[i]);
+						colorProject(document.getElementsByClassName('project-grid')[i]);
 					}
-
-					projects.innerHTML = "";
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
 
@@ -68,42 +70,13 @@ var helpers = require('./helpers');
 	}
 
 	// Build a new project card
-	function buildProject(pendingProject, parent) {
-		var newItem = document.createElement('div');
-		newItem.className = 'project-grid';
-		newItem.style.borderLeftColor = '#' + pendingProject.color;
-
+	function colorProject(newItem) {
 		newItem.addEventListener('mouseover', function() {
-			newItem.style.backgroundColor = helpers.tint(pendingProject.color, 95);
+			newItem.style.backgroundColor = helpers.tint(newItem.color, 95);
 		});
 		newItem.addEventListener('mouseout', function() {
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
-
-		pendingProject.default_value = pendingProject.default_value.replace('$', '');
-
-		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
-		htmlString += "<div class=\"dropdown-menu\"><a class=\"project-settings\"></a>";
-
-		htmlString += "</div>";
-		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
-		htmlString += "<p>" + pendingProject.description + "</p>\n";
-
-		// Uncomment when db joins tags onto query
-		/*
-		if ( pendingProject.tags.length > 0 ) {
-			htmlString += "<ul class=\"project-tag-list\">";
-			for ( var j = 0; j < pendingProject.tags.length; j++ ) {
-				htmlString += "<li>" + pendingProject.tags[j] + "</li>";
-			}
-			htmlString += "</ul>";
-		}
-		*/
-
-		htmlString += "<a href=\"tasks\"><button style=\"background-color:#" + pendingProject.color + "\">Go to tasks</button></a>";
-
-		newItem.innerHTML = htmlString;
-		parent.appendChild(newItem);
 	}
 
 	// Displays the window for adding a new project

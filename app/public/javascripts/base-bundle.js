@@ -3,6 +3,7 @@
 
 var menu = require('./modules/menu');
 var projects = require('./modules/projects');
+
 },{"./modules/menu":3,"./modules/projects":4}],2:[function(require,module,exports){
 'use strict';
 
@@ -207,8 +208,8 @@ function computeHeight(element) {
 },{"./helpers":2}],4:[function(require,module,exports){
 'use strict';
 
-var helpers = require('../templates/templates');
 var helpers = require('./helpers');
+var templates = require('../templates');
 
 // Project page functions
 (function() {
@@ -254,9 +255,11 @@ var helpers = require('./helpers');
 
 					for (var i = 0; i < projRes.length; i++) {
 						//buildProject(projRes[i], projects);
+						projRes[i].default_value = projRes[i].default_value.replace('$', '');
+						projects.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
+						console.log(document.getElementsByClassName('project-grid')[i]);
+						colorProject(document.getElementsByClassName('project-grid')[i]);
 					}
-
-					projects.innerHTML = "";
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
 
@@ -275,42 +278,13 @@ var helpers = require('./helpers');
 	}
 
 	// Build a new project card
-	function buildProject(pendingProject, parent) {
-		var newItem = document.createElement('div');
-		newItem.className = 'project-grid';
-		newItem.style.borderLeftColor = '#' + pendingProject.color;
-
+	function colorProject(newItem) {
 		newItem.addEventListener('mouseover', function() {
-			newItem.style.backgroundColor = helpers.tint(pendingProject.color, 95);
+			newItem.style.backgroundColor = helpers.tint(newItem.color, 95);
 		});
 		newItem.addEventListener('mouseout', function() {
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
-
-		pendingProject.default_value = pendingProject.default_value.replace('$', '');
-
-		var htmlString = "<span class=\"dollar-amt\">" + pendingProject.default_value + "</span>";
-		htmlString += "<div class=\"dropdown-menu\"><a class=\"project-settings\"></a>";
-
-		htmlString += "</div>";
-		htmlString += "<h2>" + pendingProject.project_name + "</h2>\n";
-		htmlString += "<p>" + pendingProject.description + "</p>\n";
-
-		// Uncomment when db joins tags onto query
-		/*
-		if ( pendingProject.tags.length > 0 ) {
-			htmlString += "<ul class=\"project-tag-list\">";
-			for ( var j = 0; j < pendingProject.tags.length; j++ ) {
-				htmlString += "<li>" + pendingProject.tags[j] + "</li>";
-			}
-			htmlString += "</ul>";
-		}
-		*/
-
-		htmlString += "<a href=\"tasks\"><button style=\"background-color:#" + pendingProject.color + "\">Go to tasks</button></a>";
-
-		newItem.innerHTML = htmlString;
-		parent.appendChild(newItem);
 	}
 
 	// Displays the window for adding a new project
@@ -461,23 +435,25 @@ var helpers = require('./helpers');
 function showProjectSettings(event) {
 
 }
-},{"../templates/templates":6,"./helpers":2}],5:[function(require,module,exports){
+},{"../templates":5,"./helpers":2}],5:[function(require,module,exports){
+require('./templates/projectcards');
+},{"./templates/projectcards":6}],6:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<span class=\"dollar-amt\">"
-    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
-    + "</span>\n<div class=\"dropdown-menu\">\n	<a class=\"project-settings\"></a>\n</div>\n<h2>"
-    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
-    + "</h2>\n<p>"
-    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "<p>\n<a href=\"tasks\"><button style=\"background-color:#"
+  return "<div class=\"project-grid\" style=\"border-left-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">Go to tasks</button></a>";
+    + "\">\n	<span class=\"dollar-amt\">"
+    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
+    + "</span>\n	<div class=\"dropdown-menu\">\n		<a class=\"project-settings\"></a>\n	</div>\n	<h2>"
+    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
+    + "</h2>\n	<p>"
+    + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
+    + "<p>\n	<a href=\"tasks\"><button style=\"background-color:#"
+    + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
+    + "\">Go to tasks</button></a>\n</div>";
 },"useData":true});
 })();
-},{}],6:[function(require,module,exports){
-require('./projectcards');
-},{"./projectcards":5}]},{},[1]);
+},{}]},{},[1]);
