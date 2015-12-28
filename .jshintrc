@@ -1,7 +1,10 @@
 {
   "browser": true,
   "esnext": true,
-  "globals": {},
+  "globals": {
+    "document": true,
+    "Handlebars": true
+  },
   "globalstrict": true,
   "quotmark": false,
   "undef": true,

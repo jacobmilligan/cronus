@@ -209,7 +209,7 @@ function computeHeight(element) {
 'use strict';
 
 var helpers = require('./helpers');
-var templates = require('../templates');
+require('../templates');
 
 // Project page functions
 (function() {
