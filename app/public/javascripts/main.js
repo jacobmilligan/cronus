@@ -1,4 +1,5 @@
 'use strict';
 
-var menu = require('./modules/menu');
-var projects = require('./modules/projects');
+require('./modules/menu');
+require('./modules/projects');
+require('./modules/tasks');

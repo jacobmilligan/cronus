@@ -2,9 +2,10 @@
 
 var db = require('./db');
 
-function getTasks(id, callback) {
-  var sql = "SELECT * FROM tasks WHERE user_id = $1";
-  db.query(sql, id, function(err, result) {
+function getTasks(params, callback) {
+  var sql = "SELECT * FROM tasks WHERE user_id = $1 AND project_name = $2";
+  console.log(id);
+  db.query(sql, params, function(err, result) {
     if (err) {
       return callback(err);
     } else {

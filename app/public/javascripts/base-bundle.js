@@ -1,10 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var menu = require('./modules/menu');
-var projects = require('./modules/projects');
+require('./modules/menu');
+require('./modules/projects');
+require('./modules/tasks');
 
-},{"./modules/menu":3,"./modules/projects":4}],2:[function(require,module,exports){
+},{"./modules/menu":3,"./modules/projects":4,"./modules/tasks":5}],2:[function(require,module,exports){
 'use strict';
 
 function detectTouch(element, event, add) {
@@ -438,9 +439,33 @@ function showProjectSettings(event) {
 
 }
 
-},{"../templates":5,"./helpers":2}],5:[function(require,module,exports){
+},{"../templates":6,"./helpers":2}],5:[function(require,module,exports){
+'use strict';
+
+(function() {
+  if ( window.location.href.indexOf('tasks') > -1 ) {
+    getTasks();
+  }
+}());
+
+function getTasks() {
+  var req = new XMLHttpRequest();
+
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = JSON.parse(req.responseText);
+      document.getElementsByClassName('loader')[0].style.display = 'none';
+      document.getElementsByClassName('container')[0].innerHTML = res.jacob;
+    }
+  };
+
+  req.open('GET', '/tasks');
+  req.send();
+}
+
+},{}],6:[function(require,module,exports){
 require('./templates/projectcards');
-},{"./templates/projectcards":6}],6:[function(require,module,exports){
+},{"./templates/projectcards":7}],7:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
