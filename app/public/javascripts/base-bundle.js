@@ -215,7 +215,7 @@ require('../templates');
 (function() {
 
 	// Run xhr automatically on dashboard load
-	if ( window.location.href.indexOf('dashboard') > -1 ) {
+	if ( window.location.href.indexOf('projects') > -1 ) {
 		getProjects();
 
 		var newItems = document.getElementsByClassName('new-project');
@@ -275,7 +275,7 @@ require('../templates');
 
 			}
 		};
-		projReq.open('GET', 'projects');
+		projReq.open('GET', '/projects');
 		projReq.send();
 	}
 
@@ -396,7 +396,7 @@ require('../templates');
 		// Do tags logic here
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "projects");
+		xhr.open("POST", "/projects");
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.setRequestHeader('csrfToken', projectData._csrf);
 		xhr.onreadystatechange = function() {
