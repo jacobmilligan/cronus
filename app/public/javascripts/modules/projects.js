@@ -10,7 +10,7 @@ var templates = require('../templates');
 	if ( window.location.href.indexOf('dashboard') > -1 ) {
 		getProjects();
 
-		var newItem = document.getElementsByClassName('new-project');
+		var newItems = document.getElementsByClassName('new-project');
 		var projectWindow = document.getElementsByClassName('project-overlay')[0];
 		var labelBtn = document.getElementsByClassName('select-colors')[0];
 		var selectedColor = document.getElementsByClassName('selected-color')[0];
@@ -21,8 +21,8 @@ var templates = require('../templates');
 
 		moneyInput.addEventListener('input', handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
-		helpers.detectTouch(newItem[0], displayCreateProject, true);
-		helpers.detectTouch(newItem[1], displayCreateProject, true);
+		helpers.detectTouch(newItems[0], displayCreateProject, true);
+		helpers.detectTouch(newItems[1], displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
 		helpers.detectTouch(addProjectBtn, sendProject, true);
 	}
@@ -49,7 +49,10 @@ var templates = require('../templates');
 						//buildProject(projRes[i], projects);
 						projRes[i].default_value = projRes[i].default_value.replace('$', '');
 						container.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
-						//colorProject(document.getElementsByClassName('project-grid')[i]);
+					}
+
+					for (i = 0; i < container.childNodes.length; i++) {
+						colorProject(container.childNodes[i]);
 					}
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
@@ -71,7 +74,7 @@ var templates = require('../templates');
 	// Build a new project card
 	function colorProject(newItem) {
 		newItem.addEventListener('mouseover', function() {
-			newItem.style.backgroundColor = helpers.tint(newItem.color, 95);
+			newItem.style.backgroundColor = helpers.tint( helpers.rgbToHex(newItem.style.borderLeftColor), 95 );
 		});
 		newItem.addEventListener('mouseout', function() {
 			newItem.style.backgroundColor = '#f7f7f7';
