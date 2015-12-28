@@ -43,14 +43,13 @@ var templates = require('../templates');
 				if ( projRes.length > 0 ) {
 					projects.style.display = 'block';
 					noProjects.style.display = 'none';
-
+					var container = document.getElementsByClassName('projects-container')[0];
 
 					for (var i = 0; i < projRes.length; i++) {
 						//buildProject(projRes[i], projects);
 						projRes[i].default_value = projRes[i].default_value.replace('$', '');
-						projects.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
-						console.log(document.getElementsByClassName('project-grid')[i]);
-						colorProject(document.getElementsByClassName('project-grid')[i]);
+						container.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
+						//colorProject(document.getElementsByClassName('project-grid')[i]);
 					}
 
 					var projectSettingsBtns = document.getElementsByClassName('project-settings');
@@ -82,7 +81,7 @@ var templates = require('../templates');
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
 		if ( document.getElementById('toggled-new-project') ) {
-			
+
 			if ( event.target.id === 'toggled-new-project' ) {
 				var fadeInterval = helpers.getTransitionTime(projectWindow);
 				var labelContainer = document.getElementsByClassName('color-list')[0];

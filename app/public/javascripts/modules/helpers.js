@@ -14,7 +14,6 @@ function detectTouch(element, event, add) {
 			element.removeEventListener('click', event);
 		}
 	}
-
 }
 
 function getTransitionTime(element) {
