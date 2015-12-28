@@ -8,6 +8,6 @@
   "globalstrict": true,
   "quotmark": false,
   "undef": true,
-  "unused": true,
+  "unused": "vars",
   "node": true
 }
