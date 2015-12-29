@@ -1,0 +1,20 @@
+.task {
+  @include span-columns(12);
+  @include btn-shadowing(4px);
+  border: 1px solid $divider-color;
+  border-radius: 4px;
+  background-color: lighten($light-gray, 30%);
+  margin-bottom: 50px;
+  @include padding(20px);
+
+}
+
+.task-section {
+  @include span-columns(12);
+  text-align: center;
+}
+
+.task-name, .task-project-name {
+  text-align: left;
+  @include margin(0 5px 0 5px);
+}

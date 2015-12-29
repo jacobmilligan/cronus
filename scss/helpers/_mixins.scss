@@ -18,10 +18,22 @@
 	-webkit-box-shadow: 0 0 9px 3px $shadow-color;
 }
 
+@mixin box-shadowing-options($weight) {
+	box-shadow: 0 0 $weight $weight/2 tint($shadow-color, 30%);
+	-moz-box-shadow: 0 0 $weight $weight/2 tint($shadow-color, 30%);
+	-webkit-box-shadow: 0 0 $weight $weight/2 tint($shadow-color, 30%);
+}
+
 @mixin btn-shadowing($weight) {
 	box-shadow: 0 $weight $weight 0 $shadow-color;
 	-moz-box-shadow: 0 $weight $weight 0 $shadow-color;
 	-webkit-box-shadow: 0 $weight $weight 0 $shadow-color;
+}
+
+@mixin btn-shadowing-full($weight) {
+	box-shadow: 0 $weight $weight ($weight - $weight / 3) $shadow-color;
+	-moz-box-shadow: 0 $weight $weight ($weight - $weight / 3) $shadow-color;
+	-webkit-box-shadow: 0 $weight $weight ($weight - $weight / 3) $shadow-color;
 }
 
 @mixin shadow-btn($color) {

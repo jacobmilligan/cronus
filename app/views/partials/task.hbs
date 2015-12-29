@@ -1,13 +1,12 @@
 <div class="task">
-  <div class="task-name">{{task_name}}</div>
-  <div class="task-project-name">{{project_name}}</div>
-  <div class="task-value">{{value}}</div>
-  <div class="task-description">{{description}}</div>
-  <div class="task-start">{{start_time}}</div>
-  -
-  <div class="task-end">{{end_time}}</div>
-  <div class="task-tags"></div>
-  <i class="task-control fa fa-play fa-2x"></i>
-  <div class="task-elapsed">
+  <span class="task-section">
+    <h4 class="task-name inline">{{task_name}}</h4> <h5 class="task-project-name inline">{{project_name}}</h5>
+  </span>
+  <span class="task-section task-value">{{value}}</span>
+  <span class="task-section task-description">{{description}}</span>
+  <span class="task-section"><span class="task-start">{{start_time}}</span>-<span class="task-end">{{end_time}}</span></span>
+  <span class="task-section task-tags"></span>
+  <span class="task-section task-elapsed">
     <span class="hours">{{elapsed.hours}}</span>:<span class="minutes">{{elapsed.minutes}}</span>:<span class="seconds">{{elapsed.seconds}}</span>
+  </span>
 </div>
