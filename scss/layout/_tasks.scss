@@ -12,9 +12,90 @@
 .task-section {
   @include span-columns(12);
   text-align: center;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+}
+
+.task-start, .task-end, .task-value {
+  font-size: $font-size-small;
+}
+
+.task-value {
+  margin-top: 10px;
+  display: block;
 }
 
 .task-name, .task-project-name {
-  text-align: left;
   @include margin(0 5px 0 5px);
+}
+
+.task-name {
+  font-family: OpenSans-Reg;
+}
+
+.task-project-name {
+  padding: 7px;
+  font-family: OpenSans-Reg;
+  font-size: $font-size-small;
+}
+
+.task-subsection {
+  @include margin(0 15px 0 15px);
+}
+
+@include media($tablet) {
+
+  .task-section {
+      display: inline-block;
+      @include span-columns(4);
+  }
+
+  .task-elapsed {
+    margin-top: 25px;
+    @include span-columns(8);
+  }
+
+}
+
+@include media($tablet-max) {
+  .task-project-name, .task-name, .task-value {
+    @include row;
+  }
+
+  .task-project-name {
+    @include span-columns(7 of 12);
+    @include shift(2.5);
+  }
+}
+
+@include media($wide-tablet) {
+
+  .task-section {
+    margin-bottom: 0;
+  }
+
+  .task-info {
+    @include span-columns(6);
+    @include shift(-0.25);
+  }
+
+  .task-elapsed {
+    margin-top: 0;
+    @include span-columns(6);
+    @include shift(-0.25);
+  }
+
+  .task-value {
+    display: inline;
+    margin-left: 15px;
+  }
+
+  .task-start {
+    margin-left: 35px;
+  }
+
 }

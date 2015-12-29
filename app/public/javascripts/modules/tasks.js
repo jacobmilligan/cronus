@@ -29,8 +29,13 @@ function getTasks() {
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
           res[i].start_time = (startTime.getHours() % 12) + ":" + startTime.getMinutes() + ampm;
           res[i].end_time = (res[i].end_time) ? res[i].end_time : res[i].start_time;
-          console.log(res[i].color);
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
+        }
+        var tasks = document.getElementsByClassName('task');
+        for ( i = 0; i < tasks.length; i++ ) {
+          var projectName = tasks[i].getElementsByClassName('task-project-name')[0];
+          var projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
+          projectName.style.color = ( projectColor > 0xffffff/2) ? '#272727' : '#F8F8F8';
         }
 
       } else {

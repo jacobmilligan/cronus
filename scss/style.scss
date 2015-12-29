@@ -16,6 +16,9 @@ $visual-grid-index: front !global;
 @import 'vendor/bitters/base';
 @import 'vendor/font-awesome/font-awesome';
 
+//Grid helpers
+@import 'helpers/grid-variables';
+
 // Theme
 @import 'themes/main-theme';
 

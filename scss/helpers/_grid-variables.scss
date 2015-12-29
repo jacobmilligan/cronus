@@ -1,0 +1,4 @@
+//Breakpoints
+$tablet: new-breakpoint(min-width 550px 12);
+$tablet-max: new-breakpoint(min-width 550px max-width 763px 12);
+$wide-tablet: new-breakpoint(min-width 763px 12);

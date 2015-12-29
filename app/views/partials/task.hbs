@@ -1,12 +1,18 @@
 <div class="task">
-  <span class="task-section">
-    <h4 class="task-name inline">{{task_name}}</h4> <h5 class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</h5>
-  </span>
-  <span class="task-section task-value">{{value}}</span>
-  <span class="task-section task-description">{{description}}</span>
-  <span class="task-section"><span class="task-start">{{start_time}}</span>-<span class="task-end">{{end_time}}</span></span>
-  <span class="task-section task-tags"></span>
-  <span class="task-section task-elapsed">
-    <span class="hours">{{elapsed.hours}}</span>:<span class="minutes">{{elapsed.minutes}}</span>:<span class="seconds">{{elapsed.seconds}}</span>
-  </span>
+  <div class="task-section task-info">
+    <span class="task-name inline">{{task_name}}</span> <span class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</span>
+    <span class="task-value">{{value}} per hour</span>
+  </div>
+  <div class="task-section task-tags"></div>
+  <div class="task-section task-elapsed">
+    <div class="task-subsection inline">
+      <span class="hours">{{elapsed.hours}}</span>:<span class="minutes">{{elapsed.minutes}}</span>:<span class="seconds">{{elapsed.seconds}}</span>
+    </div>
+    <div class="task-subsection inline">
+      <span class="task-start">{{start_time}}</span> - <span class="task-end">{{end_time}}</span>
+    </div>
+    <div class="task-subsection inline">
+      <span class="total-time">$00.00</span>
+    </div>
+  </div>
 </div>
