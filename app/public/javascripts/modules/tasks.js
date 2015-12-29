@@ -29,6 +29,7 @@ function getTasks() {
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
           res[i].start_time = (startTime.getHours() % 12) + ":" + startTime.getMinutes() + ampm;
           res[i].end_time = (res[i].end_time) ? res[i].end_time : res[i].start_time;
+          console.log(res[i].color);
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
 

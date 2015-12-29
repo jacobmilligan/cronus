@@ -11,6 +11,7 @@ function query(sql, paramArray, callback) {
 			return;
 		}
 		client.query(sql, paramArray, callback);
+		done();
 	});
 }
 

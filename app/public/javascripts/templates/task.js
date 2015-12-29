@@ -5,7 +5,9 @@ templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(cont
 
   return "<div class=\"task\">\n  <span class=\"task-section\">\n    <h4 class=\"task-name inline\">"
     + alias4(((helper = (helper = helpers.task_name || (depth0 != null ? depth0.task_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"task_name","hash":{},"data":data}) : helper)))
-    + "</h4> <h5 class=\"task-project-name inline\">"
+    + "</h4> <h5 class=\"task-project-name inline\" style=\"background-color:"
+    + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
+    + ";\">"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "</h5>\n  </span>\n  <span class=\"task-section task-value\">"
     + alias4(((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"value","hash":{},"data":data}) : helper)))
