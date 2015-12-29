@@ -289,7 +289,7 @@ require('../templates');
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
 	}
-
+	
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
 		if ( document.getElementById('toggled-new-project') ) {
@@ -479,9 +479,11 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "</h2>\n	<p>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "<p>\n	<a href=\"tasks\"><button style=\"background-color:#"
+    + "<p>\n	<a href=\"tasks/"
+    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
+    + "\"><button style=\"background-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">Go to tasks</button></a>\n</div>";
+    + "\">Go to tasks</button></a>\n</div>\n";
 },"useData":true});
 })();
 },{}]},{},[1]);

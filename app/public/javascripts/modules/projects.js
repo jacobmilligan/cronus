@@ -80,7 +80,7 @@ require('../templates');
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
 	}
-
+	
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
 		if ( document.getElementById('toggled-new-project') ) {

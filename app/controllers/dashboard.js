@@ -16,8 +16,8 @@ router.get('/projects', function(req, res, next) {
 	}
 });
 
-router.get('/tasks', function(req, res, next) {
-  res.render('dashboard/tasks', {});
+router.get('/tasks/*', function(req, res, next) {
+	res.render('dashboard/tasks', {});
 });
 
 module.exports = router;
