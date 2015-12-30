@@ -1,6 +1,7 @@
 .timer {
   @include span-columns(12);
   margin-bottom: 15px;
+  margin-top: 50px;
   padding: 5px;
   color: $inverted-font-color;
   border-radius: 3px;
@@ -26,6 +27,10 @@
     @include span-columns(12 of 12);
     text-align: center;
   }
+}
+
+#project-name {
+  margin-top: -25px;
 }
 
 .task {

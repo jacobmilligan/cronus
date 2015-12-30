@@ -18,7 +18,7 @@ router.get('/projects', function(req, res, next) {
 
 router.get('/tasks/:project_name', function(req, res, next) {
 	res.locals.displayFooter = true;
-	res.render('dashboard/tasks', {});
+	res.render('dashboard/tasks', {project_name: req.params.project_name});
 });
 
 module.exports = router;
