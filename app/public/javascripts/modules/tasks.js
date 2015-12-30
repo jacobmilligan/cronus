@@ -30,6 +30,8 @@ require('../templates');
     if ( document.getElementsByClassName('active-timer').length === 0 ) {
       document.getElementById('stopwatch').className = 'active-timer';
       event.target.className = 'task-control stop';
+
+      //start timer
       timer = window.setInterval(function() {
 
         secondsNum = Number(seconds.innerHTML);
@@ -51,9 +53,12 @@ require('../templates');
         }
       }, 1000);
     } else {
+      window.clearInterval(timer);
+
       var projectName = document.getElementById('project-name').innerHTML;
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
       var endAMPM = ( timeStamp.end.getHours() > 11 ) ? "pm" : "am";
+
       var newTask = {
         task_name: document.getElementById('task-name').value,
         project_name: projectName.substring(projectName.indexOf('\"') + 1, projectName.lastIndexOf('\"')),
@@ -65,22 +70,30 @@ require('../templates');
         },
         start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
         end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
-        color: "#" + document.getElementById('project-name').className
+        color: "#" + document.getElementById('hidden-color').value
       };
 
       if ( newTask.task_name === "" ) {
         newTask.task_name = "(No description)";
       }
       container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+      newTask.start_time = timeStamp.start;
+      newTask.end_time = timeStamp.end;
+      addTask(newTask);
+      document.getElementById('task-name').value = '';
+      document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
       document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
       document.getElementById('stopwatch').className = '';
       event.target.className = 'task-control play';
-      window.clearInterval(timer);
+      document.getElementById('hours').innerHTML = document.getElementById('minutes').innerHTML = document.getElementById('seconds').innerHTML = '00';
     }
   }
 
+  // End timer interactions
+
 }());
 
+// Retrieves all tasks related to the given project
 function getTasks() {
   var req = new XMLHttpRequest();
   var url = window.location.href;
@@ -94,7 +107,7 @@ function getTasks() {
       loader.style.display = 'none';
 
       var taskAmt = document.getElementById('task-amt');
-      taskAmt.value = taskAmt.placeholder = res[0].default_value;
+      taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
       taskAmt.addEventListener('input', helpers.handleMoney);
       taskAmt.addEventListener('blur', helpers.setDefaultValue);
       taskAmt.addEventListener('focus', function(event) {
@@ -107,9 +120,28 @@ function getTasks() {
         var ampm = "am";
         for (var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
+          var endTime = new Date(res[i].end_time);
+
+          var timestampHours = startTime.getHours();
+
+          if ( timestampHours < 12 ) {
+            timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours;
+          } else {
+            timestampHours = ( timestampHours % 12 );
+          }
+
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
-          res[i].start_time = (startTime.getHours() % 12) + ":" + startTime.getMinutes() + ampm;
-          res[i].end_time = (res[i].end_time) ? res[i].end_time : res[i].start_time;
+          res[i].start_time = (timestampHours) + ":" + startTime.getMinutes() + ampm; //put into 12-hour time
+
+          timestampHours = endTime.getHours();
+          if ( timestampHours < 12 ) {
+            timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours;
+          } else {
+            timestampHours = ( timestampHours % 12 );
+          }
+
+          ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
+          res[i].end_time = (timestampHours) + ":" + endTime.getMinutes() + ampm;
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
 
@@ -129,7 +161,7 @@ function getTasks() {
           valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
           valueNum = Number(valueTxt.replace('$', ''));
           totalAmt = (hours * valueNum) + ( (minutes / 60) * valueNum ) + ( seconds * ( (valueNum/60) / 60 ) ); //calculate total amount billable
-          tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2);
+          tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2); //round
         }
 
       } else {
@@ -141,4 +173,18 @@ function getTasks() {
 
   req.open('GET', '/tasks/' + params);
   req.send();
+}
+
+function addTask(task) {
+  task.elapsed = task.elapsed.hours + ":" + task.elapsed.minutes + ":" + task.elapsed.seconds;
+  task.color = task.color.replace('#', '');
+  task.description = "(No description)";
+  task._csrf = document.getElementById('csrf').value;
+  delete task.color;
+
+  var req = new XMLHttpRequest();
+  req.open('post', '/tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', task._csrf);
+  req.send(JSON.stringify(task));
 }

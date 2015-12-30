@@ -11,4 +11,17 @@ router.get('/:project_name', function(req, res, next) {
 
 });
 
+router.post('/', function(req, res, next) {
+  var data = [req.body.task_name, req.body.project_name, req.session.user.id,
+    req.body.description, req.body.value, req.body.start_time, req.body.end_time,
+    req.body.elapsed];
+  console.log(data);
+
+  model.insertTask(data, function(err, success) {
+    if (success) {
+      res.send(true);
+    }
+  });
+});
+
 module.exports = router;

@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	var dataToInsert = [req.body.project_name, req.session.user.id, req.body.description, req.body.default_value, req.body.color];
-	console.log(dataToInsert);
 	model.addProjects(dataToInsert, function(err, success) {
 		if ( err ) {
 			res.send(err);

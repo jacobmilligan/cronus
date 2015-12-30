@@ -2,10 +2,13 @@
 <section class="sctn-dark-gradient heading">
   <i class="fa fa-tasks fa-5x"></i>
   <h1 id="task-heading">Tasks</h1>
-  <h3 id="project-name" class="{{color}}">Project - "{{project_name}}"</h3>
+  <h3 id="project-name">Project - "{{project_name}}"</h3>
   <a href="/dashboard/projects"><button>Return to projects</button></a>
 
   <div class="timer form-grid">
+    <input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
+    <input type="hidden" value="{{color}}" id="hidden-color">
+    <input type="hidden" value="{{default_value}}" id="hidden-value">
     <input type="text" placeholder="What are you timing?" name="task_name" id="task-name">
     <hr>
     <input type="text" placeholder="$0.00" name="value" id="task-amt">

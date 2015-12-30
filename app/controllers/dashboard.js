@@ -23,7 +23,7 @@ router.get('/tasks/:project_name', function(req, res, next) {
 		if (err) {
 			return err;
 		} else {
-			res.render('dashboard/tasks', {color: result, project_name: req.params.project_name});
+			res.render('dashboard/tasks', {csrfToken: req.csrfToken, color: result.color, default_value: result.default_value, project_name: req.params.project_name});
 		}
 	});
 });
