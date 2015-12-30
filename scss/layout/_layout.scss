@@ -106,3 +106,18 @@ section {
 .sctn-light {
 	background-color: $base-background-color;
 }
+
+.heading {
+	@include span-columns(12);
+	color: $inverted-font-color;
+	text-align: center;
+
+	h1, h2, h3, h4, h5, h6 {
+		color: $inverted-font-color;
+		@include row;
+	}
+
+	i {
+		@include row;
+	}
+}

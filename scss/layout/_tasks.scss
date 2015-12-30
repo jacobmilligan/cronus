@@ -1,22 +1,28 @@
 .timer {
   @include span-columns(12);
-  border: 1px solid $divider-color;
-  margin-top: 15px;
   margin-bottom: 15px;
   padding: 5px;
+  color: $inverted-font-color;
+  border-radius: 3px;
 
   input {
     border-style: none;
     @include reset-shadow;
     padding: 5px;
+    background-color: transparent;
   }
 
   #task-name {
     @include span-columns(12 of 12);
-    padding-bottom: 25px;
+    text-align: center;
   }
 
   #task-amt {
+    @include span-columns(12 of 12);
+    text-align: center;
+  }
+
+  .task-control {
     @include span-columns(12 of 12);
     text-align: center;
   }
