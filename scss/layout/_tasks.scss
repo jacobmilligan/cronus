@@ -165,6 +165,10 @@
   #task-amt {
     @include span-columns(5 of 12);
   }
+
+  .remove-hr {
+    display: none;
+  }
 }
 
 @include media($mobile-max) {
