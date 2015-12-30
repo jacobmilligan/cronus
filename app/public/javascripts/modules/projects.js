@@ -22,7 +22,6 @@ require('../templates');
 		moneyInput.addEventListener('input', helpers.handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItems[0], displayCreateProject, true);
-		helpers.detectTouch(newItems[1], displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
 		helpers.detectTouch(addProjectBtn, sendProject, true);
 	}
