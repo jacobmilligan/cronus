@@ -1,4 +1,7 @@
 //Breakpoints
+$mobile-max: new-breakpoint(max-width 550px 12);
+$thin-min: new-breakpoint(min-width 358px 12);
+$thin-max: new-breakpoint(max-width 358px 12);
 $tablet: new-breakpoint(min-width 550px 12);
 $tablet-max: new-breakpoint(min-width 550px max-width 763px 12);
 $inline-cards: new-breakpoint(min-width 649px 12);

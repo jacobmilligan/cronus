@@ -25,16 +25,11 @@
   }
 
   #task-amt {
-    @include span-columns(5 of 12);
     text-align: center;
     color: transparentize($base-font-color, 0.2);
   }
 
   #stopwatch {
-    @include span-columns(7 of 12);
-    text-align: left;
-    display: inline-block;
-    margin-top: 4px;
     padding-bottom: 15px;
   }
 
@@ -119,7 +114,7 @@
 }
 
 .task-start, .task-end, .task-value {
-  font-size: $font-size-small;
+  font-size: $font-size-xsmall;
 }
 
 .task-value {
@@ -133,6 +128,7 @@
 
 .task-name {
   font-family: OpenSans-Reg;
+  margin-bottom: 5px;
 }
 
 .task-project-name {
@@ -143,6 +139,38 @@
 
 .task-subsection {
   @include margin(0 15px 0 15px);
+  font-size: $font-size-xsmall;
+}
+
+@include media($thin-max) {
+  #task-amt {
+    @include row;
+    @include span-columns(12 of 12);
+  }
+
+  #stopwatch {
+    @include row;
+    @include span-columns(12 of 12);
+  }
+}
+
+@include media($thin-min) {
+  #stopwatch {
+    text-align: left;
+    display: inline-block;
+    margin-top: 4px;
+    @include span-columns(7 of 12);
+  }
+
+  #task-amt {
+    @include span-columns(5 of 12);
+  }
+}
+
+@include media($mobile-max) {
+  .task-value, .task-name {
+    @include row;
+  }
 }
 
 @include media($tablet) {
@@ -194,6 +222,10 @@
 
   .task-start {
     margin-left: 35px;
+  }
+
+  .task-name {
+    margin-bottom: 0;
   }
 
 }
