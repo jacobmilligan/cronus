@@ -487,6 +487,7 @@ require('../templates');
     var minutes = document.getElementById('minutes');
     var hours = document.getElementById('hours');
     var secondsNum, minutesNum, hoursNum = 0;
+    var container = document.getElementsByClassName('container')[0];
     if ( document.getElementsByClassName('active-timer').length === 0 ) {
       document.getElementById('stopwatch').className = 'active-timer';
       event.target.className = 'task-control stop';
@@ -511,6 +512,24 @@ require('../templates');
         }
       }, 1000);
     } else {
+      var projectName = document.getElementById('project-name').innerHTML;
+      var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
+      var endAMPM = ( timeStamp.end.getHours() > 11 ) ? "pm" : "am";
+      var newTask = {
+        task_name: document.getElementById('task-name').value,
+        project_name: projectName.substring(projectName.indexOf('\"') + 1, projectName.lastIndexOf('\"')),
+        value: document.getElementById('task-amt').value,
+        elapsed: {
+          hours: document.getElementById('hours').innerHTML,
+          minutes: document.getElementById('minutes').innerHTML,
+          seconds: document.getElementById('seconds').innerHTML
+        },
+        start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
+        end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
+        color: document.getElementById('project-name').className
+      };
+      console.log(newTask);
+      container.innerHTML += Handlebars.templates['task.hbs'](newTask) + "<br>";
       document.getElementById('stopwatch').className = '';
       event.target.className = 'task-control play';
       window.clearInterval(timer);
