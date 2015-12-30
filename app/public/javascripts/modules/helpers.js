@@ -94,11 +94,17 @@ function setDefaultValue(event) {
 	}
 }
 
+function computeContrast(color) {
+	var result = ( color > 0xffffff/2) ? '#272727' : '#F8F8F8'; //Sets text color based off contrast with label color
+	return result;
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
 	getTransitionTime: getTransitionTime,
 	rgbToHex: rgbToHex,
 	handleMoney: handleMoney,
-	setDefaultValue: setDefaultValue
+	setDefaultValue: setDefaultValue,
+	computeContrast: computeContrast
 };

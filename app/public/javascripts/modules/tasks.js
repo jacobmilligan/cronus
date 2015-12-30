@@ -65,10 +65,14 @@ require('../templates');
         },
         start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
         end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
-        color: document.getElementById('project-name').className
+        color: "#" + document.getElementById('project-name').className
       };
-      console.log(newTask);
-      container.innerHTML += Handlebars.templates['task.hbs'](newTask) + "<br>";
+
+      if ( newTask.task_name === "" ) {
+        newTask.task_name = "(No description)";
+      }
+      container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+      document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
       document.getElementById('stopwatch').className = '';
       event.target.className = 'task-control play';
       window.clearInterval(timer);
@@ -117,7 +121,7 @@ function getTasks() {
         for ( i = 0; i < tasks.length; i++ ) {
           projectName = tasks[i].getElementsByClassName('task-project-name')[0];
           projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
-          projectName.style.color = ( projectColor > 0xffffff/2) ? '#272727' : '#F8F8F8'; //Sets text color based off contrast with label color
+          projectName.style.color = helpers.computeContrast(projectColor);
 
           hours = Number(tasks[i].getElementsByClassName('hours')[0].innerHTML);
           minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
