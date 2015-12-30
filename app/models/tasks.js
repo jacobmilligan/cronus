@@ -3,7 +3,7 @@
 var db = require('./db');
 
 function getTasks(params, callback) {
-  var sql = "SELECT t.*, p.color FROM tasks t " +
+  var sql = "SELECT t.*, p.color, p.default_value FROM tasks t " +
             "LEFT OUTER JOIN projects p " +
             "ON t.user_id = p.user_id " +
             "WHERE t.user_id = $1 AND t.project_name = $2 AND p.project_name = t.project_name";

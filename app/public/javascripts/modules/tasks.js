@@ -22,6 +22,11 @@ function getTasks() {
       var res = JSON.parse(req.responseText);
       loader.style.display = 'none';
 
+      var taskAmt = document.getElementById('task-amt');
+      taskAmt.value = taskAmt.placeholder = res[0].default_value;
+      taskAmt.addEventListener('input', helpers.handleMoney);
+      taskAmt.addEventListener('blur', helpers.setDefaultValue);
+
       if ( res.length > 0 ) {
         var ampm = "am";
         for (var i = 0; i < res.length; i++) {
@@ -33,7 +38,7 @@ function getTasks() {
         }
 
         var tasks = document.getElementsByClassName('task');
-        var hours, minutes, seconds, value, totalAmt = 0;
+        var hours, minutes, seconds, valueNum, totalAmt = 0;
         var valueTxt = '';
         var projectName, projectColor;
         //Set each project labels text color based on the label color itself
@@ -46,8 +51,8 @@ function getTasks() {
           minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
           seconds = Number(tasks[i].getElementsByClassName('seconds')[0].innerHTML);
           valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
-          value = Number(valueTxt.replace('$', ''));
-          totalAmt = (hours * value) + ( (minutes / 60) * value ) + ( seconds * ( (value/60) / 60 ) ); //calculate total amount billable
+          valueNum = Number(valueTxt.replace('$', ''));
+          totalAmt = (hours * valueNum) + ( (minutes / 60) * valueNum ) + ( seconds * ( (valueNum/60) / 60 ) ); //calculate total amount billable
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2);
         }
 

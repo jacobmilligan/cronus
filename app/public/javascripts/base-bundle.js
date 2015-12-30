@@ -71,11 +71,32 @@ function rgbToHex(rgb) {
 	return result.toUpperCase();
 }
 
+function handleMoney(event) {
+	var strToAppend = event.target.value.replace('$', '');
+	event.target.value = "";
+
+	if ( isNaN(strToAppend) ) {
+		strToAppend = strToAppend.substring(0, strToAppend.length - 1);
+	}
+
+	if ( strToAppend.length > 0 ) {
+		event.target.value = "$" + strToAppend;
+	}
+}
+
+//Uses the text boxes placeholder to set a default value
+function setDefaultValue(event) {
+	var defVal = event.target.placeholder;
+	event.target.value = ( event.target.value.length === 0 ) ? defVal : event.target.value;
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
 	getTransitionTime: getTransitionTime,
-	rgbToHex: rgbToHex
+	rgbToHex: rgbToHex,
+	handleMoney: handleMoney,
+	setDefaultValue: setDefaultValue
 };
 
 },{}],3:[function(require,module,exports){
@@ -228,7 +249,7 @@ require('../templates');
 		var moneyInput = document.getElementById('project-amt');
 		var addProjectBtn = document.getElementById('add-project');
 
-		moneyInput.addEventListener('input', handleMoney);
+		moneyInput.addEventListener('input', helpers.handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItems[0], displayCreateProject, true);
 		helpers.detectTouch(newItems[1], displayCreateProject, true);
@@ -289,7 +310,7 @@ require('../templates');
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
 	}
-	
+
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
 		if ( document.getElementById('toggled-new-project') ) {
@@ -369,19 +390,6 @@ require('../templates');
 			}, fadeInterval);
 
 		labelBtn.style.borderColor = btnBorderColor.toString();
-	}
-
-	function handleMoney(event) {
-		var strToAppend = event.target.value.replace('$', '');
-		event.target.value = "";
-
-		if ( isNaN(strToAppend) ) {
-			strToAppend = strToAppend.substring(0, strToAppend.length - 1);
-		}
-
-		if ( strToAppend.length > 0 ) {
-			event.target.value = "$" + strToAppend;
-		}
 	}
 
 	function sendProject() {
@@ -464,6 +472,11 @@ function getTasks() {
       var res = JSON.parse(req.responseText);
       loader.style.display = 'none';
 
+      var taskAmt = document.getElementById('task-amt');
+      taskAmt.value = taskAmt.placeholder = res[0].default_value;
+      taskAmt.addEventListener('input', helpers.handleMoney);
+      taskAmt.addEventListener('blur', helpers.setDefaultValue);
+
       if ( res.length > 0 ) {
         var ampm = "am";
         for (var i = 0; i < res.length; i++) {
@@ -475,7 +488,7 @@ function getTasks() {
         }
 
         var tasks = document.getElementsByClassName('task');
-        var hours, minutes, seconds, value, totalAmt = 0;
+        var hours, minutes, seconds, valueNum, totalAmt = 0;
         var valueTxt = '';
         var projectName, projectColor;
         //Set each project labels text color based on the label color itself
@@ -488,8 +501,8 @@ function getTasks() {
           minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
           seconds = Number(tasks[i].getElementsByClassName('seconds')[0].innerHTML);
           valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
-          value = Number(valueTxt.replace('$', ''));
-          totalAmt = (hours * value) + ( (minutes / 60) * value ) + ( seconds * ( (value/60) / 60 ) ); //calculate total amount billable
+          valueNum = Number(valueTxt.replace('$', ''));
+          totalAmt = (hours * valueNum) + ( (minutes / 60) * valueNum ) + ( seconds * ( (valueNum/60) / 60 ) ); //calculate total amount billable
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2);
         }
 

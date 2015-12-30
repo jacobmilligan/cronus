@@ -19,7 +19,7 @@ require('../templates');
 		var moneyInput = document.getElementById('project-amt');
 		var addProjectBtn = document.getElementById('add-project');
 
-		moneyInput.addEventListener('input', handleMoney);
+		moneyInput.addEventListener('input', helpers.handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
 		helpers.detectTouch(newItems[0], displayCreateProject, true);
 		helpers.detectTouch(newItems[1], displayCreateProject, true);
@@ -80,7 +80,7 @@ require('../templates');
 			newItem.style.backgroundColor = '#f7f7f7';
 		});
 	}
-	
+
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
 		if ( document.getElementById('toggled-new-project') ) {
@@ -160,19 +160,6 @@ require('../templates');
 			}, fadeInterval);
 
 		labelBtn.style.borderColor = btnBorderColor.toString();
-	}
-
-	function handleMoney(event) {
-		var strToAppend = event.target.value.replace('$', '');
-		event.target.value = "";
-
-		if ( isNaN(strToAppend) ) {
-			strToAppend = strToAppend.substring(0, strToAppend.length - 1);
-		}
-
-		if ( strToAppend.length > 0 ) {
-			event.target.value = "$" + strToAppend;
-		}
 	}
 
 	function sendProject() {

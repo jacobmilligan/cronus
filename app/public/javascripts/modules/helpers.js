@@ -63,9 +63,30 @@ function rgbToHex(rgb) {
 	return result.toUpperCase();
 }
 
+function handleMoney(event) {
+	var strToAppend = event.target.value.replace('$', '');
+	event.target.value = "";
+
+	if ( isNaN(strToAppend) ) {
+		strToAppend = strToAppend.substring(0, strToAppend.length - 1);
+	}
+
+	if ( strToAppend.length > 0 ) {
+		event.target.value = "$" + strToAppend;
+	}
+}
+
+//Uses the text boxes placeholder to set a default value
+function setDefaultValue(event) {
+	var defVal = event.target.placeholder;
+	event.target.value = ( event.target.value.length === 0 ) ? defVal : event.target.value;
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
 	getTransitionTime: getTransitionTime,
-	rgbToHex: rgbToHex
+	rgbToHex: rgbToHex,
+	handleMoney: handleMoney,
+	setDefaultValue: setDefaultValue
 };
