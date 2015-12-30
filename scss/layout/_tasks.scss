@@ -41,15 +41,44 @@
   .task-control {
     position: relative;
     display: inline-block;
-    margin-left: 70px;
-    top: 5px;
+    margin-left: 60px;
+    top: 10px;
     color: $secondary-accent-color;
-    @include transition(color 0.2s ease-in-out);
 
     &:hover {
       cursor: pointer;
-      color: $base-green;
     }
+  }
+}
+
+.play {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 0 15px 25px;
+  border-color: transparent transparent transparent $secondary-accent-color;
+  border-radius: 3px;
+  @include transition(all 0.1s ease);
+
+  &:hover {
+    border-color: transparent transparent transparent $base-green;
+  }
+
+}
+
+.stop {
+  position: relative;
+  margin-top: 3px;
+  left: -2px;
+  width: 25px;
+  height: 25px;
+  border-style: none;
+  background-color: $accent-color;
+  @include transition(all 0.1s ease);
+
+  &:hover {
+    background-color: $secondary-accent-color;
+    border-color: $secondary-accent-color;
   }
 }
 

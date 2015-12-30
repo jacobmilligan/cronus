@@ -28,7 +28,7 @@ require('../templates');
     var secondsNum, minutesNum, hoursNum = 0;
     if ( document.getElementsByClassName('active-timer').length === 0 ) {
       document.getElementById('stopwatch').className = 'active-timer';
-      event.target.className = 'task-control fa fa-stop fa-2x';
+      event.target.className = 'task-control stop';
       timer = window.setInterval(function() {
 
         secondsNum = Number(seconds.innerHTML);
@@ -51,7 +51,7 @@ require('../templates');
       }, 1000);
     } else {
       document.getElementById('stopwatch').className = '';
-      event.target.className = 'task-control fa fa-play fa-2x';
+      event.target.className = 'task-control play';
       window.clearInterval(timer);
     }
   }
