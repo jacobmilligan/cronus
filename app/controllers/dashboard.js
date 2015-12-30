@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var router = express.Router();
+var projectModel = require('../models/projects');
 
 /* GET dashboard listing. */
 router.get('/', function(req, res, next) {
@@ -18,7 +19,13 @@ router.get('/projects', function(req, res, next) {
 
 router.get('/tasks/:project_name', function(req, res, next) {
 	res.locals.displayFooter = true;
-	res.render('dashboard/tasks', {project_name: req.params.project_name});
+	projectModel.getColor([req.session.user.id, req.params.project_name], function(err, result) {
+		if (err) {
+			return err;
+		} else {
+			res.render('dashboard/tasks', {color: result, project_name: req.params.project_name});
+		}
+	});
 });
 
 module.exports = router;

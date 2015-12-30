@@ -23,7 +23,19 @@ function addProjects(body, callback) {
 	});
 }
 
+function getColor(params, callback) {
+	var sql = "SELECT color FROM projects WHERE user_id = $1 AND project_name = $2";
+	db.query(sql, params, function(err, result) {
+		if (err) {
+			return callback(err);
+		} else {
+			return callback(null, result.rows[0].color);
+		}
+	});
+}
+
 module.exports = {
 	getProjects: getProjects,
-	addProjects: addProjects
+	addProjects: addProjects,
+	getColor: getColor
 };
