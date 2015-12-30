@@ -77,9 +77,21 @@ function handleMoney(event) {
 }
 
 //Uses the text boxes placeholder to set a default value
+//Also fixes the zeroes and dots placement to look uniform
 function setDefaultValue(event) {
 	var defVal = event.target.placeholder;
-	event.target.value = ( event.target.value.length === 0 ) ? defVal : event.target.value;
+	if ( event.target.value.length === 0 ) {
+		event.target.value = defVal;
+	} else {
+		var dotPlace = event.target.value.indexOf('.');
+		if ( dotPlace < 0  || dotPlace === event.target.value.length - 1 ) {
+			event.target.value = event.target.value.replace('.', '');
+			event.target.value += '.00';
+		}
+		if ( event.target.value.substring(dotPlace).length === 2 ) {
+			event.target.value += '0';
+		}
+	}
 }
 
 module.exports = {

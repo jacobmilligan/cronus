@@ -26,6 +26,11 @@ function getTasks() {
       taskAmt.value = taskAmt.placeholder = res[0].default_value;
       taskAmt.addEventListener('input', helpers.handleMoney);
       taskAmt.addEventListener('blur', helpers.setDefaultValue);
+      taskAmt.addEventListener('focus', function(event) {
+        if ( event.target.value === event.target.placeholder ) {
+          event.target.value = "";
+        }
+      });
 
       if ( res.length > 0 ) {
         var ampm = "am";
