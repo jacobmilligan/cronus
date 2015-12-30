@@ -19,6 +19,7 @@ a {
 	width: 100%;
 	height: auto;
 	min-height: 55%;
+	overflow: hidden;
 }
 
 h1 {
@@ -51,8 +52,9 @@ p {
 }
 
 hr {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	border: 1px solid transparentize($divider-color, 0.4);
+	width: 85%;
+	margin: 0 auto;
 }
 
 section {

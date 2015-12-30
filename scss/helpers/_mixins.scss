@@ -6,6 +6,12 @@
 
 // Shadows
 
+@mixin reset-shadow {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
 @mixin box-shadowing {
 	box-shadow: 0 10px 10px 0 $shadow-color;
 	-moz-box-shadow: 0 10px 10px 0 $shadow-color;

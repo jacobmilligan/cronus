@@ -1,8 +1,24 @@
 .timer {
   @include span-columns(12);
+  border: 1px solid $divider-color;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px;
+
+  input {
+    border-style: none;
+    @include reset-shadow;
+    padding: 5px;
+  }
 
   #task-name {
-    @include span-columns(6 of 12);
+    @include span-columns(12 of 12);
+    padding-bottom: 25px;
+  }
+
+  #task-amt {
+    @include span-columns(12 of 12);
+    text-align: center;
   }
 }
 
