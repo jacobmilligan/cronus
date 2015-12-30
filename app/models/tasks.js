@@ -17,12 +17,29 @@ function getTasks(params, callback) {
         seconds = result.rows[i].elapsed.seconds;
         minutes = result.rows[i].elapsed.minutes;
         hours = result.rows[i].elapsed.hours;
-        result.rows[i].elapsed.seconds = (seconds) ? seconds : '00';
-        result.rows[i].elapsed.minutes = (minutes) ? minutes : '00';
-        result.rows[i].elapsed.hours = (hours) ? hours : '00';
+        if ( seconds > 0 ) {
+          result.rows[i].elapsed.seconds = ( seconds < 10 ) ? '0' + seconds : seconds;
+        } else {
+          result.rows[i].elapsed.seconds = '00';
+        }
+
+        if ( minutes > 0 ) {
+          result.rows[i].elapsed.minutes = ( minutes < 10 ) ? '0' + minutes : minutes;
+        } else {
+          result.rows[i].elapsed.minutes = '00';
+        }
+
+        if ( hours > 0 ) {
+          result.rows[i].elapsed.hours = ( hours < 10 ) ? '0' + hours : hours;
+        } else {
+          result.rows[i].elapsed.hours = '00';
+        }
 
         result.rows[i].color = '#' + result.rows[i].color;
       }
+      result.rows.sort(function(a, b) {
+        return b.start_time - a.start_time;
+      });
       return callback(null, result.rows);
     }
   });
