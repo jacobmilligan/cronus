@@ -112,6 +112,10 @@
 	background-color: lighten($light-gray, 10%);
 	cursor: default;
 
+	h3.secondary {
+		margin-bottom: 40px;
+	}
+
 	textarea {
 		@include span-columns(12);
 		height: 150px;
