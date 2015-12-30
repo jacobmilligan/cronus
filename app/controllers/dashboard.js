@@ -17,6 +17,7 @@ router.get('/projects', function(req, res, next) {
 });
 
 router.get('/tasks/:project_name', function(req, res, next) {
+	res.locals.displayFooter = true;
 	res.render('dashboard/tasks', {});
 });
 
