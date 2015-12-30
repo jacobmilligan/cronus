@@ -2,15 +2,21 @@
   @include span-columns(12);
   margin-bottom: 15px;
   margin-top: 50px;
-  padding: 5px;
-  color: $inverted-font-color;
+  padding: 0;
   border-radius: 3px;
+  font-size: $font-size-medium;
 
   input {
     border-style: none;
     @include reset-shadow;
-    padding: 5px;
+    padding: 15px;
     background-color: transparent;
+    @include transition(box-shadow 0.2s ease);
+    margin: 0;
+
+    &:focus {
+      @include btn-shadowing-full(2px);
+    }
   }
 
   #task-name {
@@ -19,13 +25,41 @@
   }
 
   #task-amt {
-    @include span-columns(12 of 12);
+    @include span-columns(5 of 12);
     text-align: center;
+    color: transparentize($base-font-color, 0.2);
+  }
+
+  #stopwatch {
+    @include span-columns(7 of 12);
+    text-align: left;
+    display: inline-block;
+    margin-top: 4px;
+    padding-bottom: 15px;
   }
 
   .task-control {
-    @include span-columns(12 of 12);
-    text-align: center;
+    position: relative;
+    display: inline-block;
+    margin-left: 70px;
+    top: 5px;
+    color: $secondary-accent-color;
+    @include transition(color 0.2s ease-in-out);
+
+    &:hover {
+      cursor: pointer;
+      color: $base-green;
+    }
+  }
+}
+
+.timer.form-grid {
+  background-color: $base-background-color;
+  padding: 0;
+  color: transparentize($base-font-color, 0.2);
+
+  &:hover {
+    background-color: $base-background-color;
   }
 }
 

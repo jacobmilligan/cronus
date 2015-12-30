@@ -4,12 +4,17 @@
   <h1 id="task-heading">Tasks</h1>
   <h3 id="project-name">Project - "{{project_name}}"</h3>
   <a href="/dashboard/projects"><button>Return to projects</button></a>
-  <div class="timer">
-    <input type="text" placeholder="What are you doing?" name="task_name" id="task-name">
+
+  <div class="timer form-grid">
+    <input type="text" placeholder="What are you timing?" name="task_name" id="task-name">
     <hr>
     <input type="text" placeholder="$0.00" name="value" id="task-amt">
-    <i class="task-control fa fa-play fa-2x"></i>
+    <div id="stopwatch">
+      <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+      <i class="task-control fa fa-play fa-2x"></i>
+    </div>
   </div>
+
 </section>
 <section class="sctn-light">
   <div class="container">
