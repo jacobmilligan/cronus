@@ -70,3 +70,9 @@
 	top: 1.1em;
 	left: 1.05em;
 }
+
+@include media($thin-min) {
+	.loader {
+		margin: 20% 45%;
+	}
+}
