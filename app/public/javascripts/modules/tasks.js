@@ -5,9 +5,57 @@ require('../templates');
 
 (function() {
   var url = window.location.href;
+  var timer;
+  var timeStamp = {};
+
   if ( url.indexOf('tasks') > -1 ) {
     getTasks();
+    var taskControl = document.getElementsByClassName('task-control')[0];
+    helpers.detectTouch(taskControl, handleTimer, true);
   }
+
+  //Handles all timer interactions
+  function handleTimer(event) {
+    if ( timeStamp.start ) {
+      timeStamp.end = new Date();
+    } else {
+      timeStamp.start = new Date();
+    }
+
+    var seconds = document.getElementById('seconds');
+    var minutes = document.getElementById('minutes');
+    var hours = document.getElementById('hours');
+    var secondsNum, minutesNum, hoursNum = 0;
+    if ( document.getElementsByClassName('active-timer').length === 0 ) {
+      document.getElementById('stopwatch').className = 'active-timer';
+      event.target.className = 'task-control fa fa-stop fa-2x';
+      timer = window.setInterval(function() {
+
+        secondsNum = Number(seconds.innerHTML);
+        secondsNum++;
+        seconds.innerHTML = ( secondsNum < 10 ) ? '0' + secondsNum : secondsNum;
+        if ( secondsNum >= 60 ) {
+          seconds.innerHTML = '00';
+          minutesNum = Number(minutes.innerHTML);
+          minutesNum++;
+          minutes.innerHTML = ( minutesNum < 10 ) ? '0' + minutesNum : minutesNum;
+
+          if ( minutesNum >= 60 ) {
+            minutes.innerHTML = '00';
+            hoursNum = Number(hours.innerHTML);
+            hoursNum++;
+            hours.innerHTML = ( hoursNum < 10 ) ? '0' + hoursNum : hoursNum;
+          }
+
+        }
+      }, 1000);
+    } else {
+      document.getElementById('stopwatch').className = '';
+      event.target.className = 'task-control fa fa-play fa-2x';
+      window.clearInterval(timer);
+    }
+  }
+
 }());
 
 function getTasks() {
