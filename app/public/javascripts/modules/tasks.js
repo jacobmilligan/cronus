@@ -31,11 +31,24 @@ function getTasks() {
           res[i].end_time = (res[i].end_time) ? res[i].end_time : res[i].start_time;
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
+
         var tasks = document.getElementsByClassName('task');
+        var hours, minutes, seconds, value, totalAmt = 0;
+        var valueTxt = '';
+        var projectName, projectColor;
+        //Set each project labels text color based on the label color itself
         for ( i = 0; i < tasks.length; i++ ) {
-          var projectName = tasks[i].getElementsByClassName('task-project-name')[0];
-          var projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
-          projectName.style.color = ( projectColor > 0xffffff/2) ? '#272727' : '#F8F8F8';
+          projectName = tasks[i].getElementsByClassName('task-project-name')[0];
+          projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
+          projectName.style.color = ( projectColor > 0xffffff/2) ? '#272727' : '#F8F8F8'; //Sets text color based off contrast with label color
+
+          hours = Number(tasks[i].getElementsByClassName('hours')[0].innerHTML);
+          minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
+          seconds = Number(tasks[i].getElementsByClassName('seconds')[0].innerHTML);
+          valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
+          value = Number(valueTxt.replace('$', ''));
+          totalAmt = (hours * value) + ( (minutes / 60) * value ) + ( seconds * ( (value/60) / 60 ) ); //calculate total amount billable
+          tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2);
         }
 
       } else {
