@@ -626,8 +626,10 @@ function getTasks() {
           minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
           seconds = Number(tasks[i].getElementsByClassName('seconds')[0].innerHTML);
           valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
-          valueNum = Number(valueTxt.replace('$', ''));
-          totalAmt = (hours * valueNum) + ( (minutes / 60) * valueNum ) + ( seconds * ( (valueNum/60) / 60 ) ); //calculate total amount billable
+          valueTxt = valueTxt.replace('$', '');
+          valueNum = Number(valueTxt.replace(',', ''));
+          //Calculate total billable
+          totalAmt = ( (hours / 60) + minutes / 100 ) * valueNum;
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2); //round
         }
 
@@ -654,6 +656,10 @@ function addTask(task) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', task._csrf);
   req.send(JSON.stringify(task));
+}
+
+function calcTotal(numStr, taskCard) {
+
 }
 
 },{"../templates":6,"./helpers":2}],6:[function(require,module,exports){
