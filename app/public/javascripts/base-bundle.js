@@ -107,6 +107,20 @@ function computeContrast(color) {
 	return result;
 }
 
+function getTimeDiff(start, current) {
+	var msDiff = (current - start);
+	var minutesDiff = ( ( (msDiff / 60) / 60 ) / 1000) * 60;
+	var hoursDiff = Math.floor(minutesDiff / 60);
+	minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
+	var secsDiff = Math.floor( ( minutesDiff * 60 ) - (Math.floor(minutesDiff) * 60) );
+	minutesDiff = Math.floor(minutesDiff);
+	return {
+		seconds: secsDiff,
+		minutes: minutesDiff,
+		hours: hoursDiff
+	};
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
@@ -114,7 +128,8 @@ module.exports = {
 	rgbToHex: rgbToHex,
 	handleMoney: handleMoney,
 	setDefaultValue: setDefaultValue,
-	computeContrast: computeContrast
+	computeContrast: computeContrast,
+	getTimeDiff: getTimeDiff
 };
 
 },{}],3:[function(require,module,exports){
@@ -478,6 +493,7 @@ require('../templates');
   if ( url.indexOf('tasks') > -1 ) {
     document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
     getTasks();
+    getActive();
     var taskControl = document.getElementsByClassName('task-control')[0];
     helpers.detectTouch(taskControl, handleTimer, true);
   }
@@ -667,6 +683,36 @@ function addActive(start) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', active._csrf);
   req.send(JSON.stringify(active));
+}
+
+function getActive() {
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if ( req.status == 200 && req.readyState == 4 ) {
+      var res = JSON.parse(req.responseText);
+      var activeTimer = res[0];
+      if ( res.length > 0 ) {
+        var startTime = new Date(activeTimer.start_time);
+        var currTime = new Date();
+        var msDiff = (currTime - startTime);
+        var minutesDiff = ( ( (msDiff / 60) / 60 ) / 1000) * 60;
+        var hoursDiff = Math.floor(minutesDiff / 60);
+        minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
+        var secsDiff = Math.floor( ( minutesDiff * 60 ) - (Math.floor(minutesDiff) * 60) );
+        minutesDiff = Math.floor(minutesDiff);
+        document.getElementsByClassName('task-control')[0].click();
+        document.getElementById('task-name').value = activeTimer.task_name;
+        document.getElementById('task-amt').value = activeTimer.value;
+        document.getElementById('hours').innerHTML = currTime.getHours() - startTime.getHours();
+    //    document.getElementById('minutes').innerHTML = currTime.getMinutes() - timeToAppend.getMinutes();
+      //  document.getElementById('seconds').innerHTML = (currTime.getSeconds() - timeToAppend.getSeconds() < 10) ? '0' + currTime.getSeconds() - timeToAppend.getSeconds() : currTime.getSeconds() - timeToAppend.getSeconds();
+        console.log(msDiff, hoursDiff, minutesDiff, secsDiff);
+
+      }
+    }
+  };
+  req.open('GET' , '/active_tasks');
+  req.send();
 }
 
 function calcTotal(taskCard, decs) {

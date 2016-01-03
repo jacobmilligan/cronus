@@ -99,6 +99,20 @@ function computeContrast(color) {
 	return result;
 }
 
+function getTimeDiff(start, current) {
+	var msDiff = (current - start);
+	var minutesDiff = ( ( (msDiff / 60) / 60 ) / 1000) * 60;
+	var hoursDiff = Math.floor(minutesDiff / 60);
+	minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
+	var secsDiff = Math.floor( ( minutesDiff * 60 ) - (Math.floor(minutesDiff) * 60) );
+	minutesDiff = Math.floor(minutesDiff);
+	return {
+		seconds: secsDiff,
+		minutes: minutesDiff,
+		hours: hoursDiff
+	};
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
@@ -106,5 +120,6 @@ module.exports = {
 	rgbToHex: rgbToHex,
 	handleMoney: handleMoney,
 	setDefaultValue: setDefaultValue,
-	computeContrast: computeContrast
+	computeContrast: computeContrast,
+	getTimeDiff: getTimeDiff
 };

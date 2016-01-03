@@ -5,7 +5,13 @@ var router = express.Router();
 var model = require('../models/active_tasks');
 
 router.get('/', function(req, res, next) {
-  res.send("Hey");
+  model.getRunning([req.session.user.id], function(err, result) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 router.post('/', function(req, res, next) {
@@ -16,6 +22,10 @@ router.post('/', function(req, res, next) {
       res.send("Success");
     }
   });
+});
+
+router.delete('/', function(req, res, next) {
+  
 });
 
 module.exports = router;

@@ -13,6 +13,30 @@ function setRunning(params, callback) {
   });
 }
 
+function getRunning(id, callback) {
+  var sql = "SELECT * FROM active_tasks WHERE user_id = $1";
+  db.query(sql, id, function(err, result) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, result.rows);
+    }
+  });
+}
+
+function deleteRunning(id, callback) {
+  var sql = "DELETE FROM active_tasks WHERE user_id = $1";
+  db.query(sql, id, function(err) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, true);
+    }
+  });
+}
+
 module.exports = {
-  setRunning: setRunning
+  setRunning: setRunning,
+  getRunning: getRunning,
+  deleteRunning: deleteRunning
 };
