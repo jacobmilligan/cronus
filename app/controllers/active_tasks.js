@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var body = req.body;
-  var data = [req.session.user.id, body.task_name, body.project_name, body.value, body.start_time];
+  var data = [req.session.user.id, body.task_name, body.project_name, body.value, body.start_time, body.color];
   model.setRunning(data, function(err, success) {
     if (success) {
       res.send("Success");
@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
-  
+
 });
 
 module.exports = router;

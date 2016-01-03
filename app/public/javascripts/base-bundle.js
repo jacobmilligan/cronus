@@ -675,7 +675,8 @@ function addActive(start) {
     task_name: taskName,
     project_name: document.getElementById('timer-project-inner').innerHTML,
     value: document.getElementById('task-amt').innerHTML,
-    start_time: start
+    start_time: start,
+    color: document.getElementById('hidden-color').value
   };
 
   var req = new XMLHttpRequest();
@@ -694,20 +695,16 @@ function getActive() {
       if ( res.length > 0 ) {
         var startTime = new Date(activeTimer.start_time);
         var currTime = new Date();
-        var msDiff = (currTime - startTime);
-        var minutesDiff = ( ( (msDiff / 60) / 60 ) / 1000) * 60;
-        var hoursDiff = Math.floor(minutesDiff / 60);
-        minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
-        var secsDiff = Math.floor( ( minutesDiff * 60 ) - (Math.floor(minutesDiff) * 60) );
-        minutesDiff = Math.floor(minutesDiff);
+        var timeToAppend = helpers.getTimeDiff(startTime, currTime);
         document.getElementsByClassName('task-control')[0].click();
         document.getElementById('task-name').value = activeTimer.task_name;
         document.getElementById('task-amt').value = activeTimer.value;
-        document.getElementById('hours').innerHTML = currTime.getHours() - startTime.getHours();
-    //    document.getElementById('minutes').innerHTML = currTime.getMinutes() - timeToAppend.getMinutes();
-      //  document.getElementById('seconds').innerHTML = (currTime.getSeconds() - timeToAppend.getSeconds() < 10) ? '0' + currTime.getSeconds() - timeToAppend.getSeconds() : currTime.getSeconds() - timeToAppend.getSeconds();
-        console.log(msDiff, hoursDiff, minutesDiff, secsDiff);
-
+        document.getElementById('hours').innerHTML = timeToAppend.hours;
+        document.getElementById('minutes').innerHTML = timeToAppend.minutes;
+        document.getElementById('seconds').innerHTML = timeToAppend.seconds;
+        document.getElementById('timer-project-inner').style.backgroundColor = '#' + activeTimer.color;
+        document.getElementById('timer-project-inner').style.backgroundColor = '#' + helpers.computeContrast(activeTimer.color);
+        document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
       }
     }
   };
