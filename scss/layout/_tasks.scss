@@ -30,7 +30,13 @@
   }
 
   #stopwatch {
-    padding-bottom: 15px;
+    @include row;
+  }
+
+  #timer-project {
+    @include span-columns(12);
+    @include row;
+    margin-bottom: 15px;
   }
 
   .task-control {
@@ -159,7 +165,6 @@
     text-align: left;
     display: inline-block;
     margin-top: 4px;
-    @include span-columns(7 of 12);
   }
 
   #task-amt {

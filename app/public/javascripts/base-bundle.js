@@ -526,6 +526,7 @@ require('../templates');
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
       var endAMPM = ( timeStamp.end.getHours() > 11 ) ? "pm" : "am";
 
+      //Object containing task data to send to template
       var newTask = {
         task_name: document.getElementById('task-name').value,
         project_name: projectName.substring(projectName.indexOf('\"') + 1, projectName.lastIndexOf('\"')),
@@ -544,6 +545,8 @@ require('../templates');
         newTask.task_name = "(No description)";
       }
       container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+      var latestTask = document.getElementsByClassName('task')[0];
+      document.getElementsByClassName('total-time')[0].innerHTML = calcTotal(latestTask, 2);
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
       addTask(newTask);
@@ -613,8 +616,6 @@ function getTasks() {
         }
 
         var tasks = document.getElementsByClassName('task');
-        var hours, minutes, seconds, valueNum, totalAmt = 0;
-        var valueTxt = '';
         var projectName, projectColor;
         //Set each project labels text color based on the label color itself
         for ( i = 0; i < tasks.length; i++ ) {
@@ -622,15 +623,7 @@ function getTasks() {
           projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
           projectName.style.color = helpers.computeContrast(projectColor);
 
-          hours = Number(tasks[i].getElementsByClassName('hours')[0].innerHTML);
-          minutes = Number(tasks[i].getElementsByClassName('minutes')[0].innerHTML);
-          seconds = Number(tasks[i].getElementsByClassName('seconds')[0].innerHTML);
-          valueTxt = tasks[i].getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
-          valueTxt = valueTxt.replace('$', '');
-          valueNum = Number(valueTxt.replace(',', ''));
-          //Calculate total billable
-          totalAmt = ( (hours / 60) + minutes / 100 ) * valueNum;
-          tasks[i].getElementsByClassName('total-time')[0].innerHTML = '$' + totalAmt.toFixed(2); //round
+          tasks[i].getElementsByClassName('total-time')[0].innerHTML = calcTotal(tasks[i], 2); //round
         }
 
       } else {
@@ -658,8 +651,21 @@ function addTask(task) {
   req.send(JSON.stringify(task));
 }
 
-function calcTotal(numStr, taskCard) {
-
+function calcTotal(taskCard, decs) {
+  var hours = Number(taskCard.getElementsByClassName('hours')[0].innerHTML);
+  var minutes = Number(taskCard.getElementsByClassName('minutes')[0].innerHTML);
+  var valueTxt = taskCard.getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
+  valueTxt = valueTxt.replace('$', '');
+  var valueNum = Number(valueTxt.replace(',', ''));
+  //Calculate total billable
+  var total =  ( (hours / 60) + minutes / 100 ) * valueNum;
+  var totalStr = "";
+  if ( total < 10 ) {
+    totalStr = '$0' + total.toFixed(decs);
+  } else {
+    totalStr = '$' + total.toFixed(decs);
+  }
+  return totalStr;
 }
 
 },{"../templates":6,"./helpers":2}],6:[function(require,module,exports){

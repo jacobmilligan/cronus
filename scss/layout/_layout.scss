@@ -53,7 +53,6 @@ p {
 
 hr {
 	border: 1px solid transparentize($divider-color, 0.4);
-	width: 85%;
 	margin: 0 auto;
 }
 
@@ -64,6 +63,12 @@ section {
 	input {
 		margin-top: 10px;
 		margin-bottom: 10px;
+	}
+
+	hr {
+		@include span-columns(10 of 12);
+		@include shift(1);
+		clear: both;
 	}
 }
 
