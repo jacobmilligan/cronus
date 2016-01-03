@@ -25,7 +25,14 @@ router.post('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
-
+  console.log(req);
+  model.deleteRunning([req.session.user.id], function(err, success) {
+    if (success) {
+      res.send("Success");
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 module.exports = router;

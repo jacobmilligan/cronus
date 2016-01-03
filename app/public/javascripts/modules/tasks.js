@@ -59,14 +59,14 @@ require('../templates');
     } else {
       window.clearInterval(timer);
 
-      var projectName = document.getElementById('project-name').innerHTML;
+      var projectName = document.getElementById('timer-project-inner').innerHTML;
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
       var endAMPM = ( timeStamp.end.getHours() > 11 ) ? "pm" : "am";
 
       //Object containing task data to send to template
       var newTask = {
         task_name: document.getElementById('task-name').value,
-        project_name: projectName.substring(projectName.indexOf('\"') + 1, projectName.lastIndexOf('\"')),
+        project_name: projectName,
         value: document.getElementById('task-amt').value,
         elapsed: {
           hours: document.getElementById('hours').innerHTML,
@@ -75,12 +75,13 @@ require('../templates');
         },
         start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
         end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
-        color: "#" + document.getElementById('hidden-color').value
+        color: "#" + window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
       };
 
       if ( newTask.task_name === "" ) {
         newTask.task_name = "(No description)";
       }
+      deleteActive();
       container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
       var latestTask = document.getElementsByClassName('task')[0];
       document.getElementsByClassName('total-time')[0].innerHTML = calcTotal(latestTask, 2);
@@ -178,7 +179,6 @@ function addTask(task) {
   task.description = "(No description)";
   task._csrf = document.getElementById('csrf').value;
   delete task.color;
-
   var req = new XMLHttpRequest();
   req.open('post', '/tasks');
   req.setRequestHeader('Content-Type', 'application/json');
@@ -207,7 +207,7 @@ function addActive(start) {
 function getActive() {
   var req = new XMLHttpRequest();
   req.onreadystatechange = function() {
-    if ( req.status == 200 && req.readyState == 4 ) {
+    if ( req.status === 200 && req.readyState === 4 ) {
       var res = JSON.parse(req.responseText);
       var activeTimer = res[0];
       if ( res.length > 0 ) {
@@ -228,6 +228,24 @@ function getActive() {
   };
   req.open('GET' , '/active_tasks');
   req.send();
+}
+
+function deleteActive() {
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+
+    }
+  };
+
+  var data =  {
+    _csrf:  document.getElementById('csrf').value
+  };
+
+  req.open('DELETE', '/active_tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', data._csrf);
+  req.send(JSON.stringify(data));
 }
 
 function calcTotal(taskCard, decs) {

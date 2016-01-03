@@ -48,6 +48,7 @@ function getTasks(params, callback) {
 function insertTask(params, callback) {
   var sql = "INSERT INTO tasks (task_name, project_name, user_id, description, value, start_time, end_time, elapsed) " +
             "VALUES ($1, $2, $3, $4, $5, $6, $7, $8)";
+            console.log(params);
   db.query(sql, params, function(err) {
     if (err) {
       return callback(err);

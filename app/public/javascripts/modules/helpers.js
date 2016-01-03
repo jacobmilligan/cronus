@@ -103,8 +103,9 @@ function getTimeDiff(start, current) {
 	var msDiff = (current - start);
 	var minutesDiff = ( ( (msDiff / 60) / 60 ) / 1000) * 60;
 	var hoursDiff = Math.floor(minutesDiff / 60);
-	minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
 	var secsDiff = Math.floor( ( minutesDiff * 60 ) - (Math.floor(minutesDiff) * 60) );
+	minutesDiff = ( minutesDiff % 60 );
+	minutesDiff = ( minutesDiff > 59 ) ? minutesDiff - 60 : minutesDiff;
 	minutesDiff = Math.floor(minutesDiff);
 	return {
 		seconds: secsDiff,

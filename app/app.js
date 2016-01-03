@@ -38,7 +38,7 @@ app.use(session( {
     resave: false,
     saveUninitialized: false,
     rolling: true
-  } 
+  }
 ));
 
 app.use(flash());
