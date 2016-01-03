@@ -499,6 +499,8 @@ require('../templates');
       document.getElementById('stopwatch').className = 'active-timer';
       event.target.className = 'task-control stop';
 
+      //Send new active timer to DB
+      addActive(timeStamp.start);
       //start timer
       timer = window.setInterval(function() {
 
@@ -648,6 +650,23 @@ function addTask(task) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', task._csrf);
   req.send(JSON.stringify(task));
+}
+
+function addActive(start) {
+  var taskName = ( document.getElementById('task-name').value.length === 0 ) ? "(No description)" : document.getElementById('task-name').value;
+  var active = {
+    _csrf: document.getElementById('csrf').value,
+    task_name: taskName,
+    project_name: document.getElementById('timer-project-inner').innerHTML,
+    value: document.getElementById('task-amt').innerHTML,
+    start_time: start
+  };
+
+  var req = new XMLHttpRequest();
+  req.open('POST', '/active_tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', active._csrf);
+  req.send(JSON.stringify(active));
 }
 
 function calcTotal(taskCard, decs) {
