@@ -34,7 +34,7 @@ require('../templates');
       event.target.className = 'task-control stop';
 
       //Send new active timer to DB
-      addActive(timeStamp.start);
+      addActive(new Date());
       //start timer
       timer = window.setInterval(function() {
 
@@ -217,9 +217,9 @@ function getActive() {
         document.getElementsByClassName('task-control')[0].click();
         document.getElementById('task-name').value = activeTimer.task_name;
         document.getElementById('task-amt').value = activeTimer.value;
-        document.getElementById('hours').innerHTML = timeToAppend.hours;
-        document.getElementById('minutes').innerHTML = timeToAppend.minutes;
-        document.getElementById('seconds').innerHTML = timeToAppend.seconds;
+        document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
+        document.getElementById('minutes').innerHTML = (timeToAppend.minutes < 10) ? '0' + timeToAppend.minutes : timeToAppend.minutes;
+        document.getElementById('seconds').innerHTML = (timeToAppend.seconds < 10) ? '0' + timeToAppend.seconds : timeToAppend.seconds;
         document.getElementById('timer-project-inner').style.backgroundColor = '#' + activeTimer.color;
         document.getElementById('timer-project-inner').style.backgroundColor = '#' + helpers.computeContrast(activeTimer.color);
         document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
