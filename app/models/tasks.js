@@ -59,5 +59,5 @@ function insertTask(params, callback) {
 
 module.exports = {
   getTasks: getTasks,
-  insertTask: insertTask
+  insertTask: insertTask,
 };

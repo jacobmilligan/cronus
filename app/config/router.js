@@ -6,6 +6,7 @@ var register = require('../controllers/register');
 var logout = require('../controllers/logout');
 var projects = require('../controllers/projects');
 var tasks = require('../controllers/tasks');
+var active_tasks = require('../controllers/active_tasks');
 
 module.exports = function(app) {
 	app.use('/', index);
@@ -15,4 +16,5 @@ module.exports = function(app) {
 	app.use('/logout', logout);
 	app.use('/projects', projects);
 	app.use('/tasks', tasks);
+	app.use('/active_tasks', active_tasks);
 };
