@@ -476,6 +476,7 @@ require('../templates');
   var timeStamp = {};
 
   if ( url.indexOf('tasks') > -1 ) {
+    document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
     getTasks();
     var taskControl = document.getElementsByClassName('task-control')[0];
     helpers.detectTouch(taskControl, handleTimer, true);
@@ -622,10 +623,8 @@ function getTasks() {
           projectName = tasks[i].getElementsByClassName('task-project-name')[0];
           projectColor = helpers.rgbToHex(window.getComputedStyle(projectName).getPropertyValue('background-color'));
           projectName.style.color = helpers.computeContrast(projectColor);
-
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = calcTotal(tasks[i], 2); //round
         }
-
       } else {
         container.innerHTML = "There are no tasks";
       }

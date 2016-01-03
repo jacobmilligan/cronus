@@ -30,13 +30,17 @@
   }
 
   #stopwatch {
-    @include row;
+    margin-top: 5.75px;
   }
 
   #timer-project {
     @include span-columns(12);
     @include row;
     margin-bottom: 15px;
+  }
+
+  #timer-project-inner {
+    padding: 5px;
   }
 
   .task-control {
