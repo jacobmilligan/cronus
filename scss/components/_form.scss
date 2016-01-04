@@ -106,7 +106,7 @@
 	@include box-shadowing-full;
 	padding: 5px;
 	position: relative;
-	top: -10%;
+	top: -11%;
 	cursor: default;
 	opacity: 0;
 	display: none;
@@ -224,7 +224,7 @@
 		content: '▼';
 		font-size: 1.4em;
 		margin-left: -8px;
-		margin-top: -2px;
+		margin-top: -2.2px;
 		text-align: center;
 		text-shadow: 0 2px 2px $shadow-color;
 	}
@@ -251,10 +251,16 @@
 	}
 
 	.color-list {
-		top: -17%;
+		top: -23%;
+
+		.color-item {
+			@include span-columns(3.23 of 11);
+		}
 	}
-	
-	.color-item {
-		@include span-columns(3.2 of 11);
+
+	.tooltip {
+		&:after {
+			margin-top: -5px;
+		}
 	}
 }
