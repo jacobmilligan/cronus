@@ -514,7 +514,7 @@ require('../templates');
     var container = document.getElementsByClassName('container')[0];
     if ( document.getElementsByClassName('active-timer').length === 0 ) {
       document.getElementById('stopwatch').className = 'active-timer';
-      event.target.className = 'task-control stop';
+      document.getElementById('task-control').className = 'task-control stop';
 
       //Send new active timer to DB
       addActive(new Date());
@@ -575,12 +575,37 @@ require('../templates');
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
       document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
       document.getElementById('stopwatch').className = '';
-      event.target.className = 'task-control play';
+      document.getElementById('task-control').className = 'task-control play';
       document.getElementById('hours').innerHTML = document.getElementById('minutes').innerHTML = document.getElementById('seconds').innerHTML = '00';
     }
   }
 
   // End timer interactions
+  function getActive() {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+      if ( req.status === 200 && req.readyState === 4 ) {
+        var res = JSON.parse(req.responseText);
+        var activeTimer = res[0];
+        if ( res.length > 0 ) {
+          var startTime = new Date(activeTimer.start_time);
+          var currTime = new Date();
+          var timeToAppend = helpers.getTimeDiff(startTime, currTime);
+          handleTimer(); //Start timer
+          document.getElementById('task-name').value = activeTimer.task_name;
+          document.getElementById('task-amt').value = activeTimer.value;
+          document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
+          document.getElementById('minutes').innerHTML = (timeToAppend.minutes < 10) ? '0' + timeToAppend.minutes : timeToAppend.minutes;
+          document.getElementById('seconds').innerHTML = (timeToAppend.seconds < 10) ? '0' + timeToAppend.seconds : timeToAppend.seconds;
+          document.getElementById('timer-project-inner').style.backgroundColor = '#' + activeTimer.color;
+          document.getElementById('timer-project-inner').style.backgroundColor = '#' + helpers.computeContrast(activeTimer.color);
+          document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
+        }
+      }
+    };
+    req.open('GET' , '/active_tasks');
+    req.send();
+  }
 
 }());
 
@@ -685,32 +710,6 @@ function addActive(start) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', active._csrf);
   req.send(JSON.stringify(active));
-}
-
-function getActive() {
-  var req = new XMLHttpRequest();
-  req.onreadystatechange = function() {
-    if ( req.status === 200 && req.readyState === 4 ) {
-      var res = JSON.parse(req.responseText);
-      var activeTimer = res[0];
-      if ( res.length > 0 ) {
-        var startTime = new Date(activeTimer.start_time);
-        var currTime = new Date();
-        var timeToAppend = helpers.getTimeDiff(startTime, currTime);
-        document.getElementsByClassName('task-control')[0].click();
-        document.getElementById('task-name').value = activeTimer.task_name;
-        document.getElementById('task-amt').value = activeTimer.value;
-        document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
-        document.getElementById('minutes').innerHTML = (timeToAppend.minutes < 10) ? '0' + timeToAppend.minutes : timeToAppend.minutes;
-        document.getElementById('seconds').innerHTML = (timeToAppend.seconds < 10) ? '0' + timeToAppend.seconds : timeToAppend.seconds;
-        document.getElementById('timer-project-inner').style.backgroundColor = '#' + activeTimer.color;
-        document.getElementById('timer-project-inner').style.backgroundColor = '#' + helpers.computeContrast(activeTimer.color);
-        document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
-      }
-    }
-  };
-  req.open('GET' , '/active_tasks');
-  req.send();
 }
 
 function deleteActive() {
