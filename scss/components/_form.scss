@@ -106,14 +106,14 @@
 	@include box-shadowing-full;
 	padding: 5px;
 	position: relative;
-	top: -100px;
+	top: -10%;
 	cursor: default;
 	opacity: 0;
 	display: none;
 
 	.color-item {
 		position: relative;
-		@include span-columns(3.35 of 11);
+		@include span-columns(3.33 of 11);
 		margin: 8px;
 		height: 50px;
 		border-radius: 2px;
@@ -173,8 +173,9 @@
 	&:before {
 		@include position(absolute, 0 1em 0 0);
 		color: $base-background-color;
-		top: -0.9em;
+		margin-top: -0.9em;
 		left: -60%;
+		padding: 0;
 		font-family: FontAwesome;
 		font-size: $font-size-huge;
 		content: "\f0d8";
@@ -191,7 +192,7 @@
 	text-align: center;
 	padding: 0;
 
-	&:focus, 
+	&:focus,
 	&:hover .tooltip {
 		opacity: 1;
 		visibility: visible;
@@ -236,4 +237,24 @@
 
 .tags {
 	@include span-columns(12);
+}
+
+@include media($thin-max) {
+	.select-colors {
+		@include span-columns(6 of 12);
+	}
+
+	.selected-color {
+			&:after {
+				margin-left: 42px;
+			}
+	}
+
+	.color-list {
+		top: -17%;
+	}
+	
+	.color-item {
+		@include span-columns(3.2 of 11);
+	}
 }

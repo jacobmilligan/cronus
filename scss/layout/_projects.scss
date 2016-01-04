@@ -102,8 +102,8 @@
 
 .project-modal {
 	display: inline-block;
-	@include margin(150px 20px 20px 20px);
-	padding: 25px;
+	@include margin(10% 20px 20px 20px);
+	padding: 20px;
 	background-color: $base-background-color;
 	@include border-width(1px);
 	border-style: solid;
@@ -137,7 +137,7 @@
 }
 
 #project-amt {
-	width: 143px;
+	width: 133px;
 	height: 50px;
 	text-align: center;
 }
@@ -145,5 +145,11 @@
 @include media($inline-cards) {
 	.project-grid {
 		margin: 30px 1em 30px 1em;
+	}
+}
+
+@include media($thin-max) {
+	#project-amt {
+		width: 103px;
 	}
 }
