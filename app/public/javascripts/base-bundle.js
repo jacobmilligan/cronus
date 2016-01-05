@@ -489,7 +489,6 @@ require('../templates');
 (function() {
   var url = window.location.href;
   var timer;
-  var timeStamp = {};
 
   if ( url.indexOf('tasks') > -1 ) {
     document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
@@ -501,11 +500,6 @@ require('../templates');
 
   //Handles all timer interactions
   function handleTimer(event) {
-    if ( timeStamp.start ) {
-      timeStamp.end = new Date();
-    } else {
-      timeStamp.start = new Date();
-    }
 
     var seconds = document.getElementById('seconds');
     var minutes = document.getElementById('minutes');
@@ -548,10 +542,14 @@ require('../templates');
         seconds: document.getElementById('seconds').innerHTML
       };
 
-      /* Get timeDiff here to ensure a correct timestamp
       var timeStamp = {
-        end: new Date(),
-      };*/
+        end: new Date()
+      };
+      var diffHours = Number(timeStamp.end.getHours()) - Number(elapsed.hours);
+      var diffMinutes = Number(timeStamp.end.getMinutes()) - Number(elapsed.minutes);
+      var diffSeconds = Number(timeStamp.end.getSeconds()) - Number(elapsed.seconds);
+      timeStamp.start = new Date(timeStamp.end.getFullYear(), timeStamp.end.getMonth(), timeStamp.end.getDate(), diffHours, diffMinutes, diffSeconds);
+      console.log(timeStamp.start);
 
       var projectName = document.getElementById('timer-project-inner').innerHTML;
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
@@ -563,14 +561,26 @@ require('../templates');
         project_name: projectName,
         value: document.getElementById('task-amt').value,
         elapsed: elapsed,
-        start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
-        end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
+        start_time: ( timeStamp.start.getHours() % 12 ) + ":",
+        end_time: ( timeStamp.end.getHours() % 12 ) + ":",
         color: "#" + window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
       };
+
+      if ( timeStamp.start.getMinutes() < 10 ) {
+        newTask.start_time += '0';
+      }
+
+      if ( timeStamp.end.getMinutes() < 10 ) {
+        newTask.end_time += '0';
+      }
+
+      newTask.start_time += timeStamp.start.getMinutes() + startAMPM;
+      newTask.end_time += timeStamp.end.getMinutes() + endAMPM;
 
       if ( newTask.task_name === "" ) {
         newTask.task_name = "(No description)";
       }
+
       deleteActive();
       container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
       var latestTask = document.getElementsByClassName('task')[0];
