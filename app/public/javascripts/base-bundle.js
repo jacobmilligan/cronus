@@ -573,7 +573,7 @@ require('../templates');
       if ( timeStamp.end.getMinutes() < 10 ) {
         newTask.end_time += '0';
       }
-
+      
       newTask.start_time += timeStamp.start.getMinutes() + startAMPM;
       newTask.end_time += timeStamp.end.getMinutes() + endAMPM;
 
