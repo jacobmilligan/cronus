@@ -542,6 +542,17 @@ require('../templates');
     } else {
       window.clearInterval(timer);
 
+      var elapsed = {
+        hours: document.getElementById('hours').innerHTML,
+        minutes: document.getElementById('minutes').innerHTML,
+        seconds: document.getElementById('seconds').innerHTML
+      };
+
+      /* Get timeDiff here to ensure a correct timestamp
+      var timeStamp = {
+        end: new Date(),
+      };*/
+
       var projectName = document.getElementById('timer-project-inner').innerHTML;
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
       var endAMPM = ( timeStamp.end.getHours() > 11 ) ? "pm" : "am";
@@ -551,11 +562,7 @@ require('../templates');
         task_name: document.getElementById('task-name').value,
         project_name: projectName,
         value: document.getElementById('task-amt').value,
-        elapsed: {
-          hours: document.getElementById('hours').innerHTML,
-          minutes: document.getElementById('minutes').innerHTML,
-          seconds: document.getElementById('seconds').innerHTML
-        },
+        elapsed: elapsed,
         start_time: ( timeStamp.start.getHours() % 12 ) + ":" + timeStamp.start.getMinutes() + startAMPM,
         end_time: ( timeStamp.end.getHours() % 12 ) + ":" + timeStamp.end.getMinutes() + endAMPM,
         color: "#" + window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
