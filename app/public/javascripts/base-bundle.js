@@ -573,7 +573,7 @@ require('../templates');
       if ( timeStamp.end.getMinutes() < 10 ) {
         newTask.end_time += '0';
       }
-      
+
       newTask.start_time += timeStamp.start.getMinutes() + startAMPM;
       newTask.end_time += timeStamp.end.getMinutes() + endAMPM;
 
@@ -656,6 +656,7 @@ function getTasks() {
           var endTime = new Date(res[i].end_time);
 
           var timestampHours = startTime.getHours();
+          var timestampMinutes = ( startTime.getMinutes() < 10 ) ? '0' + startTime.getMinutes() : startTime.getMinutes();
 
           if ( timestampHours < 12 ) {
             timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours;
@@ -664,9 +665,10 @@ function getTasks() {
           }
 
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
-          res[i].start_time = (timestampHours) + ":" + startTime.getMinutes() + ampm; //put into 12-hour time
+          res[i].start_time = (timestampHours) + ":" + timestampMinutes + ampm; //put into 12-hour time
 
           timestampHours = endTime.getHours();
+          timestampMinutes = ( endTime.getMinutes() < 10 ) ? '0' + endTime.getMinutes() : endTime.getMinutes();
           if ( timestampHours < 12 ) {
             timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours;
           } else {
@@ -674,7 +676,7 @@ function getTasks() {
           }
 
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
-          res[i].end_time = (timestampHours) + ":" + endTime.getMinutes() + ampm;
+          res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
 
