@@ -563,8 +563,10 @@ require('../templates');
         elapsed: elapsed,
         start_time: ( timeStamp.start.getHours() % 12 ) + ":",
         end_time: ( timeStamp.end.getHours() % 12 ) + ":",
-        color: "#" + window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
+        color: window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
       };
+
+      console.log(newTask.color);
 
       if ( timeStamp.start.getMinutes() < 10 ) {
         newTask.start_time += '0';
@@ -582,7 +584,12 @@ require('../templates');
       }
 
       deleteActive();
-      container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+      var currPageProj = document.getElementById('project-name').innerHTML;
+      currPageProj = currPageProj.substring(currPageProj.indexOf('\"') + 1, currPageProj.lastIndexOf('\"'));
+      console.log(currPageProj);
+      if ( newTask.project_name === currPageProj) {
+        container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+      }
       var latestTask = document.getElementsByClassName('task')[0];
       document.getElementsByClassName('total-time')[0].innerHTML = calcTotal(latestTask, 2);
       newTask.start_time = timeStamp.start;
