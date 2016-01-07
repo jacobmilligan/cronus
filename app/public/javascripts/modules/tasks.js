@@ -138,11 +138,10 @@ require('../templates');
           document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
           document.getElementById('minutes').innerHTML = (timeToAppend.minutes < 10) ? '0' + timeToAppend.minutes : timeToAppend.minutes;
           document.getElementById('seconds').innerHTML = (timeToAppend.seconds < 10) ? '0' + timeToAppend.seconds : timeToAppend.seconds;
+          document.getElementById('timer-project').style.backgroundColor = '#' + activeTimer.color;
           document.getElementById('timer-project-inner').style.backgroundColor = '#' + activeTimer.color;
+          document.getElementById('timer-project-inner').style.color = '#' + helpers.computeContrast(activeTimer.color);
 
-          //NOTE: this part may or may not be needed, not sure yet
-          //document.getElementById('timer-project-inner').style.backgroundColor = '#' + helpers.computeContrast(activeTimer.color);
-          
           document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
         }
       }
