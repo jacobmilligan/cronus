@@ -21,7 +21,7 @@
     img {
       height: 3em;
     }
-  } 
+  }
 
   .footer-links {
     @include display(flex);
@@ -57,7 +57,7 @@
     color: $footer-color;
     font-size: 1em;
     margin-bottom: 0.4em;
-  }  
+  }
 
   hr {
     border: 1px solid transparentize($footer-disclaimer-color, 0.3);

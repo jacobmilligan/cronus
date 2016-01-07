@@ -28,11 +28,11 @@ $visual-grid-index: front !global;
 @import 'layout/footer';
 @import 'layout/projects';
 @import 'layout/tasks';
+@import 'layout/timer';
 
 //Components
 @import 'components/link';
 @import 'components/menu';
 @import 'components/form';
 @import 'components/buttons';
-@import 'components/options';
 @import 'components/loaders';

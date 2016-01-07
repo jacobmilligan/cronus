@@ -5,19 +5,17 @@
   <h3 id="project-name">Project - "{{project_name}}"</h3>
   <a href="/dashboard/projects"><button>Return to projects</button></a>
 
-  <div class="timer form-grid">
+  <div class="timer">
     <input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
     <input type="hidden" value="{{color}}" id="hidden-color">
     <input type="hidden" value="{{default_value}}" id="hidden-value">
-    <input type="text" placeholder="What are you timing?" name="task_name" id="task-name">
-    <hr>
-    <input type="text" placeholder="$0.00" name="value" id="task-amt">
-    <hr class="remove-hr">
-    <div id="stopwatch">
+    <input class="timer-component" type="text" placeholder="What are you timing?" name="task_name" id="task-name">
+    <div class="timer-component" id="stopwatch">
       <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
-      <i id="task-control" class="task-control play"></i>
     </div>
-    <div id="timer-project"><span id="timer-project-inner" style="background-color:#{{color}}">{{project_name}}</span></div>
+    <i id="task-control" class="task-control play timer-component"></i>
+    <input class="timer-component" type="text" placeholder="$0.00" name="value" id="task-amt">
+    <div class="timer-component" id="timer-project"><span id="timer-project-inner" style="background-color:#{{color}}">{{project_name}}</span></div>
   </div>
 
 </section>
