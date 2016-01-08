@@ -29,7 +29,6 @@
 
 .timer-row {
   @include span-columns(12.6);
-  text-align: left;
   padding: 0;
   margin: 0;
 }
@@ -63,9 +62,9 @@
   @include row;
   @include span-columns(5.5 of 12);
   margin-right: 6px;
-  text-align: center;
   height: 50px;
   @include btn-shadowing(1px);
+  text-align: center;
 }
 
 #timer-project {
