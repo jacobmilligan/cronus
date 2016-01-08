@@ -25,12 +25,21 @@ router.post('/', function(req, res, next) {
 });
 
 router.delete('/', function(req, res, next) {
-  console.log(req);
   model.deleteRunning([req.session.user.id], function(err, success) {
     if (success) {
       res.send("Success");
     } else {
       console.log(err);
+    }
+  });
+});
+
+router.put('/', function(req, res, next) {
+  model.updateRunning([req.body.task_name, req.body.value, req.session.user.id], function(err, success) {
+    if (success) {
+      res.send("Success");
+    } else {
+      res.send(err);
     }
   });
 });

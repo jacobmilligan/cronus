@@ -6,13 +6,37 @@ require('../templates');
 (function() {
   var url = window.location.href;
   var timer;
+  var activeTaskName = "";
+  var activeValue = "";
 
   if ( url.indexOf('tasks') > -1 ) {
+    activeTaskName = document.getElementById('task-name').value;
+    activeValue = document.getElementById('task-amt').value;
     document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
     getTasks();
     getActive();
     var taskControl = document.getElementsByClassName('task-control')[0];
     helpers.detectTouch(taskControl, handleTimer, true);
+    document.getElementById('task-name').addEventListener('blur', updateActive);
+    document.getElementById('task-amt').addEventListener('blur', updateActive);
+  }
+
+  function updateActive() {
+    var updatedTaskName = document.getElementById('task-name').value;
+    var updatedAmt = document.getElementById('task-amt').value;
+    if ( updatedTaskName !== activeTaskName || updatedAmt !== activeValue) {
+      var data = {
+        _csrf: document.getElementById('csrf').value,
+        task_name: updatedTaskName,
+        value: updatedAmt
+      };
+
+      var req = new XMLHttpRequest();
+      req.open('put', '/active_tasks');
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('csrfToken', data._csrf);
+      req.send(JSON.stringify(data));
+    }
   }
 
   //Handles all timer interactions
@@ -66,7 +90,6 @@ require('../templates');
       var diffMinutes = Number(timeStamp.end.getMinutes()) - Number(elapsed.minutes);
       var diffSeconds = Number(timeStamp.end.getSeconds()) - Number(elapsed.seconds);
       timeStamp.start = new Date(timeStamp.end.getFullYear(), timeStamp.end.getMonth(), timeStamp.end.getDate(), diffHours, diffMinutes, diffSeconds);
-      console.log(timeStamp.start);
 
       var projectName = document.getElementById('timer-project-inner').innerHTML;
       var startAMPM = ( timeStamp.start.getHours() > 11 ) ? "pm" : "am";
@@ -82,8 +105,6 @@ require('../templates');
         end_time: ( timeStamp.end.getHours() % 12 ) + ":",
         color: window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
       };
-
-      console.log(newTask.color);
 
       if ( timeStamp.start.getMinutes() < 10 ) {
         newTask.start_time += '0';
@@ -103,7 +124,6 @@ require('../templates');
       deleteActive();
       var currPageProj = document.getElementById('project-name').innerHTML;
       currPageProj = currPageProj.substring(currPageProj.indexOf('\"') + 1, currPageProj.lastIndexOf('\"'));
-      console.log(currPageProj);
       if ( newTask.project_name === currPageProj) {
         container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
       }

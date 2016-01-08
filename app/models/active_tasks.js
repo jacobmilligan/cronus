@@ -35,8 +35,20 @@ function deleteRunning(id, callback) {
   });
 }
 
+function updateRunning(params, callback) {
+  var sql = "UPDATE active_tasks SET task_name = $1, value = $2 WHERE user_id = $3";
+  db.query(sql, params, function(err) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, true);
+    }
+  });
+}
+
 module.exports = {
   setRunning: setRunning,
   getRunning: getRunning,
-  deleteRunning: deleteRunning
+  deleteRunning: deleteRunning,
+  updateRunning: updateRunning
 };
