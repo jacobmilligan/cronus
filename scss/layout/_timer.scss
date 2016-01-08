@@ -27,42 +27,49 @@
   @include btn-shadowing(1px);
 }
 
+.timer-row {
+  @include span-columns(12.6);
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
 #stopwatch {
-  @include row;
   @include span-columns(8 of 12);
   color: $base-font-color;
-  font-size: $font-size-xxlarge;
-  margin-right: 5px;
+  font-size: 3.5rem;
+  margin-right: 6px;
   color: tint($primary-color-dark, 20%);
   height: 80px;
+  display: inline-block;
 }
 
 #task-name {
-  @include row;
-  @include span-columns(11.9 of 12);
+  @include span-columns(12 of 12);
   @include btn-shadowing(1px);
 }
 
 #task-control {
-  @include span-columns(3.94 of 12);
-  font-size: $font-size-xxlarge;
-  margin-right: 0;
+  text-align: center;
+  @include span-columns(3.5 of 12);
   margin-left: 0;
+  display: inline-block;
+  font-size: $font-size-xxlarge;
   height: 80px;
   cursor: pointer;
 }
 
 #task-amt {
   @include row;
-  @include span-columns(6 of 12);
-  margin-right: 5px;
+  @include span-columns(5.5 of 12);
+  margin-right: 6px;
   text-align: center;
   height: 50px;
   @include btn-shadowing(1px);
 }
 
 #timer-project {
-  @include span-columns(5.94 of 12);
+  @include span-columns(6 of 12);
   margin-left: 0;
   min-height: 50px;
   height: auto;
