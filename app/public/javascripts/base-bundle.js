@@ -496,6 +496,7 @@ require('../templates');
     document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
     getTasks();
     getActive();
+
     var taskControl = document.getElementsByClassName('task-control')[0];
     helpers.detectTouch(taskControl, handleTimer, true);
     document.getElementById('task-name').addEventListener('blur', updateActive);
@@ -609,7 +610,10 @@ require('../templates');
         container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
       }
       var latestTask = document.getElementsByClassName('task')[0];
-      document.getElementsByClassName('total-time')[0].innerHTML = calcTotal(latestTask, 2);
+
+      if ( document.getElementsByClassName('total-time').length > 0 ) {
+        document.getElementsByClassName('total-time')[0].innerHTML = calcTotal(latestTask, 2);
+      }
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
       addTask(newTask);
@@ -617,7 +621,11 @@ require('../templates');
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
       document.getElementById('timer-project').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
       document.getElementById('timer-project-inner').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
-      document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
+
+      if ( document.getElementsByClassName('task-project-name').length > 0 ) {
+        document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
+      }
+
       document.getElementById('stopwatch').className = 'timer-component';
       document.getElementById('task-control').className = 'task-control play timer-component';
       document.getElementById('hours').innerHTML = document.getElementById('minutes').innerHTML = document.getElementById('seconds').innerHTML = '00';
@@ -631,17 +639,18 @@ require('../templates');
       if ( req.status === 200 && req.readyState === 4 ) {
         var res = JSON.parse(req.responseText);
         var activeTimer = res[0];
+
+        //Set default value before altering to reflect active timers value
+        var taskAmt = document.getElementById('task-amt');
+        if ( document.getElementsByClassName('active-timer').length === 0 ) {
+          taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
+        }
+
         if ( res.length > 0 ) {
           var startTime = new Date(activeTimer.start_time);
           var currTime = new Date();
           var timeToAppend = helpers.getTimeDiff(startTime, currTime);
           handleTimer(); //Start timer
-
-          var taskAmt = document.getElementById('task-amt');
-          if ( document.getElementsByClassName('active-timer').length === 0 ) {
-            taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
-          }
-
           document.getElementById('task-name').value = activeTimer.task_name;
           document.getElementById('task-amt').value = activeTimer.value;
           document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
@@ -691,18 +700,20 @@ function getTasks() {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
 
+          // Reformat start_time hours, adding leading zeroes and converting to 12 hour time as needed
           var timestampHours = startTime.getHours();
           var timestampMinutes = ( startTime.getMinutes() < 10 ) ? '0' + startTime.getMinutes() : startTime.getMinutes();
 
           if ( timestampHours < 12 ) {
-            timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours;
+            timestampHours = ( timestampHours === 0 ) ? 12 : timestampHours; // If hours are 'zero-o'clock', change from zero to 12
           } else {
-            timestampHours = ( timestampHours % 12 );
+            timestampHours = ( timestampHours % 12 ); // Put into 12-hours time
           }
 
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
           res[i].start_time = (timestampHours) + ":" + timestampMinutes + ampm; //put into 12-hour time
 
+          //Do the same with end time
           timestampHours = endTime.getHours();
           timestampMinutes = ( endTime.getMinutes() < 10 ) ? '0' + endTime.getMinutes() : endTime.getMinutes();
           if ( timestampHours < 12 ) {
@@ -757,7 +768,7 @@ function addActive(start) {
     _csrf: document.getElementById('csrf').value,
     task_name: taskName,
     project_name: document.getElementById('timer-project-inner').innerHTML,
-    value: document.getElementById('task-amt').innerHTML,
+    value: document.getElementById('task-amt').value,
     start_time: start,
     color: document.getElementById('hidden-color').value
   };
