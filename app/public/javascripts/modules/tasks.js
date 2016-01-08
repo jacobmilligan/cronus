@@ -10,8 +10,6 @@ require('../templates');
   var activeValue = "";
 
   if ( url.indexOf('tasks') > -1 ) {
-    activeTaskName = document.getElementById('task-name').value;
-    activeValue = document.getElementById('task-amt').value;
     document.getElementById('timer-project-inner').style.color = helpers.computeContrast(document.getElementById('hidden-color').value);
     getTasks();
     getActive();
@@ -134,6 +132,8 @@ require('../templates');
       addTask(newTask);
       document.getElementById('task-name').value = '';
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
+      document.getElementById('timer-project').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
+      document.getElementById('timer-project-inner').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
       document.getElementsByClassName('task-project-name')[0].style.color = helpers.computeContrast(newTask.color);
       document.getElementById('stopwatch').className = 'timer-component';
       document.getElementById('task-control').className = 'task-control play timer-component';
@@ -153,6 +153,12 @@ require('../templates');
           var currTime = new Date();
           var timeToAppend = helpers.getTimeDiff(startTime, currTime);
           handleTimer(); //Start timer
+
+          var taskAmt = document.getElementById('task-amt');
+          if ( document.getElementsByClassName('active-timer').length === 0 ) {
+            taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
+          }
+
           document.getElementById('task-name').value = activeTimer.task_name;
           document.getElementById('task-amt').value = activeTimer.value;
           document.getElementById('hours').innerHTML = (timeToAppend.hours < 10) ? '0' + timeToAppend.hours : timeToAppend.hours;
@@ -163,6 +169,8 @@ require('../templates');
           document.getElementById('timer-project-inner').style.color = '#' + helpers.computeContrast(activeTimer.color);
 
           document.getElementById('timer-project-inner').innerHTML = activeTimer.project_name;
+          activeTaskName = document.getElementById('task-name').value;
+          activeValue = document.getElementById('task-amt').value;
         }
       }
     };
@@ -186,7 +194,6 @@ function getTasks() {
       loader.style.display = 'none';
 
       var taskAmt = document.getElementById('task-amt');
-      taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
       taskAmt.addEventListener('input', helpers.handleMoney);
       taskAmt.addEventListener('blur', helpers.setDefaultValue);
       taskAmt.addEventListener('focus', function(event) {
@@ -257,6 +264,8 @@ function addTask(task) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', task._csrf);
   req.send(JSON.stringify(task));
+  var taskAmt = document.getElementById('task-amt');
+  taskAmt.value = taskAmt.placeholder = document.getElementById('hidden-value').value; //Set the value and placeholder to the projects default value
 }
 
 function addActive(start) {
