@@ -65,10 +65,11 @@ function saveChanges(original, title) {
     value: original.card.getElementsByClassName('dollar-amt')[0].value,
     title: original.card.getElementsByClassName('project-card-name')[0].value,
     description: original.card.getElementsByClassName('project-card-description')[0].value,
-    original: original.card.getElementsByClassName('original-title')[0].value
+    original: original.card.getElementsByClassName('original-title')[0].value,
+    color: helpers.rgbToHex(window.getComputedStyle(original.card).getPropertyValue('border-left-color'))
   };
   var req = new XMLHttpRequest();
-
+  console.log(changed.color);
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
       console.log(req.responseText);

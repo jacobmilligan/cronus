@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-	var data = [req.body.value, req.body.title, req.body.description, req.session.user.id, req.body.original];
+	var data = [req.body.value, req.body.title, req.body.description, req.session.user.id, req.body.original, req.body.color];
 	console.log(data);
 	model.editProjects(data, function(err, success) {
 		if (err) {
