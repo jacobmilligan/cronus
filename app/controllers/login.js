@@ -38,7 +38,7 @@ router.post('/', function(req, res, next) {
 			if ( req.body.remember === 'on' ) {
 				req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; //One month
 			} else {
-				req.session.cookie.maxAge = 12 * 60 * 60 * 60000; // 12 hours
+				req.session.cookie.maxAge = 20 * 60 * 1000; // 20 minutes
 			}
 			res.redirect('/dashboard');
 		}
