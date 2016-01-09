@@ -14,7 +14,19 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	var dataToInsert = [req.body.project_name, req.session.user.id, req.body.description, req.body.default_value, req.body.color];
 	model.addProjects(dataToInsert, function(err, success) {
-		if ( err ) {
+		if (err) {
+			res.send(err);
+		} else {
+			res.send(success);
+		}
+	});
+});
+
+router.put('/', function(req, res, next) {
+	var data = [req.body.value, req.body.title, req.body.description, req.session.user.id, req.body.original];
+	console.log(data);
+	model.editProjects(data, function(err, success) {
+		if (err) {
 			res.send(err);
 		} else {
 			res.send(success);

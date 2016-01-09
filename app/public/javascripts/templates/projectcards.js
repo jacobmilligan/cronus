@@ -5,13 +5,15 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
 
   return "<div class=\"project-grid\" style=\"border-left-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">\n	<span class=\"dollar-amt\">"
-    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
-    + "</span>\n	<div class=\"dropdown-menu\">\n		<a class=\"project-settings\"></a>\n	</div>\n	<h2>"
+    + "\">\n	<input type=\"hidden\" value=\""
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
-    + "</h2>\n	<p>"
+    + "\" class=\"original-title\">\n	<input type=\"text\" class=\"dollar-amt\" value=\"$"
+    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
+    + "\" disabled>\n	<a class=\"project-settings\"></a>\n	<button class=\"btn save\">Save</button>\n	<input type=\"text\" class=\"project-card-name\" value=\""
+    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
+    + "\" disabled>\n	<textarea type=\"text\" class=\"project-card-description\" disabled>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "<p>\n	<a href=\"tasks/"
+    + "</textarea>\n	<a href=\"tasks/"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\"><button style=\"background-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))

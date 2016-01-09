@@ -3,30 +3,72 @@
 	text-align: center;
 }
 
-.dollar-amt {
-	text-align: left;
+input.dollar-amt {
 	@include row;
-	@include span-columns(2);
-	margin-top: -10px;
-	text-align: left;
+	@include span-columns(6);
+	@include shift(-1.5);
+	text-align: center;
+	margin-top: -5px;
+	padding: 5px;
+	font-size: $font-size-small;
+	height: auto;
 
-	&:before {
-		font-family: FontAwesome;
-		vertical-align: middle;
-		content: "\f155";
-		margin-right: 3px;
-		color: tint($base-green, 30%);
-		font-size: $font-size-xlarge;
+	&:disabled {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
+}
+
+.project-edit-amt {
+	@include span-columns(2);
+	width: 1px;
+}
+
+input.project-card-name {
+	@include row;
+	@include span-columns(12);
+	font-family: bariol-reg;
+	font-size: $font-size-xlarge;
+	padding: 5px;
+	text-align: center;
+
+	&:disabled {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
+}
+
+textarea.project-card-description {
+	@include row;
+	@include span-columns(12);
+	margin-top: -10px;
+	height: auto;
+	resize: none;
+	text-align: center;
+	padding: 5px;
+
+	&:disabled {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
 	}
 }
 
 @include direction-context(right-to-left) {
 	.project-settings {
 		@include span-columns(2);
-		@include transition(all 0.2s ease-in-out);
+		@include transition(all 0.1s ease-in-out);
 		font-size: $font-size-xlarge;
 		text-align: right;
-		margin-top: -10px;
+		margin-top: -12px;
 
 		&:hover {
 			text-decoration: none;
@@ -37,6 +79,15 @@
 			font-family: FontAwesome;
 			content: "\f013";
 		}
+	}
+
+	.save {
+		@include span-columns(4 of 12);
+		@include shift(-2.5);
+		@include transition(all 0.1s ease-in-out);
+		padding: 10px;
+		margin-top: -8px;
+		visibility: hidden;
 	}
 }
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var helpers = require('./helpers');
+var projectCards = require('./project_cards');
 require('../templates');
 
 // Project page functions
@@ -54,11 +55,8 @@ require('../templates');
 						colorProject(container.childNodes[i]);
 					}
 
-					var projectSettingsBtns = document.getElementsByClassName('project-settings');
-
-					for (i = 0; i < projectSettingsBtns.length; i++) {
-						helpers.detectTouch(projectSettingsBtns[i], showProjectSettings, true);
-					}
+					//Handle events dependant on rendered cards
+					projectCards();
 
 				} else {
 					noProjects.style.display = 'block';
@@ -211,7 +209,3 @@ require('../templates');
 	}
 
 }());
-
-function showProjectSettings(event) {
-
-}

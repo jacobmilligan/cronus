@@ -15,7 +15,6 @@ function query(sql, paramArray, callback) {
 	});
 }
 
-
 module.exports = {
 	query: query
 };

@@ -34,8 +34,24 @@ function getColor(params, callback) {
 	});
 }
 
+function editProjects(attrs, callback) {
+	var sql = ["UPDATE tasks SET project_name = $1 WHERE user_id = $2 AND project_name = $3",
+						"UPDATE active_tasks SET project_name = $1 WHERE user_id = $2 AND project_name = $3",
+						"UPDATE projects SET default_value = $1, project_name = $2, description = $3 WHERE user_id = $4 AND project_name = $5"];
+	var params = [attrs[1], attrs[3], attrs[4]];
+	console.log(params);
+	db.query(sql[2], attrs, function(err, result) {
+		if (err) {
+			return callback(err);
+		} else {
+			return callback(null, true);
+		}
+	});
+}
+
 module.exports = {
 	getProjects: getProjects,
 	addProjects: addProjects,
+	editProjects: editProjects,
 	getColor: getColor
 };

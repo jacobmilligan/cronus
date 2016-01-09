@@ -4,8 +4,9 @@
 require('./modules/menu');
 require('./modules/projects');
 require('./modules/tasks');
+require('./modules/project_cards');
 
-},{"./modules/menu":3,"./modules/projects":4,"./modules/tasks":5}],2:[function(require,module,exports){
+},{"./modules/menu":3,"./modules/project_cards":4,"./modules/projects":5,"./modules/tasks":6}],2:[function(require,module,exports){
 'use strict';
 
 function detectTouch(element, event, add) {
@@ -265,6 +266,93 @@ function computeHeight(element) {
 'use strict';
 
 var helpers = require('./helpers');
+
+function init() {
+  var settingsButtons = document.getElementsByClassName('project-settings');
+  var saveButtons = document.getElementsByClassName('save');
+  if ( settingsButtons.length > 0 ) {
+    for (var i = 0; i < settingsButtons.length; i++) {
+      helpers.detectTouch(settingsButtons[i], showSettings, true);
+      helpers.detectTouch(saveButtons[i], showSettings, true);
+    }
+  }
+}
+
+function showSettings(event) {
+  var currCard = event.target.parentNode;
+
+  if ( currCard.className === "project-grid" ) {
+    var cardAttrs = {
+      card: currCard,
+      settings: currCard.getElementsByClassName('project-settings')[0],
+      save: currCard.getElementsByClassName('save')[0],
+      value: currCard.getElementsByClassName('dollar-amt')[0],
+      title: currCard.getElementsByClassName('project-card-name')[0],
+      description: currCard.getElementsByClassName('project-card-description')[0]
+    };
+    var hiddenStatus = window.getComputedStyle(cardAttrs.settings).getPropertyValue('visibility');
+
+    if ( hiddenStatus === 'visible' ) {
+      cardAttrs.settings.style.visibility = 'hidden';
+      window.setTimeout(function() {
+        cardAttrs.save.style.visibility = 'visible';
+        displayInputs(true, cardAttrs);
+      }, 100);
+    } else {
+      cardAttrs.save.style.visibility = 'hidden';
+      window.setTimeout(function() {
+        cardAttrs.settings.style.visibility = 'visible';
+        displayInputs(false, cardAttrs);
+        saveChanges(cardAttrs);
+      }, 100);
+    }
+  }
+}
+
+function displayInputs(display, attrs) {
+
+  if (display) {
+    attrs.value.disabled = false;
+    attrs.title.disabled = false;
+    attrs.description.disabled = false;
+    attrs.value.addEventListener('input', helpers.handleMoney);
+  } else {
+    attrs.value.disabled = true;
+    attrs.title.disabled = true;
+    attrs.description.disabled = true;
+  }
+
+}
+
+function saveChanges(original, title) {
+  var changed = {
+    _csrf: document.getElementById('csrf').value,
+    value: original.card.getElementsByClassName('dollar-amt')[0].value,
+    title: original.card.getElementsByClassName('project-card-name')[0].value,
+    description: original.card.getElementsByClassName('project-card-description')[0].value,
+    original: original.card.getElementsByClassName('original-title')[0].value
+  };
+  var req = new XMLHttpRequest();
+
+  req.onreadystatechange = function() {
+    if ( req.status === 200 && req.readyState === 4 ) {
+      console.log(req.responseText);
+    }
+  };
+
+  req.open('PUT', '/projects');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', changed._csrf);
+  req.send(JSON.stringify(changed));
+}
+
+module.exports = init;
+
+},{"./helpers":2}],5:[function(require,module,exports){
+'use strict';
+
+var helpers = require('./helpers');
+var projectCards = require('./project_cards');
 require('../templates');
 
 // Project page functions
@@ -318,11 +406,8 @@ require('../templates');
 						colorProject(container.childNodes[i]);
 					}
 
-					var projectSettingsBtns = document.getElementsByClassName('project-settings');
-
-					for (i = 0; i < projectSettingsBtns.length; i++) {
-						helpers.detectTouch(projectSettingsBtns[i], showProjectSettings, true);
-					}
+					//Handle events dependant on rendered cards
+					projectCards();
 
 				} else {
 					noProjects.style.display = 'block';
@@ -476,11 +561,7 @@ require('../templates');
 
 }());
 
-function showProjectSettings(event) {
-
-}
-
-},{"../templates":6,"./helpers":2}],5:[function(require,module,exports){
+},{"../templates":7,"./helpers":2,"./project_cards":4}],6:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
@@ -815,11 +896,11 @@ function calcTotal(taskCard, decs) {
   return totalStr;
 }
 
-},{"../templates":6,"./helpers":2}],6:[function(require,module,exports){
+},{"../templates":7,"./helpers":2}],7:[function(require,module,exports){
 require('./templates/projectcards');
 require('./templates/task');
 
-},{"./templates/projectcards":7,"./templates/task":8}],7:[function(require,module,exports){
+},{"./templates/projectcards":8,"./templates/task":9}],8:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -827,20 +908,22 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
 
   return "<div class=\"project-grid\" style=\"border-left-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">\n	<span class=\"dollar-amt\">"
-    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
-    + "</span>\n	<div class=\"dropdown-menu\">\n		<a class=\"project-settings\"></a>\n	</div>\n	<h2>"
+    + "\">\n	<input type=\"hidden\" value=\""
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
-    + "</h2>\n	<p>"
+    + "\" class=\"original-title\">\n	<input type=\"text\" class=\"dollar-amt\" value=\"$"
+    + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
+    + "\" disabled>\n	<a class=\"project-settings\"></a>\n	<button class=\"btn save\">Save</button>\n	<input type=\"text\" class=\"project-card-name\" value=\""
+    + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
+    + "\" disabled>\n	<textarea type=\"text\" class=\"project-card-description\" disabled>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "<p>\n	<a href=\"tasks/"
+    + "</textarea>\n	<a href=\"tasks/"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\"><button style=\"background-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
     + "\">Go to tasks</button></a>\n</div>\n";
 },"useData":true});
 })();
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
