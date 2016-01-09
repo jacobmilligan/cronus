@@ -5,5 +5,7 @@
 	<button class="btn save">Save</button>
 	<input type="text" class="project-card-name" value="{{project_name}}" disabled>
 	<textarea type="text" class="project-card-description" disabled>{{description}}</textarea>
-	<a href="tasks/{{project_name}}"><button style="background-color:#{{color}}">Go to tasks</button></a>
+	<span class="goto-tasks">
+		<a href="tasks/{{project_name}}"><button style="background-color:#{{color}}">Go to tasks</button></a>
+	</span>
 </div>

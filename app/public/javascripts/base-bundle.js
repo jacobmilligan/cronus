@@ -917,11 +917,11 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\" disabled>\n	<textarea type=\"text\" class=\"project-card-description\" disabled>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "</textarea>\n	<a href=\"tasks/"
+    + "</textarea>\n	<span class=\"goto-tasks\">\n		<a href=\"tasks/"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\"><button style=\"background-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">Go to tasks</button></a>\n</div>\n";
+    + "\">Go to tasks</button></a>\n	</span>\n</div>\n";
 },"useData":true});
 })();
 },{}],9:[function(require,module,exports){

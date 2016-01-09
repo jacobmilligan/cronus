@@ -19,6 +19,18 @@ input.dollar-amt {
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
+		cursor: none;
+		opacity: 1;
+		-webkit-text-fill-color: tint($primary-font-color, 25%);
+		color: tint($primary-font-color, 25%);
+
+		&:hover {
+			cursor: default;
+			border: none;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+		}
 	}
 }
 
@@ -41,6 +53,17 @@ input.project-card-name {
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
+		opacity: 1;
+		-webkit-text-fill-color: tint($primary-font-color, 25%);
+		color: tint($primary-font-color, 25%);
+
+		&:hover {
+			cursor: default;
+			border: none;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+		}
 	}
 }
 
@@ -59,7 +82,22 @@ textarea.project-card-description {
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
+		opacity: 1;
+		-webkit-text-fill-color: tint($primary-font-color, 25%);
+		color: tint($primary-font-color, 25%);
+
+		&:hover {
+			cursor: default;
+			border: none;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+		}
 	}
+}
+
+.goto-tasks {
+	@include span-columns(12);
 }
 
 @include direction-context(right-to-left) {
