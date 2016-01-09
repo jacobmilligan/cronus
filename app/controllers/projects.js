@@ -23,15 +23,27 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-	var data = [req.body.value, req.body.title, req.body.description, req.session.user.id, req.body.original, req.body.color];
-	console.log(data);
-	model.editProjects(data, function(err, success) {
-		if (err) {
-			res.send(err);
-		} else {
-			res.send(success);
-		}
-	});
+	var data = [];
+	if ( req.body.title === req.body.original ) {
+		data = [req.body.description, req.body.value, req.session.user.id, req.body.original];
+		model.editExisting(data, function(err, success) {
+			if (err) {
+				console.log(err);
+				res.send(err);
+			} else {
+				res.send(success);
+			}
+		});
+	} else {
+		data = [req.body.value, req.body.title, req.body.description, req.session.user.id, req.body.original, req.body.color];
+		model.editProjects(data, function(err, success) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.send(success);
+			}
+		});
+	}
 });
 
 module.exports = router;
