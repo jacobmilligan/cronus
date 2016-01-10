@@ -19,18 +19,19 @@ nav {
 	}
 
 	h1 {
-		@include span-columns(5);
+		@include span-columns(3);
 		@include pad(10px);
 		font-size: $font-size-huge;
 		color: $inverted-font-color;
 	}
 }
 
-@include media($desktop-min) {
+@include media($wide-tablet) {
 	.title {
-		@include span-columns(5);
+		width: auto;
 		padding: 0;
-		margin-left: 5%;
+		@include transition(margin 0.2s ease);
+		margin-left: 2%;
 
 		img {
 			@include span-columns(2);
@@ -42,20 +43,14 @@ nav {
 			@include span-columns(3);
 			text-align: left;
 			margin-left: 2%;
-			margin-top: -15px;
-			font-size: 7rem;
+			margin-top: -5px;
+			font-size: 6rem;
 		}
-	}
-}
-
-@include media($wide-tablet) {
-	.title {
-		margin-left: 10%;
 	}
 }
 
 @include media($desktop-large) {
 	.title {
-		margin-left: 12%;
+		margin-left: 8%;
 	}
 }

@@ -1,3 +1,11 @@
+.register {
+	@include outer-container();
+	@include transition(width 0.2s ease);
+	width: 350px;
+	text-align: center;
+	margin-top: 80px;
+}
+
 .form-msg {
 	@include span-columns(10);
 	@include shift(0);
@@ -10,14 +18,14 @@
 .form-grid {
 
 	@include transition(all 0.2s ease-in-out);
-	@include span-columns(12);
 	@include outer-container();
 	text-align: center;
+	width: 350px;
 	@include padding (2em 2em 1.3em 2em);
 	height: auto;
 	color: $primary-font-color;
 	border-radius: 2px;
-	margin-top: 30px;
+	margin-top: 80px;
 	margin-bottom: 30px;
 	@include border-width(1px);
 	@include border-style(solid);
@@ -262,5 +270,19 @@
 		&:after {
 			margin-top: -5px;
 		}
+	}
+
+	.form-grid {
+		@include span-columns(12);
+	}
+
+	.register {
+		@include span-columns(12);
+	}
+}
+
+@include media($tablet-small) {
+	.register {
+		width: 450px;
 	}
 }

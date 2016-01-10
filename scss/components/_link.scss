@@ -1,5 +1,5 @@
 .hover-opacity {
-	
+
 	@include transition(opacity 0.3s ease);
 
 	&:hover {
@@ -11,8 +11,8 @@
 
 	@include transition(all 0.2s ease-in-out);
 	@include row;
-	@include span-columns(10);
-	@include shift(1);
+	max-width: 250px;
+	margin: 0 auto;
 	text-align: center;
 	@include padding (2em 2em 1.3em 2em);
 	height: auto;

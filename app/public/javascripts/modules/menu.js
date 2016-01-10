@@ -33,7 +33,7 @@ function computeHeight(element) {
 
 	function slideMenu(event) {
 		clearInterval(slideTimer);
-		
+
 		var maxHeight = 0;
 		var minHeight = 0;
 		var time = 0;
@@ -79,7 +79,7 @@ function computeHeight(element) {
 		var liCount = 0;
 
 		for ( i = 0; i < sliderChildren.length; i++ ) {
-			liCount += (sliderChildren[i].className === 'menu-item') ? 1 : 0;
+			liCount += (sliderChildren[i].className === 'menu-item' || sliderChildren[i].className === 'menu-item desktop-hide' ) ? 1 : 0;
 		}
 
 		maxHeight = computeHeight(sliderChildren[1]) * liCount;
