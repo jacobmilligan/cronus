@@ -61,12 +61,44 @@
 		}
 
 		.nav-list {
-			@include span-columns(6);
 			text-align: right;
-			li {
+			border: none;
+			display: inline;
+			width: auto;
+			background-color: transparent;
+			box-shadow: none;
+			-webkit-box-shadow: none;
+			position: relative;
+			color: $inverted-font-color;
+			top: 18px;
+
+			.menu-item {
 				display: inline;
-				margin-right: 1em;
+				margin-left: 1em;
+
+				a {
+					display: inline;
+					color: $inverted-font-color;
+				}
 			}
 		}
+
+		.menu-right {
+			@include span-columns(4 of 12);
+			margin-right: 2%;
+			width: auto;
+		}
+	}
+}
+
+@include media($wide-tablet) {
+	.menu-right {
+		margin-right: 8%;
+	}
+}
+
+@include media($desktop-large) {
+	.menu-right {
+		margin-right: 14%;
 	}
 }

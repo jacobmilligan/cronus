@@ -28,18 +28,34 @@ nav {
 
 @include media($desktop-min) {
 	.title {
+		@include span-columns(5);
+		padding: 0;
+		margin-left: 5%;
+
 		img {
-			margin-left: 10%;
+			@include span-columns(2);
 			width: auto;
 			text-align: right;
 		}
 
 		h1 {
-			@include span-columns(4);
+			@include span-columns(3);
 			text-align: left;
 			margin-left: 2%;
 			margin-top: -15px;
 			font-size: 7rem;
 		}
+	}
+}
+
+@include media($wide-tablet) {
+	.title {
+		margin-left: 10%;
+	}
+}
+
+@include media($desktop-large) {
+	.title {
+		margin-left: 12%;
 	}
 }
