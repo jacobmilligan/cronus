@@ -19,9 +19,27 @@ nav {
 	}
 
 	h1 {
-		@include span-columns(6);
+		@include span-columns(5);
 		@include pad(10px);
 		font-size: $font-size-huge;
 		color: $inverted-font-color;
+	}
+}
+
+@include media($desktop-min) {
+	.title {
+		img {
+			margin-left: 10%;
+			width: auto;
+			text-align: right;
+		}
+
+		h1 {
+			@include span-columns(4);
+			text-align: left;
+			margin-left: 2%;
+			margin-top: -15px;
+			font-size: 7rem;
+		}
 	}
 }
