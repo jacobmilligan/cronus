@@ -102,7 +102,7 @@ require('../templates');
         elapsed: elapsed,
         start_time: ( timeStamp.start.getHours() % 12 ) + ":",
         end_time: ( timeStamp.end.getHours() % 12 ) + ":",
-        color: window.getComputedStyle(document.getElementById('timer-project-inner')).getPropertyValue('background-color')
+        color: window.getComputedStyle(document.getElementById('timer-project')).getPropertyValue('background-color')
       };
 
       if ( timeStamp.start.getMinutes() < 10 ) {
