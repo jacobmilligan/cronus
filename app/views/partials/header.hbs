@@ -17,13 +17,19 @@
 						<a href="/login">Login</a>
 					{{/if}}
 				</li>
-				<li class="menu-item desktop-hide">
-					<a href="/register">Register</a>
-				</li>
+				{{#unless loggedIn}}
+					<li class="menu-item desktop-hide">
+						<a href="/register">Register</a>
+					</li>
+				{{/unless}}
 			</ul>
 		</div>
 		<div class="mobile-hidden user-controls">
-			<button id="login">Login</button> <span id="or">or</span> <button>Register</button>
+			{{#if loggedIn}}
+				<a href="/logout"><button>Logout</button></a>
+			{{else}}
+				<a href="/login"><button id="login">Login</button></a> <span id="or">or</span> <a href="/register"><button>Register</button></a>
+			{{/if}}
 		</div>
 	</nav>
 </header>

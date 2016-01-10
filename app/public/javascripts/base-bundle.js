@@ -375,6 +375,7 @@ require('../templates');
 
 		moneyInput.addEventListener('input', helpers.handleMoney);
 		helpers.detectTouch(projectWindow, displayCreateProject, true);
+		console.log(newItems);
 		helpers.detectTouch(newItems[0], displayCreateProject, true);
 		helpers.detectTouch(labelBtn, showLabels, true);
 		helpers.detectTouch(addProjectBtn, sendProject, true);
@@ -433,6 +434,7 @@ require('../templates');
 
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
+		console.log("Hey");
 		if ( document.getElementById('toggled-new-project') ) {
 
 			if ( event.target.id === 'toggled-new-project' ) {
