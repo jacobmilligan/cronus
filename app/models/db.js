@@ -26,6 +26,7 @@ function transaction(queries, callback) {
 			tx.rollback();
 			if (rollErr) {
 				callback(rollErr.detail);
+				done();
 			}
 		});
 

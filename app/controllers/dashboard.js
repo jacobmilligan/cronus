@@ -19,6 +19,7 @@ router.get('/projects', function(req, res, next) {
 
 router.get('/tasks/:project_name', function(req, res, next) {
 	res.locals.displayFooter = true;
+	console.log(req.body);
 	projectModel.getColor([req.session.user.id, req.params.project_name], function(err, result) {
 		if (err) {
 			return err;
