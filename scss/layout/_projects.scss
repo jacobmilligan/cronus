@@ -112,6 +112,8 @@ textarea.project-card-description {
 	}
 
 	.confirm {
+		@include span-columns(13 of 12);
+		text-align: left;
 		display: none;
 		font-size: $font-size-small;
 
