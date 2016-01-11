@@ -39,7 +39,7 @@ router.put('/', function(req, res, next) {
 			if (err) {
 				res.send(err);
 			} else {
-				next();
+				res.send("Success");
 			}
 		});
 	}
@@ -51,6 +51,7 @@ router.delete('/', function(req, res, next) {
 		if (err) {
 			res.send(err);
 		}
+		return;
 	});
 });
 

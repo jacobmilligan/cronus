@@ -27,6 +27,7 @@ function transaction(queries, callback) {
 			if (rollErr) {
 				callback(rollErr.detail);
 				done();
+				return;
 			}
 		});
 
@@ -34,8 +35,9 @@ function transaction(queries, callback) {
 			tx.query(queries[i].sql, queries[i].params);
 		}
 
-		tx.commit();
+		tx.commit(callback(null));
 		done();
+		return;
 
 	});
 

@@ -52,6 +52,8 @@ function editProjects(attrs, callback) {
 	db.transaction(queries, function(err, result) {
 		if (err) {
 			return callback(err, false);
+		} else {
+			return callback(true);
 		}
 	});
 

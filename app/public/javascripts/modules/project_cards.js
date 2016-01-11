@@ -110,13 +110,14 @@ function saveChanges(original, title) {
   };
 
   original.card.getElementsByClassName('task-link')[0].setAttribute('href', "tasks/" + changed.title);
-  console.log(original.card.getElementsByClassName('task-link')[0].href);
+  original.card.getElementsByClassName('original-title')[0].value = changed.title;
   var req = new XMLHttpRequest();
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
-      if ( req.responseText ) {
+      if ( !req.responseText ) {
         var tooltip = original.card.getElementsByClassName('manual-tooltip')[0];
         original.card.getElementsByClassName('task-link')[0].setAttribute('href', "tasks/" + changed.original);
+        original.card.getElementsByClassName('original-title')[0].value = changed.original;
         tooltip.getElementsByTagName('p')[0].innerHTML = "A project with the name " + changed.title + " already exists.";
         tooltip.style.visibility = 'visible';
         tooltip.style.opacity = '1';
