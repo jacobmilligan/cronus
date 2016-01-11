@@ -112,7 +112,15 @@ function saveChanges(original, title) {
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
       if ( req.responseText ) {
-        original.card.getElementsByClassName('manual-tooltip')[0].style.visibility = 'visible';
+        var tooltip = original.card.getElementsByClassName('manual-tooltip')[0];
+        tooltip.getElementsByTagName('p')[0].innerHTML = "A project with the name " + changed.title + " already exists.";
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+        original.title.value = original.card.getElementsByClassName('original-title')[0].value;
+        window.setTimeout(function() {
+          original.card.getElementsByClassName('manual-tooltip')[0].style.visibility = 'hidden';
+          original.card.getElementsByClassName('manual-tooltip')[0].style.opacity = '0';
+        }, 2000);
       }
     }
   };
