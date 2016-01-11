@@ -160,8 +160,11 @@ function sendDelete(data) {
   var req = new XMLHttpRequest();
 
   req.open('DELETE', '/projects');
+
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
-  req.send(data);
+  req.send(JSON.stringify(data));
+  var elToRemove = document.getElementById('editable-card');
+  elToRemove.parentNode.removeChild(elToRemove);
 }
 module.exports = init;

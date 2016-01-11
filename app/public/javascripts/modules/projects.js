@@ -80,7 +80,6 @@ require('../templates');
 
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
-		console.log("Hey");
 		if ( document.getElementById('toggled-new-project') ) {
 
 			if ( event.target.id === 'toggled-new-project' ) {
@@ -170,7 +169,7 @@ require('../templates');
 			default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
 			color: helpers.rgbToHex(labelColor)
 		};
-		// Do tags logic here
+		//TODO: Do tags logic here
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "/projects");

@@ -69,13 +69,22 @@ function editExisting(attrs, callback) {
 }
 
 function deleteProject(data, callback) {
-	var sql = "DELETE FROM active_tasks WHERE project_name = $1 AND user_id = $2";
+	var queries = [{
+		sql: "DELETE FROM active_tasks WHERE project_name = $1 AND user_id = $2",
+		params: data
+	}, {
+		sql: "DELETE FROM tasks WHERE project_name = $1 AND user_id = $2",
+		params: data
+	}, {
+		sql: "DELETE FROM projects WHERE project_name = $1 AND user_id = $2",
+		params: data
+	}];
 
-	/*db.query(sql, data, function(err, result) {
+	db.transaction(queries, function(err, result) {
 		if (err) {
-			return callback(err)
+			return callback(err, false);
 		}
-	})*/
+	});
 }
 
 module.exports = {

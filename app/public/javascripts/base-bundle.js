@@ -426,9 +426,12 @@ function sendDelete(data) {
   var req = new XMLHttpRequest();
 
   req.open('DELETE', '/projects');
+
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
-  req.send(data);
+  req.send(JSON.stringify(data));
+  var elToRemove = document.getElementById('editable-card');
+  elToRemove.parentNode.removeChild(elToRemove);
 }
 module.exports = init;
 
@@ -515,7 +518,6 @@ require('../templates');
 
 	// Displays the window for adding a new project
 	function displayCreateProject(event) {
-		console.log("Hey");
 		if ( document.getElementById('toggled-new-project') ) {
 
 			if ( event.target.id === 'toggled-new-project' ) {
@@ -605,7 +607,7 @@ require('../templates');
 			default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
 			color: helpers.rgbToHex(labelColor)
 		};
-		// Do tags logic here
+		//TODO: Do tags logic here
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "/projects");
