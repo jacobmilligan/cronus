@@ -75,11 +75,19 @@ function displayInputs(display, attrs) {
 }
 
 function hideEditable(event) {
-  var editableParent = event.target.parentNode;
-  if ( event.target.id !== 'editable-card' && document.getElementById('editable-card') && editableParent.id !== 'editable-card' && event.target.className !== 'btn delete' && event.target.parentNode.className !== 'confirm' ) {
+  var editableParent = [event.target, event.target.parentNode, event.target.parentNode.parentNode, event.target.parentNode.parentNode.parentNode];
+  var isEditable = false;
+
+  for (var i = 0; i < editableParent.length; i++) {
+    if ( editableParent[i].id === 'editable-card' ) {
+      isEditable = true;
+    }
+  }
+
+  if ( !isEditable && document.getElementById('editable-card') ) {
     var visibleElements = document.getElementById('editable-card').querySelectorAll('.dollar-amt, .project-card-name, .project-card-description, .delete-container, .save');
     //Hide inputs & buttons
-    for ( var i = 0; i < visibleElements.length; i++ ) {
+    for ( i = 0; i < visibleElements.length; i++ ) {
       if ( visibleElements[i].className === 'btn save' || visibleElements[i].className === 'delete-container' ) {
         visibleElements[i].style.visibility = 'hidden';
       } else {
@@ -104,7 +112,7 @@ function saveChanges(original, title) {
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
       if ( req.responseText ) {
-        console.log(req.responseText);
+        original.card.getElementsByClassName('manual-tooltip')[0].style.visibility = 'visible';
       }
     }
   };

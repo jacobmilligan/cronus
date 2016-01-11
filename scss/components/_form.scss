@@ -207,7 +207,7 @@
 	}
 }
 
-.tooltip {
+.tooltip, .manual-tooltip {
 	visibility: hidden;
 	@include transition(all 0.2s ease-in-out);
 	@include position(absolute, null 0 5.4em 0);

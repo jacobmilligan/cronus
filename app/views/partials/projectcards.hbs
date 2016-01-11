@@ -3,7 +3,13 @@
 	<input type="text" class="dollar-amt" value="${{default_value}}" disabled>
 	<a class="project-settings"></a>
 	<button class="btn save">Save</button>
-	<input type="text" class="project-card-name" value="{{project_name}}" disabled>
+	<div class="tooltip-element">
+		<div class="manual-tooltip">
+			<p>A project with that name already exists</p>
+		</div>
+		<input type="text" class="project-card-name" value="{{project_name}}" disabled>
+	</div>
+
 	<textarea type="text" class="project-card-description" disabled>{{description}}</textarea>
 	<span class="goto-tasks">
 		<a href="tasks/{{project_name}}"><button style="background-color:#{{color}}">Go to tasks</button></a>

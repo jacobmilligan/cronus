@@ -39,7 +39,7 @@ router.put('/', function(req, res, next) {
 			if (err) {
 				res.send(err);
 			} else {
-				res.send(true);
+				next();
 			}
 		});
 	}

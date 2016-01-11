@@ -341,11 +341,19 @@ function displayInputs(display, attrs) {
 }
 
 function hideEditable(event) {
-  var editableParent = event.target.parentNode;
-  if ( event.target.id !== 'editable-card' && document.getElementById('editable-card') && editableParent.id !== 'editable-card' && event.target.className !== 'btn delete' && event.target.parentNode.className !== 'confirm' ) {
+  var editableParent = [event.target, event.target.parentNode, event.target.parentNode.parentNode, event.target.parentNode.parentNode.parentNode];
+  var isEditable = false;
+
+  for (var i = 0; i < editableParent.length; i++) {
+    if ( editableParent[i].id === 'editable-card' ) {
+      isEditable = true;
+    }
+  }
+
+  if ( !isEditable && document.getElementById('editable-card') ) {
     var visibleElements = document.getElementById('editable-card').querySelectorAll('.dollar-amt, .project-card-name, .project-card-description, .delete-container, .save');
     //Hide inputs & buttons
-    for ( var i = 0; i < visibleElements.length; i++ ) {
+    for ( i = 0; i < visibleElements.length; i++ ) {
       if ( visibleElements[i].className === 'btn save' || visibleElements[i].className === 'delete-container' ) {
         visibleElements[i].style.visibility = 'hidden';
       } else {
@@ -370,7 +378,7 @@ function saveChanges(original, title) {
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
       if ( req.responseText ) {
-        console.log(req.responseText);
+        original.card.getElementsByClassName('manual-tooltip')[0].style.visibility = 'visible';
       }
     }
   };
@@ -981,9 +989,9 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\" class=\"original-title\">\n	<input type=\"text\" class=\"dollar-amt\" value=\"$"
     + alias4(((helper = (helper = helpers.default_value || (depth0 != null ? depth0.default_value : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"default_value","hash":{},"data":data}) : helper)))
-    + "\" disabled>\n	<a class=\"project-settings\"></a>\n	<button class=\"btn save\">Save</button>\n	<input type=\"text\" class=\"project-card-name\" value=\""
+    + "\" disabled>\n	<a class=\"project-settings\"></a>\n	<button class=\"btn save\">Save</button>\n	<div class=\"tooltip-element\">\n		<div class=\"manual-tooltip\">\n			<p>A project with that name already exists</p>\n		</div>\n		<input type=\"text\" class=\"project-card-name\" value=\""
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
-    + "\" disabled>\n	<textarea type=\"text\" class=\"project-card-description\" disabled>"
+    + "\" disabled>\n	</div>\n\n	<textarea type=\"text\" class=\"project-card-description\" disabled>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
     + "</textarea>\n	<span class=\"goto-tasks\">\n		<a href=\"tasks/"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
