@@ -10,6 +10,9 @@ function init() {
       helpers.detectTouch(settingsButtons[i], showSettings, true);
       helpers.detectTouch(saveButtons[i], showSettings, true);
     }
+    helpers.detectTouch(document.getElementsByClassName('heading')[0], hideEditable, true);
+    helpers.detectTouch(document.getElementById('projects'), hideEditable, true);
+    helpers.detectTouch(document.getElementById('main-nav'), hideEditable, true);
   }
 }
 
@@ -21,22 +24,30 @@ function showSettings(event) {
       card: currCard,
       settings: currCard.getElementsByClassName('project-settings')[0],
       save: currCard.getElementsByClassName('save')[0],
+      deleteBtn: currCard.getElementsByClassName('delete-container')[0],
+      gotoTasks: currCard.getElementsByClassName('goto-tasks')[0],
       value: currCard.getElementsByClassName('dollar-amt')[0],
       title: currCard.getElementsByClassName('project-card-name')[0],
       description: currCard.getElementsByClassName('project-card-description')[0]
     };
-    var hiddenStatus = window.getComputedStyle(cardAttrs.settings).getPropertyValue('visibility');
+    var hiddenStatus = window.getComputedStyle(cardAttrs.save).getPropertyValue('visibility');
 
-    if ( hiddenStatus === 'visible' ) {
+    if ( hiddenStatus === 'hidden' ) {
+      //Show active cards input fields
       cardAttrs.settings.style.visibility = 'hidden';
+      cardAttrs.gotoTasks.style.visibility = 'hidden';
       window.setTimeout(function() {
         cardAttrs.save.style.visibility = 'visible';
+        cardAttrs.deleteBtn.style.visibility = 'visible';
         displayInputs(true, cardAttrs);
       }, 100);
     } else {
+      //Hide active cards input fields
       cardAttrs.save.style.visibility = 'hidden';
+      cardAttrs.deleteBtn.style.visibility = 'hidden';
       window.setTimeout(function() {
         cardAttrs.settings.style.visibility = 'visible';
+        cardAttrs.gotoTasks.style.visibility = 'visible';
         displayInputs(false, cardAttrs);
         saveChanges(cardAttrs);
       }, 100);
@@ -51,12 +62,31 @@ function displayInputs(display, attrs) {
     attrs.title.disabled = false;
     attrs.description.disabled = false;
     attrs.value.addEventListener('input', helpers.handleMoney);
+    attrs.card.id = 'editable-card';
   } else {
     attrs.value.disabled = true;
     attrs.title.disabled = true;
     attrs.description.disabled = true;
+    attrs.card.removeAttribute('ID');
   }
 
+}
+
+function hideEditable(event) {
+  var editableParent = event.target.parentNode;
+  if ( event.target.id !== 'editable-card' && document.getElementById('editable-card') && editableParent.id !== 'editable-card' && event.target.className !== 'btn delete' ) {
+    var visibleElements = document.getElementById('editable-card').querySelectorAll('.dollar-amt, .project-card-name, .project-card-description, .delete-container, .save');
+    //Hide inputs & buttons
+    for ( var i = 0; i < visibleElements.length; i++ ) {
+      if ( visibleElements[i].className === 'btn save' || visibleElements[i].className === 'delete-container' ) {
+        visibleElements[i].style.visibility = 'hidden';
+      } else {
+        visibleElements[i].disabled = true;
+      }
+    }
+    document.getElementById('editable-card').getElementsByClassName('project-settings')[0].style.visibility = 'visible';
+    document.getElementById('editable-card').getElementsByClassName('goto-tasks')[0].style.visibility = 'visible';
+  }
 }
 
 function saveChanges(original, title) {
@@ -69,7 +99,6 @@ function saveChanges(original, title) {
     color: helpers.rgbToHex(window.getComputedStyle(original.card).getPropertyValue('border-left-color'))
   };
   var req = new XMLHttpRequest();
-  console.log(changed.color);
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
       console.log(req.responseText);

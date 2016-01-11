@@ -6,16 +6,16 @@
 input.dollar-amt {
 	@include row;
 	@include span-columns(6);
-	@include shift(-1.5);
-	text-align: center;
+	@include shift(0);
+	text-align: left;
 	margin-top: -5px;
 	padding: 5px;
 	font-size: $font-size-small;
 	height: auto;
+	border: none;
 
 	&:disabled {
 		background-color: transparent;
-		border: none;
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
@@ -46,10 +46,10 @@ input.project-card-name {
 	font-size: $font-size-xlarge;
 	padding: 5px;
 	text-align: center;
+	border: none;
 
 	&:disabled {
 		background-color: transparent;
-		border: none;
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
@@ -75,10 +75,10 @@ textarea.project-card-description {
 	resize: none;
 	text-align: center;
 	padding: 5px;
+	border: none;
 
 	&:disabled {
 		background-color: transparent;
-		border: none;
 		box-shadow: none;
 		-webkit-box-shadow: none;
 		-moz-box-shadow: none;
@@ -98,6 +98,22 @@ textarea.project-card-description {
 
 .goto-tasks {
 	@include span-columns(12);
+	@include transition(visibility 0.2s ease);
+}
+
+.delete-container {
+	@include span-columns(12);
+	@include transition(visibility 0.2s ease);
+	visibility: hidden;
+	margin-top: -40px;
+
+	.delete {
+		background-color: $accent-color;
+	}
+
+	.confirm {
+		display: none;
+	}
 }
 
 @include direction-context(right-to-left) {

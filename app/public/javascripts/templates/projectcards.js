@@ -17,6 +17,6 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
     + "\"><button style=\"background-color:#"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\">Go to tasks</button></a>\n	</span>\n</div>\n";
+    + "\">Go to tasks</button></a>\n	</span>\n	<span class=\"delete-container\"><button class=\"btn delete\">Delete Project</button></span>\n</div>\n";
 },"useData":true});
 })();
