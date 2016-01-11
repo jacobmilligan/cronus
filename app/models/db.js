@@ -1,5 +1,6 @@
 'use strict';
 var pg = require('pg');
+var pgTransaction = require('pg-transaction');
 
 var DB_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/cronus';
 
@@ -15,16 +16,31 @@ function query(sql, paramArray, callback) {
 	});
 }
 
-function rollback(client, done) {
-	client.query('ROLLBACK', function(err) {
-		if (err) {
-			return done(err); //serious problems exist if rollback returns here
+function transaction(queries, callback) {
+
+	pg.connect(DB_URL, function(err, client, done) {
+		var tx = new pgTransaction(client);
+		tx.begin();
+
+		tx.on('error', function(rollErr) {
+			tx.rollback();
+			if (rollErr) {
+				callback(rollErr.detail);
+			}
+		});
+
+		for ( var i = 0; i < queries.length; i++ ) {
+			tx.query(queries[i].sql, queries[i].params);
 		}
+
+		tx.commit();
+		done();
+
 	});
-	done();
+
 }
 
 module.exports = {
 	query: query,
-	rollback: rollback
+	transaction: transaction
 };

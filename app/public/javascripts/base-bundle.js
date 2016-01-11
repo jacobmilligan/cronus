@@ -369,7 +369,9 @@ function saveChanges(original, title) {
   var req = new XMLHttpRequest();
   req.onreadystatechange = function() {
     if ( req.status === 200 && req.readyState === 4 ) {
-      console.log(req.responseText);
+      if ( req.responseText ) {
+        console.log(req.responseText);
+      }
     }
   };
 

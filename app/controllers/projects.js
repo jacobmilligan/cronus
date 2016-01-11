@@ -28,7 +28,6 @@ router.put('/', function(req, res, next) {
 		data = [req.body.description, req.body.value, req.session.user.id, req.body.original];
 		model.editExisting(data, function(err, success) {
 			if (err) {
-				console.log(err);
 				res.send(err);
 			} else {
 				res.send(success);
@@ -40,7 +39,7 @@ router.put('/', function(req, res, next) {
 			if (err) {
 				res.send(err);
 			} else {
-				res.send(success);
+				res.send(true);
 			}
 		});
 	}
@@ -51,8 +50,6 @@ router.delete('/', function(req, res, next) {
 	model.deleteProject(data, function(err, success) {
 		if (err) {
 			res.send(err);
-		} else {
-			res.send(success);
 		}
 	});
 });
