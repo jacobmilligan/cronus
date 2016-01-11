@@ -113,6 +113,20 @@ textarea.project-card-description {
 
 	.confirm {
 		display: none;
+		font-size: $font-size-small;
+
+		button {
+			background-color: tint($primary-color, 20%);
+
+			&:hover {
+				background-color: $primary-color
+			}
+		}
+
+		#project-delete-cancel {
+			margin-right: 8px;
+			margin-left: 8px;
+		}
 	}
 }
 

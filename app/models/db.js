@@ -15,6 +15,16 @@ function query(sql, paramArray, callback) {
 	});
 }
 
+function rollback(client, done) {
+	client.query('ROLLBACK', function(err) {
+		if (err) {
+			return done(err); //serious problems exist if rollback returns here
+		}
+	});
+	done();
+}
+
 module.exports = {
-	query: query
+	query: query,
+	rollback: rollback
 };

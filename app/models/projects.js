@@ -84,10 +84,21 @@ function editExisting(attrs, callback) {
 	});
 }
 
+function deleteProject(data, callback) {
+	var sql = "DELETE FROM active_tasks WHERE project_name = $1 AND user_id = $2";
+
+	/*db.query(sql, data, function(err, result) {
+		if (err) {
+			return callback(err)
+		}
+	})*/
+}
+
 module.exports = {
 	getProjects: getProjects,
 	addProjects: addProjects,
 	editProjects: editProjects,
 	editExisting: editExisting,
+	deleteProject: deleteProject,
 	getColor: getColor
 };

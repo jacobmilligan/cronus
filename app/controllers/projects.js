@@ -46,4 +46,15 @@ router.put('/', function(req, res, next) {
 	}
 });
 
+router.delete('/', function(req, res, next) {
+	var data = [req.body.project_name, req.session.user.id];
+	model.deleteProject(data, function(err, success) {
+		if (err) {
+			res.send(err);
+		} else {
+			res.send(success);
+		}
+	});
+});
+
 module.exports = router;

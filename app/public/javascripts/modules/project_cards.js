@@ -63,18 +63,20 @@ function displayInputs(display, attrs) {
     attrs.description.disabled = false;
     attrs.value.addEventListener('input', helpers.handleMoney);
     attrs.card.id = 'editable-card';
+    helpers.detectTouch(attrs.deleteBtn, deleteProject, true);
   } else {
     attrs.value.disabled = true;
     attrs.title.disabled = true;
     attrs.description.disabled = true;
     attrs.card.removeAttribute('ID');
+    helpers.detectTouch(attrs.deleteBtn, deleteProject, false);
   }
 
 }
 
 function hideEditable(event) {
   var editableParent = event.target.parentNode;
-  if ( event.target.id !== 'editable-card' && document.getElementById('editable-card') && editableParent.id !== 'editable-card' && event.target.className !== 'btn delete' ) {
+  if ( event.target.id !== 'editable-card' && document.getElementById('editable-card') && editableParent.id !== 'editable-card' && event.target.className !== 'btn delete' && event.target.parentNode.className !== 'confirm' ) {
     var visibleElements = document.getElementById('editable-card').querySelectorAll('.dollar-amt, .project-card-name, .project-card-description, .delete-container, .save');
     //Hide inputs & buttons
     for ( var i = 0; i < visibleElements.length; i++ ) {
@@ -111,4 +113,37 @@ function saveChanges(original, title) {
   req.send(JSON.stringify(changed));
 }
 
+function deleteProject(event) {
+  var deleteContainer = event.target.parentNode;
+  var confirmContainer = deleteContainer.getElementsByClassName('confirm')[0];
+
+  if ( event.target.className === 'btn delete' && deleteContainer.getElementsByClassName('confirm')[0].style.display !== 'inline-block' ) {
+    deleteContainer.getElementsByClassName('btn delete')[0].style.display = 'none';
+    confirmContainer.style.display = 'inline-block';
+  }
+
+  if ( event.target.id === 'project-delete-cancel' ) {
+    deleteContainer = event.target.parentNode.parentNode;
+    event.target.parentNode.style.display = 'none';
+    deleteContainer.getElementsByClassName('btn delete')[0].style.display = 'inline';
+  }
+
+  if ( event.target.id === 'project-delete-confirm' ) {
+    var data = {
+      project_name: document.getElementById('editable-card').getElementsByClassName('original-title')[0].value,
+      _csrf: document.getElementById('csrf').value
+    };
+    sendDelete(data);
+  }
+
+}
+
+function sendDelete(data) {
+  var req = new XMLHttpRequest();
+
+  req.open('DELETE', '/projects');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', data._csrf);
+  req.send(data);
+}
 module.exports = init;
