@@ -212,8 +212,9 @@ function getTasks() {
       });
 
       if ( res.length > 0 ) {
+
         var ampm = "am";
-        for (var i = 0; i < res.length; i++) {
+        for ( var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
 
@@ -241,6 +242,19 @@ function getTasks() {
 
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
+
+          /*var taskDates = [];
+          var currDate = "";
+
+          for ( i = 0; i < res.length; i++ ) {
+            currDate = res[i].start_time;
+            currDate = currDate.substring(0, currDate.indexOf('T'));
+
+            if ( !document.getElementById(currDate) ) {
+
+            }
+          }*/
+
           container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
 
