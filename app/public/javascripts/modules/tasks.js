@@ -346,7 +346,12 @@ function calcTotal(taskCard, decs) {
 function renderInOrder(currTask, dateToSort) {
   var dateConverter = new helpers.dateNameConverter();
   var currDate = dateConverter.dayName(dateToSort.getDay()) + " " + helpers.getOrdinal(dateToSort.getDate()) + " ";
+  var today = new Date();
   currDate += dateConverter.monthName(dateToSort.getMonth()) + ", " + dateToSort.getFullYear();
+
+  if ( dateToSort.toDateString() === today.toDateString() ) {
+    currDate = "Today";
+  }
 
   if ( !document.getElementById(currDate) ) {
     var newDateCollection = document.createElement('DIV');
