@@ -9,12 +9,13 @@ router.get('/', function(req, res, next) {
 		res.redirect('/dashboard');
 	} else {
 		res.locals.displayFooter = false;
-		res.render('login', {csrfToken: req.csrfToken});
+		res.render('login', {csrfToken: req.csrfToken, 'msg': req.session.msg, 'msg-color': req.session.msgColor});
+		delete req.session.msg;
+		delete req.session.msgColor;
 	}
 });
 
 router.post('/', function(req, res, next) {
-	console.log(req.body.remember);
 	db(req.body.email, req.body, function(err, user) {
 		if (err) {
 			req.flash('msg', err);

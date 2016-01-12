@@ -7,12 +7,16 @@
 }
 
 .form-msg {
-	@include span-columns(10);
-	@include shift(0);
+	@include span-columns(12);
 	color: $inverted-font-color;
-	background-color: $accent-color;
 	text-align: center;
+}
+
+.form-msg-inner {
 	padding: 20px;
+	background-color: $accent-color;
+	max-width: 350px;
+	margin: auto;
 }
 
 .form-grid {
@@ -25,7 +29,7 @@
 	height: auto;
 	color: $primary-font-color;
 	border-radius: 2px;
-	margin-top: 80px;
+	margin-top: 100px;
 	margin-bottom: 30px;
 	@include border-width(1px);
 	@include border-style(solid);

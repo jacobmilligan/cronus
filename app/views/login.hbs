@@ -1,7 +1,11 @@
 <section class="sctn-dark-gradient no-footer">
 	<h1>Login to your <span class="accent">Cronus</span> dashboard.</h1>
 	{{#if msg}}
-		<p class="form-msg">{{msg}}</p>
+		<div class="form-msg">
+			<div class="form-msg-inner" style="background-color:{{msg-color}}">
+				<span class="msg-object">{{msg}}</span>
+			</div>
+		</div>
 	{{/if}}
 	<form method="POST" class="form-grid">
 		<input type="hidden" name="_csrf" value={{csrfToken}}>
