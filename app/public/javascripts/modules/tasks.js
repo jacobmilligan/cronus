@@ -196,7 +196,6 @@ function getTasks() {
   var url = window.location.href;
   var params = url.substring(url.lastIndexOf('/') + 1);
   var loader = document.getElementsByClassName('loader')[0];
-  var container = document.getElementsByClassName('container')[0];
 
   req.onreadystatechange = function() {
     if ( req.readyState === 4 && req.status === 200 ) {
@@ -260,7 +259,7 @@ function getTasks() {
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = calcTotal(tasks[i], 2); //round
         }
       } else {
-        container.innerHTML = "There are no tasks";
+        document.getElementById('task-holder').innerHTML = "There are no tasks";
       }
 
     }
@@ -347,10 +346,16 @@ function renderInOrder(currTask, dateToSort) {
   var dateConverter = new helpers.dateNameConverter();
   var currDate = dateConverter.dayName(dateToSort.getDay()) + " " + helpers.getOrdinal(dateToSort.getDate()) + " ";
   var today = new Date();
+  var yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
   currDate += dateConverter.monthName(dateToSort.getMonth()) + ", " + dateToSort.getFullYear();
 
+  today.setHours(0,0,0,0);
+  dateToSort.setHours(0,0,0,0);
   if ( dateToSort.toDateString() === today.toDateString() ) {
     currDate = "Today";
+  } else if ( dateToSort.toDateString() === yesterday.toDateString() ) {
+    currDate = "Yesterday";
   }
 
   if ( !document.getElementById(currDate) ) {
