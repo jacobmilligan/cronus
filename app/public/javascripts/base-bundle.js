@@ -555,8 +555,7 @@ require('../templates');
 		}
 	}
 
-	function showLabels() {
-		/*jshint validthis: true */
+	function showLabels(event) {
 
 		var labelContainer = document.getElementsByClassName('color-list')[0];
 		var labelColors = document.getElementsByClassName('color-item');
@@ -565,22 +564,28 @@ require('../templates');
 			helpers.detectTouch(labelColors[i], attachColor, true);
 		}
 
-		if ( this.id === 'labels-toggled' ) {
+		if ( document.getElementById('labels-toggled') && event.target.className !== 'dropdown-color' && event.target.className !== 'color-list' && event.target.className !== 'color-item' ) {
 			labelBtn.removeAttribute('id');
+			selectedColor.removeAttribute('id');
 			labelContainer.style.opacity = 0;
 			labelBtn.style.borderColor = btnBorderColor.toString();
 
 			var fadeInterval = helpers.getTransitionTime(labelContainer);
+			helpers.detectTouch(document.body, showLabels, false);
 
 			setTimeout(function() {
 				labelContainer.style.display = 'none';
 			}, fadeInterval);
 
 		} else {
-			this.id = 'labels-toggled';
+			labelBtn.id = 'labels-toggled';
+			selectedColor.id = 'labels-toggled';
 			labelContainer.style.display = 'block';
 			labelContainer.style.opacity = 1;
 			labelBtn.style.borderColor = '#346ca5';
+			window.setTimeout(function() {
+				helpers.detectTouch(document.body, showLabels, true);
+			}, 100);
 		}
 
 	}
