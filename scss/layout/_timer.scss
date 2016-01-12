@@ -1,8 +1,8 @@
 .timer {
+  @include row;
+  margin: auto;
   margin-top: 20px;
-  padding: 0;
-  @include span-columns(10);
-  @include shift(1);
+  max-width: 480px;
 
   input {
     border: none;
@@ -23,12 +23,13 @@
   @include size(auto);
   background-color: transparentize(white, 0.1);
   margin: 3px;
+  margin-left: 4%;
   padding: 10px;
   @include btn-shadowing(1px);
 }
 
 .timer-row {
-  @include span-columns(12.6);
+  @include span-columns(11.5);
   padding: 0;
   margin: 0;
 }
@@ -44,8 +45,10 @@
 }
 
 #task-name {
-  @include span-columns(12 of 12);
+  @include row;
+  @include span-columns(11.5 of 12);
   @include btn-shadowing(1px);
+  margin-right: 0;
 }
 
 #task-control {
@@ -102,5 +105,17 @@
 
   &:hover {
     color: $primary-color;
+  }
+}
+
+@include media($thin-min) {
+  #task-name {
+    @include span-columns(11.43 of 12);
+  }
+}
+
+@include media($tablet-small) {
+  #task-name {
+    @include span-columns(11.37 of 12);
   }
 }

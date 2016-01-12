@@ -89,6 +89,10 @@ section {
 	margin-top: 50px;
 }
 
+.inner-container {
+	@include span-columns(12);
+}
+
 .no-footer {
 	position: absolute;
 	min-height: 90%;

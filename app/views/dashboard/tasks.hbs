@@ -5,20 +5,24 @@
   <h3 id="project-name">Project - "{{project_name}}"</h3>
   <a href="/dashboard/projects"><button>Return to projects</button></a>
 
-  <div class="timer">
-    <input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
-    <input type="hidden" value="{{color}}" id="hidden-color">
-    <input type="hidden" value="{{default_value}}" id="hidden-value">
-    <input class="timer-component" type="text" placeholder="What are you timing?" name="task_name" id="task-name">
-    <div class="timer-row">
-      <div class="timer-component" id="stopwatch">
-        <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+  <div class="inner-container">
+    <div class="timer">
+      <input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
+      <input type="hidden" value="{{color}}" id="hidden-color">
+      <input type="hidden" value="{{default_value}}" id="hidden-value">
+      <div class="timer-row">
+        <input class="timer-component" type="text" placeholder="What are you timing?" name="task_name" id="task-name">
       </div>
-      <i id="task-control" class="task-control play timer-component"></i>
-    </div>
-    <div class="timer-row">
-      <input class="timer-component" type="text" placeholder="$0.00" name="value" id="task-amt">
-      <div class="timer-component" id="timer-project" style="background-color:#{{color}}"><span id="timer-project-inner">{{project_name}}</span></div>
+      <div class="timer-row">
+        <div class="timer-component" id="stopwatch">
+          <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+        </div>
+        <i id="task-control" class="task-control play timer-component"></i>
+      </div>
+      <div class="timer-row">
+        <input class="timer-component" type="text" placeholder="$0.00" name="value" id="task-amt">
+        <div class="timer-component" id="timer-project" style="background-color:#{{color}}"><span id="timer-project-inner">{{project_name}}</span></div>
+      </div>
     </div>
   </div>
 
