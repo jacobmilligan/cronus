@@ -778,7 +778,7 @@ require('../templates');
       newTask.start_time += timeStamp.start.getMinutes() + startAMPM;
       newTask.end_time += timeStamp.end.getMinutes() + endAMPM;
 
-      if ( newTask.task_name === "" ) {
+      if ( newTask.task_name.length < 1 ) {
         newTask.task_name = "(No description)";
       }
 
@@ -983,8 +983,10 @@ function calcTotal(taskCard, decs) {
   var valueTxt = taskCard.getElementsByClassName('task-value')[0].innerHTML.replace('per hour', '');
   valueTxt = valueTxt.replace('$', '');
   var valueNum = Number(valueTxt.replace(',', ''));
+  var minuteRate = valueNum / 60;
+  var hoursToMinutes = hours * 60;
   //Calculate total billable
-  var total =  ( (hours / 60) + minutes / 100 ) * valueNum;
+  var total = minuteRate * (minutes + hoursToMinutes); //Calculate total per minute
   var totalStr = "";
   if ( total < 10 ) {
     totalStr = '$0' + total.toFixed(decs);
