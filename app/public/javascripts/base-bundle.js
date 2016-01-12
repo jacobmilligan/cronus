@@ -123,6 +123,69 @@ function getTimeDiff(start, current) {
 	};
 }
 
+function dateNameConverter() {
+	/*jshint validthis: true */
+	var dayNames = {
+		1: "Monday",
+		2: "Tuesday",
+		3: "Wednesday",
+		4: "Thursday",
+		5: "Friday",
+		6: "Saturday",
+		7: "Sunday"
+	};
+
+	var monthNames = {
+		0: "January",
+		1: "February",
+		2: "March",
+		3: "April",
+		4: "May",
+		5: "June",
+		6: "July",
+		7: "August",
+		8: "September",
+		9: "October",
+		10: "November",
+		11: "December"
+	};
+
+	this.dayName = function(day) {
+		return dayNames[day];
+	};
+
+	this.monthName = function(month) {
+		return monthNames[month];
+	};
+}
+
+function getOrdinal(num) {
+	var check = num % 100;
+	var numStr = String(check);
+	switch (numStr.substring(numStr.length - 1)) {
+		case '1':
+			numStr = 'st';
+			break;
+		case '2':
+			numStr = 'nd';
+			break;
+		case '3':
+			numStr = 'rd';
+			break;
+		default: numStr = 'th';
+	}
+
+	if ( num === 0 ) {
+		numStr = "";
+	}
+
+	if ( check > 9 && check < 20 ) {
+		numStr = 'th';
+	}
+
+	return num + "<span class=\"ordinal\">" + numStr + "</span>";
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
@@ -131,7 +194,9 @@ module.exports = {
 	handleMoney: handleMoney,
 	setDefaultValue: setDefaultValue,
 	computeContrast: computeContrast,
-	getTimeDiff: getTimeDiff
+	getTimeDiff: getTimeDiff,
+	dateNameConverter: dateNameConverter,
+	getOrdinal: getOrdinal
 };
 
 },{}],3:[function(require,module,exports){
@@ -707,7 +772,6 @@ require('../templates');
     var minutes = document.getElementById('minutes');
     var hours = document.getElementById('hours');
     var secondsNum, minutesNum, hoursNum = 0;
-    var container = document.getElementsByClassName('container')[0];
     if ( document.getElementsByClassName('active-timer').length === 0 ) {
       document.getElementById('stopwatch').className = 'timer-component active-timer';
       document.getElementById('task-control').className = 'task-control stop timer-component';
@@ -764,7 +828,8 @@ require('../templates');
         elapsed: elapsed,
         start_time: ( timeStamp.start.getHours() % 12 ) + ":",
         end_time: ( timeStamp.end.getHours() % 12 ) + ":",
-        color: window.getComputedStyle(document.getElementById('timer-project')).getPropertyValue('background-color')
+        color: window.getComputedStyle(document.getElementById('timer-project')).getPropertyValue('background-color'),
+        isNew: true
       };
 
       if ( timeStamp.start.getMinutes() < 10 ) {
@@ -782,11 +847,12 @@ require('../templates');
         newTask.task_name = "(No description)";
       }
 
-      deleteActive();
+      deleteActive();// Delete active timer from DB
+
       var currPageProj = document.getElementById('project-name').innerHTML;
       currPageProj = currPageProj.substring(currPageProj.indexOf('\"') + 1, currPageProj.lastIndexOf('\"'));
       if ( newTask.project_name === currPageProj) {
-        container.innerHTML = Handlebars.templates['task.hbs'](newTask) + "<br>" + container.innerHTML;
+        renderInOrder(newTask, timeStamp.end); //Insert at top
       }
       var latestTask = document.getElementsByClassName('task')[0];
 
@@ -876,6 +942,7 @@ function getTasks() {
       if ( res.length > 0 ) {
 
         var ampm = "am";
+
         for ( var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
@@ -905,19 +972,9 @@ function getTasks() {
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
 
-          /*var taskDates = [];
-          var currDate = "";
+          //Render the task
+          renderInOrder(res[i], endTime);
 
-          for ( i = 0; i < res.length; i++ ) {
-            currDate = res[i].start_time;
-            currDate = currDate.substring(0, currDate.indexOf('T'));
-
-            if ( !document.getElementById(currDate) ) {
-
-            }
-          }*/
-
-          container.innerHTML += Handlebars.templates['task.hbs'](res[i]) + "<br>";
         }
 
         var tasks = document.getElementsByClassName('task');
@@ -1008,6 +1065,30 @@ function calcTotal(taskCard, decs) {
     totalStr = '$' + total.toFixed(decs);
   }
   return totalStr;
+}
+
+////////////////////////////////////
+/* Create date header for sorting */
+////////////////////////////////////
+function renderInOrder(currTask, dateToSort) {
+  var dateConverter = new helpers.dateNameConverter();
+  var currDate = dateConverter.dayName(dateToSort.getDay()) + " " + helpers.getOrdinal(dateToSort.getDate()) + " ";
+  currDate += dateConverter.monthName(dateToSort.getMonth()) + ", " + dateToSort.getFullYear();
+
+  if ( !document.getElementById(currDate) ) {
+    var newDateCollection = document.createElement('DIV');
+    newDateCollection.className = "container";
+    newDateCollection.id = currDate;
+    newDateCollection.innerHTML += "<h2 class=\"date-heading\">" + currDate + "</h1>";
+    newDateCollection.innerHTML += Handlebars.templates['task.hbs'](currTask) + "<br>";
+    document.getElementById('task-holder').appendChild(newDateCollection);
+  } else if (currTask.isNew) {
+    //Insert into top of current date container
+    var heading = document.getElementById(currDate).getElementsByClassName('date-heading')[0].outerHTML;
+    document.getElementById(currDate).innerHTML = heading + Handlebars.templates['task.hbs'](currTask) + "<br>" + document.getElementById(currDate).innerHTML.replace(heading, '');
+  } else {
+    document.getElementById(currDate).innerHTML += Handlebars.templates['task.hbs'](currTask) + "<br>";
+  }
 }
 
 },{"../templates":7,"./helpers":2}],7:[function(require,module,exports){

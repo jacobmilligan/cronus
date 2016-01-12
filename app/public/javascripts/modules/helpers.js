@@ -114,6 +114,69 @@ function getTimeDiff(start, current) {
 	};
 }
 
+function dateNameConverter() {
+	/*jshint validthis: true */
+	var dayNames = {
+		1: "Monday",
+		2: "Tuesday",
+		3: "Wednesday",
+		4: "Thursday",
+		5: "Friday",
+		6: "Saturday",
+		7: "Sunday"
+	};
+
+	var monthNames = {
+		0: "January",
+		1: "February",
+		2: "March",
+		3: "April",
+		4: "May",
+		5: "June",
+		6: "July",
+		7: "August",
+		8: "September",
+		9: "October",
+		10: "November",
+		11: "December"
+	};
+
+	this.dayName = function(day) {
+		return dayNames[day];
+	};
+
+	this.monthName = function(month) {
+		return monthNames[month];
+	};
+}
+
+function getOrdinal(num) {
+	var check = num % 100;
+	var numStr = String(check);
+	switch (numStr.substring(numStr.length - 1)) {
+		case '1':
+			numStr = 'st';
+			break;
+		case '2':
+			numStr = 'nd';
+			break;
+		case '3':
+			numStr = 'rd';
+			break;
+		default: numStr = 'th';
+	}
+
+	if ( num === 0 ) {
+		numStr = "";
+	}
+
+	if ( check > 9 && check < 20 ) {
+		numStr = 'th';
+	}
+
+	return num + "<span class=\"ordinal\">" + numStr + "</span>";
+}
+
 module.exports = {
 	detectTouch: detectTouch,
 	tint: tint,
@@ -122,5 +185,7 @@ module.exports = {
 	handleMoney: handleMoney,
 	setDefaultValue: setDefaultValue,
 	computeContrast: computeContrast,
-	getTimeDiff: getTimeDiff
+	getTimeDiff: getTimeDiff,
+	dateNameConverter: dateNameConverter,
+	getOrdinal: getOrdinal
 };
