@@ -4,9 +4,33 @@
 		<input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
 		<input type="text" name="project_name" id="project-name" placeholder="Project name" class="form-input">
 		<textarea name="description" id="project-description" placeholder="Description" class="form-input"></textarea>
+
 		<div class="select-colors">
 			<div class="selected-color"></div>
 		</div>
+		<div class="dropdown-color">
+				<ul class="color-list">
+					<li>
+						<div class="color-item blue"></div>
+					</li>
+					<li>
+						<div class="color-item red"></div>
+					</li>
+					<li>
+						<div class="color-item green"></div>
+					</li>
+					<li>
+						<div class="color-item yellow"></div>
+					</li>
+					<li>
+						<div class="color-item purple"></div>
+					</li>
+					<li>
+						<div class="color-item cyan"></div>
+					</li>
+				</ul>
+		</div>
+
 		<div class="tooltip-element">
 			<div class="tooltip">
 				<p>Set the default billable amount for all tasks of this project.</p>
@@ -18,12 +42,4 @@
 		</p>
 		<span class="btn-container"><button id="add-project">Add project</button></span>
 	</div>
-	<ul class="color-list">
-		<li class="color-item blue"></li>
-		<li class="color-item red"></li>
-		<li class="color-item green"></li>
-		<li class="color-item yellow"></li>
-		<li class="color-item purple"></li>
-		<li class="color-item cyan"></li>
-	</ul>
 </div>

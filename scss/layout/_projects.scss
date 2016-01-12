@@ -296,7 +296,7 @@ textarea.project-card-description {
 @include media($thin-min) {
 	.project-modal {
 		max-width: 620px;
-		margin: auto;
+		margin: 5%;
 		margin-top: 10%;
 	}
 }
