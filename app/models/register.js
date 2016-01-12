@@ -26,8 +26,8 @@ function createUser(postBody, callback) {
 	}
 
 	db.query(sql, body, function(err, result) {
+		var dbErr;
 		if (err) {
-			var dbErr;
 			switch(err.constraint) {
 				case ( 'users_email_key' ) :
 					dbErr = "That email address already exists";

@@ -46,7 +46,7 @@ function register(val) {
 					errStr = errStr.replace("\"email\"", "Email Address");
 					break;
 				case "password":
-					errStr = errStr.replace("\"password\"", "Password") + " and must be at least 6 characters long";
+					errStr = errStr.replace("\"password\"", "Password");
 					break;
 				case "first_name":
 					errStr = errStr.replace("\"first_name\"", "First Name");

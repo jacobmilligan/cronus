@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 	db(req.body.email, req.body, function(err, user) {
+		req.session.msgColor = '#CC4C37';
 		if (err) {
 			req.flash('msg', err);
 			res.locals.msg = req.flash('msg');

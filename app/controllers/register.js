@@ -22,6 +22,7 @@ router.post('/', function(req, res, next) {
 			req.session.frmmail = req.body.email;
 			req.session.firstName = req.body.first_name;
 			req.session.lastName = req.body.last_name;
+			req.session.msgColor = '#CC4C37';
 			res.redirect('register');
 		} else {
 			req.flash('msg', "Registration successful. Please login to access to your account.");
