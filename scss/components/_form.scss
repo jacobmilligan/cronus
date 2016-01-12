@@ -285,6 +285,21 @@
 	}
 }
 
+@include media($thin-min) {
+	.color-list {
+		max-width: 420px;
+		padding: 10px 0;
+		padding-left: 7px;
+
+		.color-item {
+			max-width: 100px;
+			padding: 0;
+			text-align: center;
+		}
+
+	}
+}
+
 @include media($tablet-small) {
 	.register {
 		width: 450px;

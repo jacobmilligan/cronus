@@ -292,3 +292,11 @@ textarea.project-card-description {
 		}
 	}
 }
+
+@include media($thin-min) {
+	.project-modal {
+		max-width: 620px;
+		margin: auto;
+		margin-top: 10%;
+	}
+}
