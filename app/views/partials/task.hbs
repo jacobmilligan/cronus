@@ -1,10 +1,13 @@
 <div class="task">
   <div class="batch-container">
-    <input class="task-batch" id="{{unique_id}}" type="checkbox">
+    <input id="{{unique_id}}" type="checkbox" class="hidden-batch">
+    <label class="task-batch" for="{{unique_id}}"></label>
   </div>
   <div class="task-section task-info">
     <input type="text" class="task-name inline reset-input-styles" value="{{task_name}}" disabled>
-    <span class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</span>
+    <div class="project-name-outer">
+      <span class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</span>
+    </div>
     <span class="task-value">{{value}} per hour</span>
   </div>
   <div class="task-section task-tags"></div>

@@ -1,3 +1,31 @@
+@include keyframes(scaleFadeIn) {
+  0% {
+    opacity: 0;
+    @include transform(scale(0));
+  }
+
+  50% {
+    @include transform(scale(1.3));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(scale(1.0));
+  }
+}
+
+@include keyframes(scaleFadeOut) {
+  0% {
+    opacity: 1;
+    @include transform(scale(1.0));
+  }
+
+  100% {
+    opacity: 0;
+    @include transform(scale(0));
+  }
+}
+
 #project-name {
   margin-top: -25px;
 }
@@ -12,18 +40,35 @@
   @include padding(20px);
 }
 
-.task.batch-container {
-  @include span-columns(12);
+.batch-container {
   text-align: center;
 }
 
-input.task-batch {
-  float: none;
+.task-batch {
+  @include size(30px);
+  border: 3px solid transparentize($primary-font-color, 0.3);
+  border-radius: 3px;
   position: relative;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 6em;
+
+  &:before {
+    @include position(absolute, -5px 0);
+    font-size: 2.3rem;
+    color: transparentize($primary-font-color, 0.3);
+  }
 }
+
+input[type="checkbox"].hidden-batch {
+  position: absolute;
+  left: -9999px;
+  @include transition(all 0.2s ease);
+}
+
+input.hidden-batch[type="checkbox"]:checked + label.task-batch:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+  @include animation(scaleFadeIn 0.2s);
+}
+
 
 .task input[type="text"].inline.reset-input-styles {
   @include span-columns(12);
@@ -140,7 +185,7 @@ i.task-edit-inner {
   }
 }
 
-@include media($wide-tablet) {
+@include media($inline-cards) {
 
   .task input[type="text"].inline.reset-input-styles {
     width: auto;
@@ -156,8 +201,8 @@ i.task-edit-inner {
   }
 
   .task-info {
-    @include span-columns(6);
-    @include shift(-0.25);
+    @include span-columns(5);
+    @include shift(-0.2);
   }
 
   .task-elapsed {
@@ -167,8 +212,11 @@ i.task-edit-inner {
   }
 
   .task-value {
-    display: inline;
-    margin-left: 15px;
+    display: inline-block;
+  }
+
+  .project-name-outer {
+    @include shift(-1);
   }
 
   .task-start {
@@ -187,4 +235,13 @@ i.task-edit-inner {
     }
   }
 
+}
+
+@include media($small-laptop-max) {
+  .project-name-outer {
+    @include row;
+    @include span-columns(12);
+    @include shift(1);
+    text-align: left;
+  }
 }
