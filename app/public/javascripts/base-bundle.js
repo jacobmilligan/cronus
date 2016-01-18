@@ -913,15 +913,20 @@ require('../templates');
 
 	function sendProject() {
 		var labelColor = window.getComputedStyle(document.getElementsByClassName('selected-color')[0]).getPropertyValue('background-color');
+		var projectName = document.getElementById('project-name');
+
+		if ( projectName.value.length <= 0  ) {
+			projectName.value = generateName();
+		}
 
 		var projectData = {
 			_csrf: document.getElementById('csrf').value,
+			project_name: document.getElementById('project-name').value,
 			description: document.getElementById('project-description').value,
 			default_value: Number( document.getElementById('project-amt').value.replace('$', '') ),
 			color: helpers.rgbToHex(labelColor)
 		};
 
-		projectData.project_name = (document.getElementById('project-name').value.length === 0) ? generateName() : document.getElementById('project-name').value;
 		//TODO: Do tags logic here
 
 		var xhr = new XMLHttpRequest();
