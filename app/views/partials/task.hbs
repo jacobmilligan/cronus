@@ -1,4 +1,5 @@
 <div class="task">
+  <input type="hidden" class="original-task-name" value="{{task_name}}">
   <div class="batch-container">
     <input id="{{unique_id}}" type="checkbox" class="hidden-batch">
     <label class="task-batch" for="{{unique_id}}"></label>
@@ -17,6 +18,7 @@
     </div>
     <div class="task-subsection inline">
       <span class="task-start">{{start_time}}</span> - <span class="task-end">{{end_time}}</span>
+      <input type="hidden" class="original-start-time" value="{{original_start_time}}">
     </div>
     <div class="task-subsection inline">
       <span class="total-time">$00.00</span>

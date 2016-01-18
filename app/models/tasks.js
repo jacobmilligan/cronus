@@ -58,7 +58,19 @@ function insertTask(params, callback) {
   });
 }
 
+function updateTask(params, callback) {
+  var sql = "UPDATE tasks SET task_name = $1 WHERE task_name = $2 AND project_name = $3 AND user_id = $4 AND start_time = $5";
+  db.query(sql, params, function(err) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, true);
+    }
+  });
+}
+
 module.exports = {
   getTasks: getTasks,
   insertTask: insertTask,
+  updateTask: updateTask
 };

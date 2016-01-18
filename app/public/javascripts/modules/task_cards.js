@@ -28,7 +28,10 @@ function displayEditor(event) {
 function updateTask(task) {
   var data = {
     _csrf: document.getElementById('csrf').value,
-    task_name: task.getElementsByClassName('task-name')[0].value
+    task_name: task.getElementsByClassName('task-name')[0].value,
+    project_name: task.getElementsByClassName('task-project-name')[0].innerHTML,
+    start_time: task.getElementsByClassName('original-start-time')[0].value,
+    original_name: task.getElementsByClassName('original-task-name')[0].value
   };
   var req = new XMLHttpRequest();
   req.onreadystatechange = function() {

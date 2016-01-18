@@ -110,9 +110,10 @@ require('../templates');
       var uniqueIDs = document.querySelectorAll('[id^="checkbox"]');
 
       newTask.unique_id = uniqueIDs[uniqueIDs.length-1].id;
+      newTask.original_start_time = timeStamp.start;
       var uID = newTask.unique_id.substring(newTask.unique_id.indexOf('-') + 1);
       newTask.unique_id = newTask.unique_id.replace(newTask.unique_id.substring(newTask.unique_id.indexOf('-')), "-" + (Number(uID) + 1));
-      console.log(newTask.unique_id);
+
       if ( timeStamp.start.getMinutes() < 10 ) {
         newTask.start_time += '0';
       }
@@ -228,6 +229,7 @@ function getTasks() {
         for ( var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
+          res[i].original_start_time = res[i].start_time;
 
           // Reformat start_time hours, adding leading zeroes and converting to 12 hour time as needed
           var timestampHours = startTime.getHours();

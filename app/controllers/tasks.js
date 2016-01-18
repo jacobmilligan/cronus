@@ -24,7 +24,15 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-  res.send(req.body);
+  var data = [req.body.task_name, req.body.original_name, req.body.project_name, req.session.user.id, req.body.start_time];
+  model.updateTask(data, function(err, success) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(success);
+    }
+  });
 });
 
 module.exports = router;
