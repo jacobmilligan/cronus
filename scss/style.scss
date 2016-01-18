@@ -22,6 +22,14 @@ $visual-grid-index: front !global;
 // Theme
 @import 'themes/main-theme';
 
+//Components
+@import 'components/link';
+@import 'components/menu';
+@import 'components/form';
+@import 'components/buttons';
+@import 'components/loaders';
+@import 'components/dropdown';
+
 //Layouts
 @import 'layout/layout';
 @import 'layout/navigation';
@@ -29,10 +37,3 @@ $visual-grid-index: front !global;
 @import 'layout/projects';
 @import 'layout/tasks';
 @import 'layout/timer';
-
-//Components
-@import 'components/link';
-@import 'components/menu';
-@import 'components/form';
-@import 'components/buttons';
-@import 'components/loaders';

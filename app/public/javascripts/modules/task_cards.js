@@ -5,6 +5,7 @@ function attachEditors() {
   var editBtns = document.getElementsByClassName('task-edit-inner');
   for (var i = 0; i < editBtns.length; i++) {
     helpers.detectTouch(editBtns[i], displayEditor, true);
+    helpers.detectTouch(editBtns[i].getElementsByClassName('delete')[0], deleteTasks, true);
   }
 }
 
@@ -45,6 +46,10 @@ function updateTask(task) {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
   req.send(JSON.stringify(data));
+}
+
+function deleteTasks() {
+  
 }
 
 module.exports = {

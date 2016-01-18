@@ -7,7 +7,62 @@ require('./modules/tasks');
 require('./modules/project_cards');
 require('./modules/task_cards');
 
-},{"./modules/menu":3,"./modules/project_cards":5,"./modules/projects":6,"./modules/task_cards":7,"./modules/tasks":8}],2:[function(require,module,exports){
+},{"./modules/menu":4,"./modules/project_cards":6,"./modules/projects":7,"./modules/task_cards":8,"./modules/tasks":9}],2:[function(require,module,exports){
+'use strict';
+var helpers = require('./helpers');
+
+var self = this;
+
+function Dropdown() {
+  this.collection = document.getElementsByClassName('dropdown-icon');
+  self.active_menu = undefined;
+}
+
+Dropdown.prototype.init = function() {
+  helpers.detectTouch(document.body, this.display, true);
+};
+
+Dropdown.prototype.display = function(event) {
+  var targClass = event.target.className;
+  //Check if event is a dropdown entity
+  if ( targClass.indexOf('dropdown-icon') >= 0 || targClass.indexOf('dropdown-menu') >= 0 || targClass.indexOf('dropdown-action') >= 0 ) {
+
+    var parent = event.target.parentNode;
+    if ( parent.className.indexOf('dropdown-menu') >= 0 ) {
+      //Climb the DOM up one node
+      parent = parent.parentNode;
+    }
+
+    var menu = parent.getElementsByClassName('dropdown-menu')[0];
+    if ( self.active_menu !== undefined ) {
+
+      if ( self.active_menu === menu ) {
+        //Hide clicked menu
+        self.active_menu.style.visibility = 'hidden';
+        self.active_menu = undefined;
+      } else {
+        //Hide whatever the currently active menu on the page is
+        self.active_menu.style.visibility = 'hidden';
+        self.active_menu = menu;
+        menu.style.visibility = 'visible'; //Display clicked menu
+      }
+    } else {
+      //Show clicked menu
+      menu.style.visibility = 'visible';
+      self.active_menu = menu;
+    }
+
+    //Hide active menu if a non-dropdown entity was clicked
+  } else if ( self.active_menu !== undefined ) {
+    self.active_menu.style.visibility = 'hidden';
+    self.active_menu = undefined;
+  }
+
+};
+
+module.exports = Dropdown;
+
+},{"./helpers":3}],3:[function(require,module,exports){
 'use strict';
 
 //Resets :hover state of all 'display-only' buttons used as decorative elements
@@ -224,7 +279,7 @@ module.exports = {
 	getOrdinal: getOrdinal
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
@@ -353,7 +408,7 @@ function computeHeight(element) {
 	}
 }());
 
-},{"./helpers":2}],4:[function(require,module,exports){
+},{"./helpers":3}],5:[function(require,module,exports){
 
 /*
   I've wrapped Makoto Matsumoto and Takuji Nishimura's code in a namespace
@@ -556,7 +611,7 @@ module.exports = {
   MersenneTwister: MersenneTwister
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
@@ -742,7 +797,7 @@ function sendDelete(data) {
 }
 module.exports = init;
 
-},{"./helpers":2}],6:[function(require,module,exports){
+},{"./helpers":3}],7:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
@@ -1013,7 +1068,7 @@ function generateName(projectArr) {
 	return name;
 }
 
-},{"../templates":9,"./helpers":2,"./mersenne-twister":4,"./project_cards":5}],7:[function(require,module,exports){
+},{"../templates":10,"./helpers":3,"./mersenne-twister":5,"./project_cards":6}],8:[function(require,module,exports){
 'use strict';
 var helpers = require('./helpers');
 
@@ -1021,6 +1076,7 @@ function attachEditors() {
   var editBtns = document.getElementsByClassName('task-edit-inner');
   for (var i = 0; i < editBtns.length; i++) {
     helpers.detectTouch(editBtns[i], displayEditor, true);
+    helpers.detectTouch(editBtns[i].getElementsByClassName('delete')[0], deleteTasks, true);
   }
 }
 
@@ -1063,15 +1119,20 @@ function updateTask(task) {
   req.send(JSON.stringify(data));
 }
 
+function deleteTasks() {
+  
+}
+
 module.exports = {
   attachEditors: attachEditors
 };
 
-},{"./helpers":2}],8:[function(require,module,exports){
+},{"./helpers":3}],9:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
 var taskCards = require('./task_cards');
+var Dropdown = require('./dropdown');
 require('../templates');
 
 (function() {
@@ -1296,6 +1357,7 @@ function getTasks() {
         noTasks.remove();
         var ampm = "am";
 
+        /* Generate all tasks */
         for ( var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
@@ -1328,10 +1390,12 @@ function getTasks() {
           res[i].unique_id = "checkbox-" + i;
           //Render the task in order
           renderInOrder(res[i], endTime);
-
         }
-
-        //Rendered all tasks so attach editor eventListeners
+        /* Finish generating tasks */
+        //Handle batch editor controls
+        var dd = new Dropdown();
+        dd.init();
+        //Rendering tasks finished, so attach editor eventListeners
         taskCards.attachEditors();
 
         var tasks = document.getElementsByClassName('task');
@@ -1446,6 +1510,7 @@ function renderInOrder(currTask, dateToSort) {
     newDateCollection.className = "container";
     newDateCollection.id = currDate;
     newDateCollection.innerHTML += "<h2 class=\"date-heading\">" + currDate + "</h1>";
+    newDateCollection.innerHTML += Handlebars.templates['batch_controller.hbs']();
     newDateCollection.innerHTML += Handlebars.templates['task.hbs'](currTask) + "<br>";
     document.getElementById('task-holder').appendChild(newDateCollection);
   } else if (currTask.isNew) {
@@ -1457,11 +1522,19 @@ function renderInOrder(currTask, dateToSort) {
   }
 }
 
-},{"../templates":9,"./helpers":2,"./task_cards":7}],9:[function(require,module,exports){
+},{"../templates":10,"./dropdown":2,"./helpers":3,"./task_cards":8}],10:[function(require,module,exports){
 require('./templates/projectcards');
 require('./templates/task');
+require('./templates/batch_controller');
 
-},{"./templates/projectcards":10,"./templates/task":11}],10:[function(require,module,exports){
+},{"./templates/batch_controller":11,"./templates/projectcards":12,"./templates/task":13}],11:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['batch_controller.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"dropdown batch-controller\">\n  <i class=\"dropdown-icon fa fa-wrench\"></i>\n  <ul class=\"dropdown-menu batch-menu\">\n    <li class=\"dropdown-action batch-action delete\">Delete Selected</li>\n    <li class=\"dropdown-action batch-action delete\">Bulk Edit</li>\n  </ul>\n</div>\n";
+},"useData":true});
+})();
+},{}],12:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -1484,7 +1557,7 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
     + "\">Go to tasks</button></a>\n	</span>\n	<div class=\"delete-container\">\n		<button class=\"btn delete\">Delete Project</button>\n		<span class=\"confirm\">\n			Are you sure?\n			<button id=\"project-delete-cancel\" class=\"btn\">No</button>\n			<button id=\"project-delete-confirm\" class=\"btn\">Yes</button>\n		</span>\n	</div>\n</div>\n";
 },"useData":true});
 })();
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

@@ -131,6 +131,7 @@ i.task-edit-inner {
   color: tint($primary-font-color, 15%);
   text-align: left;
   border-bottom: solid 2px tint($primary-font-color, 15%);
+  display: inline;
 }
 
 .task-section {

@@ -2,6 +2,7 @@
 
 var helpers = require('./helpers');
 var taskCards = require('./task_cards');
+var Dropdown = require('./dropdown');
 require('../templates');
 
 (function() {
@@ -226,6 +227,7 @@ function getTasks() {
         noTasks.remove();
         var ampm = "am";
 
+        /* Generate all tasks */
         for ( var i = 0; i < res.length; i++) {
           var startTime = new Date(res[i].start_time);
           var endTime = new Date(res[i].end_time);
@@ -258,10 +260,12 @@ function getTasks() {
           res[i].unique_id = "checkbox-" + i;
           //Render the task in order
           renderInOrder(res[i], endTime);
-
         }
-
-        //Rendered all tasks so attach editor eventListeners
+        /* Finish generating tasks */
+        //Handle batch editor controls
+        var dd = new Dropdown();
+        dd.init();
+        //Rendering tasks finished, so attach editor eventListeners
         taskCards.attachEditors();
 
         var tasks = document.getElementsByClassName('task');
@@ -376,6 +380,7 @@ function renderInOrder(currTask, dateToSort) {
     newDateCollection.className = "container";
     newDateCollection.id = currDate;
     newDateCollection.innerHTML += "<h2 class=\"date-heading\">" + currDate + "</h1>";
+    newDateCollection.innerHTML += Handlebars.templates['batch_controller.hbs']();
     newDateCollection.innerHTML += Handlebars.templates['task.hbs'](currTask) + "<br>";
     document.getElementById('task-holder').appendChild(newDateCollection);
   } else if (currTask.isNew) {
