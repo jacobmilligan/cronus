@@ -1015,11 +1015,40 @@ function generateName(projectArr) {
 
 },{"../templates":9,"./helpers":2,"./mersenne-twister":4,"./project_cards":5}],7:[function(require,module,exports){
 'use strict';
+var helpers = require('./helpers');
 
-},{}],8:[function(require,module,exports){
+function attachEditors() {
+  var editBtns = document.getElementsByClassName('task-edit-inner');
+  for (var i = 0; i < editBtns.length; i++) {
+    helpers.detectTouch(editBtns[i], displayEditor, true);
+  }
+}
+
+function displayEditor(event) {
+  var parent = event.target.parentNode.parentNode;
+  if (event.target.className === 'btn task-save' ) {
+    var editIcon = parent.getElementsByClassName('task-edit-inner')[0];
+    event.target.style.display = 'none';
+    editIcon.style.display = 'inline';
+    parent.getElementsByClassName('task-name')[0].disabled = true;
+  } else {
+    var saveBtn = parent.getElementsByClassName('task-save')[0];
+    event.target.style.display = 'none';
+    saveBtn.style.display = 'inline';
+    parent.getElementsByClassName('task-name')[0].disabled = false;
+    helpers.detectTouch(saveBtn, displayEditor, true);
+  }
+}
+
+module.exports = {
+  attachEditors: attachEditors
+};
+
+},{"./helpers":2}],8:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
+var taskCards = require('./task_cards');
 require('../templates');
 
 (function() {
@@ -1103,6 +1132,7 @@ require('../templates');
       var timeStamp = {
         end: new Date()
       };
+
       var diffHours = Number(timeStamp.end.getHours()) - Number(elapsed.hours);
       var diffMinutes = Number(timeStamp.end.getMinutes()) - Number(elapsed.minutes);
       var diffSeconds = Number(timeStamp.end.getSeconds()) - Number(elapsed.seconds);
@@ -1153,6 +1183,7 @@ require('../templates');
       }
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
+
       addTask(newTask);
       document.getElementById('task-name').value = '';
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
@@ -1251,7 +1282,6 @@ function getTasks() {
 
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
           res[i].start_time = (timestampHours) + ":" + timestampMinutes + ampm; //put into 12-hour time
-
           //Do the same with end time
           timestampHours = endTime.getHours();
           timestampMinutes = ( endTime.getMinutes() < 10 ) ? '0' + endTime.getMinutes() : endTime.getMinutes();
@@ -1264,10 +1294,13 @@ function getTasks() {
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
 
-          //Render the task
+          //Render the task in order
           renderInOrder(res[i], endTime);
 
         }
+
+        //Rendered all tasks so attach editor eventListeners
+        taskCards.attachEditors();
 
         var tasks = document.getElementsByClassName('task');
         var projectName, projectColor;
@@ -1360,18 +1393,19 @@ function calcTotal(taskCard, decs) {
 /* Create date header for sorting */
 ////////////////////////////////////
 function renderInOrder(currTask, dateToSort) {
+  var theDate = new Date(dateToSort);
   var dateConverter = new helpers.dateNameConverter();
-  var currDate = dateConverter.dayName(dateToSort.getDay()) + " " + helpers.getOrdinal(dateToSort.getDate()) + " ";
+  var currDate = dateConverter.dayName(theDate.getDay()) + " " + helpers.getOrdinal(theDate.getDate()) + " ";
   var today = new Date();
   var yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
-  currDate += dateConverter.monthName(dateToSort.getMonth()) + ", " + dateToSort.getFullYear();
+  currDate += dateConverter.monthName(theDate.getMonth()) + ", " + theDate.getFullYear();
 
   today.setHours(0,0,0,0);
-  dateToSort.setHours(0,0,0,0);
-  if ( dateToSort.toDateString() === today.toDateString() ) {
+  theDate.setHours(0,0,0,0);
+  if ( theDate.toDateString() === today.toDateString() ) {
     currDate = "Today";
-  } else if ( dateToSort.toDateString() === yesterday.toDateString() ) {
+  } else if ( theDate.toDateString() === yesterday.toDateString() ) {
     currDate = "Yesterday";
   }
 
@@ -1391,7 +1425,7 @@ function renderInOrder(currTask, dateToSort) {
   }
 }
 
-},{"../templates":9,"./helpers":2}],9:[function(require,module,exports){
+},{"../templates":9,"./helpers":2,"./task_cards":7}],9:[function(require,module,exports){
 require('./templates/projectcards');
 require('./templates/task');
 
@@ -1424,9 +1458,9 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
 templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<div class=\"task\">\n  <div class=\"task-section task-info\">\n    <span class=\"task-name inline\">"
+  return "<div class=\"task\">\n  <div class=\"task-section task-info\">\n    <input type=\"text\" class=\"task-name inline reset-input-styles\" value=\""
     + alias4(((helper = (helper = helpers.task_name || (depth0 != null ? depth0.task_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"task_name","hash":{},"data":data}) : helper)))
-    + "</span> <span class=\"task-project-name inline\" style=\"background-color:"
+    + "\" disabled>\n    <span class=\"task-project-name inline\" style=\"background-color:"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
     + ";\">"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
@@ -1442,7 +1476,7 @@ templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(cont
     + alias4(((helper = (helper = helpers.start_time || (depth0 != null ? depth0.start_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"start_time","hash":{},"data":data}) : helper)))
     + "</span> - <span class=\"task-end\">"
     + alias4(((helper = (helper = helpers.end_time || (depth0 != null ? depth0.end_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"end_time","hash":{},"data":data}) : helper)))
-    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n  <div class=\"task-edit\">\n    <i class=\"task-edit-inner fa fa-edit\"></i>\n  </div>\n</div>\n";
+    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n  <div class=\"task-edit\">\n    <i class=\"task-edit-inner fa fa-edit\"></i>\n    <button class=\"btn task-save\">Save</button>\n  </div>\n</div>\n";
 },"useData":true});
 })();
 },{}]},{},[1]);

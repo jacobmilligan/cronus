@@ -1,6 +1,7 @@
 'use strict';
 
 var helpers = require('./helpers');
+var taskCards = require('./task_cards');
 require('../templates');
 
 (function() {
@@ -84,6 +85,7 @@ require('../templates');
       var timeStamp = {
         end: new Date()
       };
+
       var diffHours = Number(timeStamp.end.getHours()) - Number(elapsed.hours);
       var diffMinutes = Number(timeStamp.end.getMinutes()) - Number(elapsed.minutes);
       var diffSeconds = Number(timeStamp.end.getSeconds()) - Number(elapsed.seconds);
@@ -134,6 +136,7 @@ require('../templates');
       }
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
+
       addTask(newTask);
       document.getElementById('task-name').value = '';
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
@@ -232,7 +235,6 @@ function getTasks() {
 
           ampm = ( startTime.getHours() > 11 ) ? "pm" : "am";
           res[i].start_time = (timestampHours) + ":" + timestampMinutes + ampm; //put into 12-hour time
-
           //Do the same with end time
           timestampHours = endTime.getHours();
           timestampMinutes = ( endTime.getMinutes() < 10 ) ? '0' + endTime.getMinutes() : endTime.getMinutes();
@@ -245,10 +247,13 @@ function getTasks() {
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
 
-          //Render the task
+          //Render the task in order
           renderInOrder(res[i], endTime);
 
         }
+
+        //Rendered all tasks so attach editor eventListeners
+        taskCards.attachEditors();
 
         var tasks = document.getElementsByClassName('task');
         var projectName, projectColor;
@@ -341,18 +346,19 @@ function calcTotal(taskCard, decs) {
 /* Create date header for sorting */
 ////////////////////////////////////
 function renderInOrder(currTask, dateToSort) {
+  var theDate = new Date(dateToSort);
   var dateConverter = new helpers.dateNameConverter();
-  var currDate = dateConverter.dayName(dateToSort.getDay()) + " " + helpers.getOrdinal(dateToSort.getDate()) + " ";
+  var currDate = dateConverter.dayName(theDate.getDay()) + " " + helpers.getOrdinal(theDate.getDate()) + " ";
   var today = new Date();
   var yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
-  currDate += dateConverter.monthName(dateToSort.getMonth()) + ", " + dateToSort.getFullYear();
+  currDate += dateConverter.monthName(theDate.getMonth()) + ", " + theDate.getFullYear();
 
   today.setHours(0,0,0,0);
-  dateToSort.setHours(0,0,0,0);
-  if ( dateToSort.toDateString() === today.toDateString() ) {
+  theDate.setHours(0,0,0,0);
+  if ( theDate.toDateString() === today.toDateString() ) {
     currDate = "Today";
-  } else if ( dateToSort.toDateString() === yesterday.toDateString() ) {
+  } else if ( theDate.toDateString() === yesterday.toDateString() ) {
     currDate = "Yesterday";
   }
 

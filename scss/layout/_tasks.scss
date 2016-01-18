@@ -12,6 +12,38 @@
   @include padding(20px);
 }
 
+.task .reset-input-styles #{$all-text-inputs} {
+  @include span-columns(12);
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: none;
+
+  &:disabled {
+    background-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    cursor: auto;
+    opacity: 1;
+    -webkit-text-fill-color: tint($primary-font-color, 25%);
+    color: tint($primary-font-color, 25%);
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+
+  &:hover {
+    cursor: auto;
+    border: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+}
+
 @include direction-context(right-to-left) {
   .task-edit {
     font-size: $font-size-xlarge;
@@ -28,6 +60,12 @@ i.task-edit-inner {
   &:hover {
     color: $primary-font-color;
   }
+}
+
+.task-save {
+  display: none;
+  font-size: $font-size-small;
+  margin-top: -2px;
 }
 
 .date-heading {
@@ -90,6 +128,14 @@ i.task-edit-inner {
 }
 
 @include media($wide-tablet) {
+
+  .task input[type="text"].inline.reset-input-styles {
+    width: auto;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
 
   .task-section {
     margin-bottom: 0;

@@ -1,6 +1,7 @@
 <div class="task">
   <div class="task-section task-info">
-    <span class="task-name inline">{{task_name}}</span> <span class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</span>
+    <input type="text" class="task-name inline reset-input-styles" value="{{task_name}}" disabled>
+    <span class="task-project-name inline" style="background-color:{{color}};">{{project_name}}</span>
     <span class="task-value">{{value}} per hour</span>
   </div>
   <div class="task-section task-tags"></div>
@@ -17,5 +18,6 @@
   </div>
   <div class="task-edit">
     <i class="task-edit-inner fa fa-edit"></i>
+    <button class="btn task-save">Save</button>
   </div>
 </div>

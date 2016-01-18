@@ -3,9 +3,9 @@
 templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<div class=\"task\">\n  <div class=\"task-section task-info\">\n    <span class=\"task-name inline\">"
+  return "<div class=\"task\">\n  <div class=\"task-section task-info\">\n    <input type=\"text\" class=\"task-name inline reset-input-styles\" value=\""
     + alias4(((helper = (helper = helpers.task_name || (depth0 != null ? depth0.task_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"task_name","hash":{},"data":data}) : helper)))
-    + "</span> <span class=\"task-project-name inline\" style=\"background-color:"
+    + "\" disabled>\n    <span class=\"task-project-name inline\" style=\"background-color:"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
     + ";\">"
     + alias4(((helper = (helper = helpers.project_name || (depth0 != null ? depth0.project_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"project_name","hash":{},"data":data}) : helper)))
@@ -21,6 +21,6 @@ templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(cont
     + alias4(((helper = (helper = helpers.start_time || (depth0 != null ? depth0.start_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"start_time","hash":{},"data":data}) : helper)))
     + "</span> - <span class=\"task-end\">"
     + alias4(((helper = (helper = helpers.end_time || (depth0 != null ? depth0.end_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"end_time","hash":{},"data":data}) : helper)))
-    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n  <div class=\"task-edit\">\n    <i class=\"task-edit-inner fa fa-edit\"></i>\n  </div>\n</div>\n";
+    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n  <div class=\"task-edit\">\n    <i class=\"task-edit-inner fa fa-edit\"></i>\n    <button class=\"btn task-save\">Save</button>\n  </div>\n</div>\n";
 },"useData":true});
 })();
