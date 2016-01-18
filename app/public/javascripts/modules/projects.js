@@ -2,6 +2,7 @@
 
 var helpers = require('./helpers');
 var projectCards = require('./project_cards');
+var mersenneTwister = require('./mersenne-twister');
 require('../templates');
 
 // Project page functions
@@ -46,7 +47,6 @@ require('../templates');
 					var container = document.getElementsByClassName('projects-container')[0];
 
 					for (var i = 0; i < projRes.length; i++) {
-						//buildProject(projRes[i], projects);
 						projRes[i].default_value = projRes[i].default_value.replace('$', '');
 						container.innerHTML += Handlebars.templates['projectcards.hbs'](projRes[i]);
 					}
@@ -57,6 +57,8 @@ require('../templates');
 
 					//Handle events dependant on rendered cards
 					projectCards();
+					//Fix all textarea heights so they are equal to content height
+					fixTextareaHeight();
 
 				} else {
 					noProjects.style.display = 'block';
@@ -174,7 +176,7 @@ require('../templates');
 			color: helpers.rgbToHex(labelColor)
 		};
 
-		projectData.project_name = (document.getElementById('project-name').value.length === 0) ? "(No description)" : document.getElementById('project-name').value;
+		projectData.project_name = (document.getElementById('project-name').value.length === 0) ? generateName() : document.getElementById('project-name').value;
 		//TODO: Do tags logic here
 
 		var xhr = new XMLHttpRequest();
@@ -215,3 +217,39 @@ require('../templates');
 	}
 
 }());
+
+function fixTextareaHeight() {
+	
+}
+
+function generateName(projectArr) {
+	var ID_LENGTH = 10000;
+	var projects = document.getElementsByClassName('project-card-name');
+	var projectNames = [];
+	if ( !projectArr ) {
+		for (var i = 0; i < projects.length; i++) {
+			projectNames.push(projects[i].value);
+		}
+	} else {
+		projectNames = projectArr;
+	}
+
+	var mt = new mersenneTwister.MersenneTwister();
+
+	var adjectives = ["Icy", "Hot", "Tropical", "Big", "Dark", "Shiny", "Hidden",
+	                  "Golden", "Fast", "Elegant", "Ancient", "Thrilling", "Dusty", "Honest"];
+
+	var nouns = ["Metal", "Creature", "Wood", "Light", "Wave", "Rocket", "Future",
+	              "Storm", "Fire", "Mountain", "Ocean", "Forest", "Jungle", "Hero"];
+
+	var rndA = Math.round(mt.random() * adjectives.length - 1);
+	var rndB = Math.round(mt.random() * nouns.length - 1);
+	var rndC = Math.round(mt.random() * ID_LENGTH);
+
+	var name = adjectives[rndA] + " " + nouns[rndB] + " " + rndC;
+
+	if ( projectNames.indexOf(name) >= 0 ) {
+		name = generateName(projectNames);
+	}
+	return name;
+}

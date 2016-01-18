@@ -39,7 +39,7 @@ input.dollar-amt {
 	width: 1px;
 }
 
-input.project-card-name {
+textarea.project-card-name {
 	@include row;
 	@include span-columns(12);
 	font-family: bariol-reg;
@@ -47,6 +47,7 @@ input.project-card-name {
 	padding: 5px;
 	text-align: center;
 	border: none;
+	resize: none;
 
 	&:disabled {
 		background-color: transparent;

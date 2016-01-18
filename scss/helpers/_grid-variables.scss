@@ -10,4 +10,5 @@ $desktop-min: new-breakpoint(min-width 884px 12);
 $desktop-large: new-breakpoint(min-width 970px 12);
 $desktop-wide: new-breakpoint(min-width 1024px 12);
 $inline-cards: new-breakpoint(min-width 649px 12);
-$wide-tablet: new-breakpoint(min-width 763px 12);
+$wide-tablet: new-breakpoint(min-width 780px 12);
+$wide-tablet-max: new-breakpoint(max-width 780px 12);

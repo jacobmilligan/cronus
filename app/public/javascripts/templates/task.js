@@ -21,6 +21,6 @@ templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(cont
     + alias4(((helper = (helper = helpers.start_time || (depth0 != null ? depth0.start_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"start_time","hash":{},"data":data}) : helper)))
     + "</span> - <span class=\"task-end\">"
     + alias4(((helper = (helper = helpers.end_time || (depth0 != null ? depth0.end_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"end_time","hash":{},"data":data}) : helper)))
-    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n</div>\n";
+    + "</span>\n    </div>\n    <div class=\"task-subsection inline\">\n      <span class=\"total-time\">$00.00</span>\n    </div>\n  </div>\n  <div class=\"task-edit\">\n    <i class=\"task-edit-inner fa fa-edit\"></i>\n  </div>\n</div>\n";
 },"useData":true});
 })();

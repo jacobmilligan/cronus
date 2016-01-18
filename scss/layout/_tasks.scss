@@ -12,6 +12,24 @@
   @include padding(20px);
 }
 
+@include direction-context(right-to-left) {
+  .task-edit {
+    font-size: $font-size-xlarge;
+    text-align: center;
+    display: inline-block;
+    line-height: 0;
+  }
+}
+
+i.task-edit-inner {
+  color: transparentize($primary-font-color, 0.4);
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-font-color;
+  }
+}
+
 .date-heading {
   @include span-columns(12);
   color: tint($primary-font-color, 15%);
@@ -59,42 +77,15 @@
   font-size: $font-size-xsmall;
 }
 
-@include media($thin-max) {
-
-}
-
-@include media($thin-min) {
-
-}
-
 @include media($mobile-max) {
-  .task-value, .task-name {
+  .task-name, .task-value {
     @include row;
   }
 }
 
-@include media($tablet) {
-
-  .task-section {
-      display: inline-block;
-      @include span-columns(4);
-  }
-
-  .task-elapsed {
-    margin-top: 25px;
-    @include span-columns(8);
-  }
-
-}
-
-@include media($tablet-max) {
-  .task-project-name, .task-name, .task-value {
-    @include row;
-  }
-
-  .task-project-name {
-    @include span-columns(7 of 12);
-    @include shift(2.5);
+@include media($wide-tablet-max) {
+  .task-edit {
+    @include span-columns(12);
   }
 }
 
@@ -102,6 +93,7 @@
 
   .task-section {
     margin-bottom: 0;
+    @include span-columns(4);
   }
 
   .task-info {
@@ -126,6 +118,14 @@
 
   .task-name {
     margin-bottom: 0;
+  }
+
+  @include direction-context(right-to-left) {
+    .task-edit {
+      @include span-columns(2);
+      @include shift(-0.5);
+      margin-top: -23px;
+    }
   }
 
 }
