@@ -18,28 +18,30 @@ router.post('/', function(req, res, next) {
   var body = req.body;
   var data = [req.session.user.id, body.task_name, body.project_name, body.value, body.start_time, body.color];
   model.setRunning(data, function(err, success) {
-    if (success) {
-      res.send("Success");
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(success);
     }
   });
 });
 
 router.delete('/', function(req, res, next) {
   model.deleteRunning([req.session.user.id], function(err, success) {
-    if (success) {
-      res.send("Success");
+    if (err) {
+      res.send(err);
     } else {
-      console.log(err);
+      res.send(success);
     }
   });
 });
 
 router.put('/', function(req, res, next) {
   model.updateRunning([req.body.task_name, req.body.value, req.session.user.id], function(err, success) {
-    if (success) {
-      res.send("Success");
-    } else {
+    if (err) {
       res.send(err);
+    } else {
+      res.send(success);
     }
   });
 });

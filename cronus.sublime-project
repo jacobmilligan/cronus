@@ -4,5 +4,7 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"color_variables_files":
+	["_variables.scss"]
 }

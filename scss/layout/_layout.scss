@@ -135,3 +135,16 @@ section {
 	font-size: 0.5em;
 	vertical-align: top;
 }
+
+#no-items {
+  @include span-columns(12);
+  text-align: center;
+  color: transparentize($primary-font-color, 0.4);
+  line-height: 50px;
+  font-size: $font-size-regular;
+  i {
+    vertical-align: middle;
+    font-size: $font-size-xxlarge;
+    color: $base-green;
+  }
+}

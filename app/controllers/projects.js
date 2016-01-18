@@ -39,7 +39,7 @@ router.put('/', function(req, res, next) {
 			if (err) {
 				res.send(err);
 			} else {
-				res.send("Success");
+				res.send(success);
 			}
 		});
 	}
@@ -50,6 +50,8 @@ router.delete('/', function(req, res, next) {
 	model.deleteProject(data, function(err, success) {
 		if (err) {
 			res.send(err);
+		} else {
+			res.send(success);
 		}
 		return;
 	});

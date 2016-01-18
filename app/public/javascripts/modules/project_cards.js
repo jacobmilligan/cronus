@@ -166,6 +166,15 @@ function sendDelete(data) {
 
   req.open('DELETE', '/projects');
 
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = JSON.parse(req.responseText);
+      if ( res === false ) {
+        console.log(res);
+      }
+    }
+  };
+
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
   req.send(JSON.stringify(data));

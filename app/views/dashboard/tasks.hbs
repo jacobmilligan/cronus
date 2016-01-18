@@ -5,6 +5,7 @@
   <h3 id="project-name">Project - "{{project_name}}"</h3>
   <a href="/dashboard/projects"><button>Return to projects</button></a>
 
+  <!-- Timer object -->
   <div class="inner-container">
     <div class="timer">
       <input type="hidden" id="csrf" name="_csrf" value={{csrfToken}}>
@@ -28,5 +29,8 @@
 
 </section>
 <section class="sctn-light" id="task-holder">
+  <div id="no-items">
+    You haven't recorded any tasks for this project yet.<br><br>Hit the <i class="fa fa-play"></i> button to start timing!
+  </div>
   <!-- Tasks go here -->
 </section>

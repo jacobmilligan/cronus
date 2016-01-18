@@ -1,5 +1,29 @@
 'use strict';
 
+//Resets :hover state of all 'display-only' buttons used as decorative elements
+(function() {
+	var displayOnly = document.getElementsByClassName('btn-display-only');
+	if ( displayOnly.length > 0 ) {
+		var currColor;
+		for (var i = 0; i < displayOnly.length; i++) {
+			displayOnly[i].addEventListener('mouseover', resetBackColor);
+			displayOnly[i].addEventListener('touchstart', resetBackColor); //for mobiles
+		}
+	}
+
+	function resetBackColor(event) {
+		console.log(event);
+		currColor = window.getComputedStyle(event.target).getPropertyValue('background-color');
+		event.target.style.backgroundColor = currColor;
+		if ( event.type === 'touchstart' ) {
+			event.target.removeEventListener('touchstart', resetBackColor);
+		}
+		if ( event.type === 'mouseover' ) {
+			event.target.removeEventListener('mouseover', resetBackColor);
+		}
+	}
+}());
+
 function detectTouch(element, event, add) {
 	if (add) {
 		if ( 'ontouchstart' in window ) {

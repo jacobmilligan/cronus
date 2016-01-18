@@ -85,6 +85,8 @@ function deleteProject(data, callback) {
 	db.transaction(queries, function(err, result) {
 		if (err) {
 			return callback(err, false);
+		} else {
+			return callback(null, true);
 		}
 	});
 }

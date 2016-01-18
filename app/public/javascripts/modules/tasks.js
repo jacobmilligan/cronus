@@ -212,7 +212,8 @@ function getTasks() {
       });
 
       if ( res.length > 0 ) {
-
+        var noTasks = document.getElementById('no-items');
+        noTasks.remove();
         var ampm = "am";
 
         for ( var i = 0; i < res.length; i++) {
@@ -258,10 +259,7 @@ function getTasks() {
           projectName.style.color = helpers.computeContrast(projectColor);
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = calcTotal(tasks[i], 2); //round
         }
-      } else {
-        document.getElementById('task-holder').innerHTML = "There are no tasks";
       }
-
     }
   };
 

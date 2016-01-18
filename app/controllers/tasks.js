@@ -15,8 +15,10 @@ router.post('/', function(req, res, next) {
     req.body.description, req.body.value, req.body.start_time, req.body.end_time,
     req.body.elapsed];
   model.insertTask(data, function(err, success) {
-    if (success) {
-      res.send(true);
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(success);
     }
   });
 });

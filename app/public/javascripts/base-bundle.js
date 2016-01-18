@@ -9,6 +9,30 @@ require('./modules/project_cards');
 },{"./modules/menu":3,"./modules/project_cards":4,"./modules/projects":5,"./modules/tasks":6}],2:[function(require,module,exports){
 'use strict';
 
+//Resets :hover state of all 'display-only' buttons used as decorative elements
+(function() {
+	var displayOnly = document.getElementsByClassName('btn-display-only');
+	if ( displayOnly.length > 0 ) {
+		var currColor;
+		for (var i = 0; i < displayOnly.length; i++) {
+			displayOnly[i].addEventListener('mouseover', resetBackColor);
+			displayOnly[i].addEventListener('touchstart', resetBackColor); //for mobiles
+		}
+	}
+
+	function resetBackColor(event) {
+		console.log(event);
+		currColor = window.getComputedStyle(event.target).getPropertyValue('background-color');
+		event.target.style.backgroundColor = currColor;
+		if ( event.type === 'touchstart' ) {
+			event.target.removeEventListener('touchstart', resetBackColor);
+		}
+		if ( event.type === 'mouseover' ) {
+			event.target.removeEventListener('mouseover', resetBackColor);
+		}
+	}
+}());
+
 function detectTouch(element, event, add) {
 	if (add) {
 		if ( 'ontouchstart' in window ) {
@@ -497,6 +521,15 @@ function sendDelete(data) {
 
   req.open('DELETE', '/projects');
 
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = JSON.parse(req.responseText);
+      if ( res === false ) {
+        console.log(res);
+      }
+    }
+  };
+
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
   req.send(JSON.stringify(data));
@@ -939,7 +972,8 @@ function getTasks() {
       });
 
       if ( res.length > 0 ) {
-
+        var noTasks = document.getElementById('no-items');
+        noTasks.remove();
         var ampm = "am";
 
         for ( var i = 0; i < res.length; i++) {
@@ -985,10 +1019,7 @@ function getTasks() {
           projectName.style.color = helpers.computeContrast(projectColor);
           tasks[i].getElementsByClassName('total-time')[0].innerHTML = calcTotal(tasks[i], 2); //round
         }
-      } else {
-        document.getElementById('task-holder').innerHTML = "There are no tasks";
       }
-
     }
   };
 
