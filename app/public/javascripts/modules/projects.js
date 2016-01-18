@@ -219,7 +219,16 @@ require('../templates');
 }());
 
 function fixTextareaHeight() {
-	
+	var textAreas = document.getElementsByTagName('textarea');
+	var scroll;
+	for (var i = 0; i < textAreas.length; i++) {
+		scroll = textAreas[i].scrollHeight;
+		if (scroll > 150) {
+			scroll = 150;
+		}
+		textAreas[i].style.height = scroll + 'px';
+
+	}
 }
 
 function generateName(projectArr) {
