@@ -35,4 +35,16 @@ router.put('/', function(req, res, next) {
   });
 });
 
+router.delete('/', function(req, res, next) {
+  req.body.user_id = req.session.user.id;
+  model.deleteTasks(req.body, function(err, success) {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(success);
+    }
+  });
+});
+
 module.exports = router;

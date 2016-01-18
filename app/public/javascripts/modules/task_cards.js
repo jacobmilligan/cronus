@@ -3,9 +3,12 @@ var helpers = require('./helpers');
 
 function attachEditors() {
   var editBtns = document.getElementsByClassName('task-edit-inner');
-  for (var i = 0; i < editBtns.length; i++) {
+  var taskDeleteBtns = document.getElementsByClassName('batch-action delete');
+  for ( var i = 0; i < editBtns.length; i++ ) {
     helpers.detectTouch(editBtns[i], displayEditor, true);
-    helpers.detectTouch(editBtns[i].getElementsByClassName('delete')[0], deleteTasks, true);
+  }
+  for ( i = 0; i < taskDeleteBtns.length; i++ ) {
+    helpers.detectTouch(taskDeleteBtns[i], deleteTasks, true);
   }
 }
 
@@ -49,7 +52,47 @@ function updateTask(task) {
 }
 
 function deleteTasks() {
-  
+  var checks = document.getElementsByClassName('hidden-batch');
+  var data = {
+    _csrf: document.getElementById('csrf').value
+  };
+  var task;
+  var unique_id;
+  var idsToDelete = [];
+  for (var i = 0; i < checks.length; i++) {
+    if ( checks[i].checked ) {
+      task = checks[i].parentNode.parentNode;
+      unique_id = task.getElementsByClassName('hidden-batch')[0].id;
+      idsToDelete.push(task.getElementsByClassName('hidden-batch')[0]);
+      data[i] = {
+        uID: unique_id,
+        task_name: task.getElementsByClassName('task-name')[0].value,
+        project_name: task.getElementsByClassName('task-project-name')[0].innerHTML,
+        start_time: task.getElementsByClassName('original-start-time')[0].value,
+        original_name: task.getElementsByClassName('original-task-name')[0].value
+      };
+    }
+  }
+
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = req.responseText;
+      if ( res ) {
+        var parent;
+        for (var i = 0; i < idsToDelete.length; i++) {
+          parent = idsToDelete[i].parentNode.parentNode;
+          console.log(parent);
+          parent.parentNode.removeChild(parent);
+        }
+      }
+    }
+  };
+
+  req.open('DELETE', '/tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', data._csrf);
+  req.send(JSON.stringify(data));
 }
 
 module.exports = {

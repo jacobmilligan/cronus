@@ -69,8 +69,31 @@ function updateTask(params, callback) {
   });
 }
 
+function deleteTasks(data, callback) {
+  var queries = [];
+  var userID = data.user_id;
+  delete data.user_id;
+  delete data._csrf;
+
+  for ( var key in data ) {
+    queries.push({
+      sql: "DELETE FROM tasks WHERE task_name = $1 AND project_name = $2 AND user_id = $3 AND start_time = $4",
+      params: [data[key].task_name, data[key].project_name, userID, data[key].start_time]
+    });
+  }
+
+  db.transaction(queries, function(err, success) {
+    if (err) {
+      return callback(err);
+    } else {
+      return callback(null, data);
+    }
+  });
+}
+
 module.exports = {
   getTasks: getTasks,
   insertTask: insertTask,
-  updateTask: updateTask
+  updateTask: updateTask,
+  deleteTasks: deleteTasks
 };

@@ -110,7 +110,11 @@ require('../templates');
 
       var uniqueIDs = document.querySelectorAll('[id^="checkbox"]');
 
-      newTask.unique_id = uniqueIDs[uniqueIDs.length-1].id;
+      if ( uniqueIDs.length <= 0 ) {
+        newTask.unique_id = "checkbox-0";
+      } else {
+        newTask.unique_id = uniqueIDs[uniqueIDs.length-1].id;
+      }
       newTask.original_start_time = timeStamp.start;
       var uID = newTask.unique_id.substring(newTask.unique_id.indexOf('-') + 1);
       newTask.unique_id = newTask.unique_id.replace(newTask.unique_id.substring(newTask.unique_id.indexOf('-')), "-" + (Number(uID) + 1));
