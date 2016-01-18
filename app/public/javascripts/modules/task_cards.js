@@ -15,6 +15,7 @@ function displayEditor(event) {
     event.target.style.display = 'none';
     editIcon.style.display = 'inline';
     parent.getElementsByClassName('task-name')[0].disabled = true;
+    updateTask(parent); //Save data
   } else {
     var saveBtn = parent.getElementsByClassName('task-save')[0];
     event.target.style.display = 'none';
@@ -22,6 +23,25 @@ function displayEditor(event) {
     parent.getElementsByClassName('task-name')[0].disabled = false;
     helpers.detectTouch(saveBtn, displayEditor, true);
   }
+}
+
+function updateTask(task) {
+  var data = {
+    _csrf: document.getElementById('csrf').value,
+    task_name: task.getElementsByClassName('task-name')[0].value
+  };
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = req.responseText;
+      console.log(res);
+    }
+  };
+
+  req.open('PUT', '/tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', data._csrf);
+  req.send(JSON.stringify(data));
 }
 
 module.exports = {

@@ -1031,6 +1031,7 @@ function displayEditor(event) {
     event.target.style.display = 'none';
     editIcon.style.display = 'inline';
     parent.getElementsByClassName('task-name')[0].disabled = true;
+    updateTask(parent); //Save data
   } else {
     var saveBtn = parent.getElementsByClassName('task-save')[0];
     event.target.style.display = 'none';
@@ -1038,6 +1039,25 @@ function displayEditor(event) {
     parent.getElementsByClassName('task-name')[0].disabled = false;
     helpers.detectTouch(saveBtn, displayEditor, true);
   }
+}
+
+function updateTask(task) {
+  var data = {
+    _csrf: document.getElementById('csrf').value,
+    task_name: task.getElementsByClassName('task-name')[0].value
+  };
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if ( req.readyState === 4 && req.status === 200 ) {
+      var res = req.responseText;
+      console.log(res);
+    }
+  };
+
+  req.open('PUT', '/tasks');
+  req.setRequestHeader('Content-Type', 'application/json');
+  req.setRequestHeader('csrfToken', data._csrf);
+  req.send(JSON.stringify(data));
 }
 
 module.exports = {
@@ -1154,6 +1174,12 @@ require('../templates');
         isNew: true
       };
 
+      var uniqueIDs = document.querySelectorAll('[id^="checkbox"]');
+
+      newTask.unique_id = uniqueIDs[uniqueIDs.length-1].id;
+      var uID = newTask.unique_id.substring(newTask.unique_id.indexOf('-') + 1);
+      newTask.unique_id = newTask.unique_id.replace(newTask.unique_id.substring(newTask.unique_id.indexOf('-')), "-" + (Number(uID) + 1));
+      console.log(newTask.unique_id);
       if ( timeStamp.start.getMinutes() < 10 ) {
         newTask.start_time += '0';
       }
@@ -1294,6 +1320,7 @@ function getTasks() {
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
 
+          res[i].unique_id = "checkbox-" + i;
           //Render the task in order
           renderInOrder(res[i], endTime);
 
@@ -1458,7 +1485,9 @@ templates['projectcards.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":funct
 templates['task.hbs'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<div class=\"task\">\n  <div class=\"task-section task-info\">\n    <input type=\"text\" class=\"task-name inline reset-input-styles\" value=\""
+  return "<div class=\"task\">\n  <div class=\"batch-container\">\n    <input class=\"task-batch\" id=\""
+    + alias4(((helper = (helper = helpers.unique_id || (depth0 != null ? depth0.unique_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"unique_id","hash":{},"data":data}) : helper)))
+    + "\" type=\"checkbox\">\n  </div>\n  <div class=\"task-section task-info\">\n    <input type=\"text\" class=\"task-name inline reset-input-styles\" value=\""
     + alias4(((helper = (helper = helpers.task_name || (depth0 != null ? depth0.task_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"task_name","hash":{},"data":data}) : helper)))
     + "\" disabled>\n    <span class=\"task-project-name inline\" style=\"background-color:"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))

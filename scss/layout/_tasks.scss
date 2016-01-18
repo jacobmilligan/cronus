@@ -12,7 +12,20 @@
   @include padding(20px);
 }
 
-.task .reset-input-styles #{$all-text-inputs} {
+.task.batch-container {
+  @include span-columns(12);
+  text-align: center;
+}
+
+input.task-batch {
+  float: none;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 6em;
+}
+
+.task input[type="text"].inline.reset-input-styles {
   @include span-columns(12);
   text-align: center;
   margin-bottom: 10px;

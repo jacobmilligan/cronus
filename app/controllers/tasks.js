@@ -23,4 +23,8 @@ router.post('/', function(req, res, next) {
   });
 });
 
+router.put('/', function(req, res, next) {
+  res.send(req.body);
+});
+
 module.exports = router;

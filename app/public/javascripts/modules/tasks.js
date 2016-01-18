@@ -107,6 +107,12 @@ require('../templates');
         isNew: true
       };
 
+      var uniqueIDs = document.querySelectorAll('[id^="checkbox"]');
+
+      newTask.unique_id = uniqueIDs[uniqueIDs.length-1].id;
+      var uID = newTask.unique_id.substring(newTask.unique_id.indexOf('-') + 1);
+      newTask.unique_id = newTask.unique_id.replace(newTask.unique_id.substring(newTask.unique_id.indexOf('-')), "-" + (Number(uID) + 1));
+      console.log(newTask.unique_id);
       if ( timeStamp.start.getMinutes() < 10 ) {
         newTask.start_time += '0';
       }
@@ -247,6 +253,7 @@ function getTasks() {
           ampm = ( endTime.getHours() > 11 ) ? "pm" : "am";
           res[i].end_time = (timestampHours) + ":" + timestampMinutes + ampm;
 
+          res[i].unique_id = "checkbox-" + i;
           //Render the task in order
           renderInOrder(res[i], endTime);
 
