@@ -51,6 +51,9 @@ function updateTask(task) {
   req.send(JSON.stringify(data));
 }
 
+// Handles batch deleting
+// Will also handle display of #no-items if the last
+// task for that project has been deleted
 function deleteTasks() {
   var checks = document.getElementsByClassName('hidden-batch');
   var data = {
@@ -93,6 +96,16 @@ function deleteTasks() {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
   req.send(JSON.stringify(data));
+  console.log(document.getElementsByClassName('task').length);
+
+  // Display #no-items and remove all task containers
+  if ( document.getElementsByClassName('task').length <= 1 ) {
+    document.getElementById('no-items').style.display = 'block';
+    var taskContainers = document.getElementsByClassName('container');
+    for ( i = 0; i < taskContainers.length; i++) {
+      taskContainers[i].remove();
+    }
+  }
 }
 
 module.exports = {

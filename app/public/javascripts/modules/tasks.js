@@ -40,7 +40,8 @@ require('../templates');
     }
   }
 
-  //Handles all timer interactions
+  // Handles all timer interactions
+  // New tasks are added through this function
   function handleTimer(event) {
 
     var seconds = document.getElementById('seconds');
@@ -134,7 +135,8 @@ require('../templates');
         newTask.task_name = "(No description)";
       }
 
-      deleteActive();// Delete active timer from DB
+      // Delete active timer from DB
+      deleteActive();
 
       var currPageProj = document.getElementById('project-name').innerHTML;
       currPageProj = currPageProj.substring(currPageProj.indexOf('\"') + 1, currPageProj.lastIndexOf('\"'));
@@ -149,7 +151,12 @@ require('../templates');
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
 
+      if ( uniqueIDs.length <= 0 ) {
+        document.getElementById('no-items').style.display = 'none';
+      }
+
       addTask(newTask);
+
       document.getElementById('task-name').value = '';
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
       document.getElementById('timer-project').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
@@ -228,7 +235,7 @@ function getTasks() {
 
       if ( res.length > 0 ) {
         var noTasks = document.getElementById('no-items');
-        noTasks.remove();
+        noTasks.style.display = 'none';
         var ampm = "am";
 
         /* Generate all tasks */
@@ -289,6 +296,7 @@ function getTasks() {
   req.send();
 }
 
+// Adds a new task to the dashboard
 function addTask(task) {
   task.elapsed = task.elapsed.hours + ":" + task.elapsed.minutes + ":" + task.elapsed.seconds;
   task.color = task.color.replace('#', '');

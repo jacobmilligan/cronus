@@ -1,6 +1,7 @@
 'use strict';
 var helpers = require('./helpers');
 
+// This should be global
 var self = this;
 
 function Dropdown() {

@@ -11,6 +11,7 @@ require('./modules/task_cards');
 'use strict';
 var helpers = require('./helpers');
 
+// This should be global
 var self = this;
 
 function Dropdown() {
@@ -1122,6 +1123,9 @@ function updateTask(task) {
   req.send(JSON.stringify(data));
 }
 
+// Handles batch deleting
+// Will also handle display of #no-items if the last
+// task for that project has been deleted
 function deleteTasks() {
   var checks = document.getElementsByClassName('hidden-batch');
   var data = {
@@ -1164,6 +1168,16 @@ function deleteTasks() {
   req.setRequestHeader('Content-Type', 'application/json');
   req.setRequestHeader('csrfToken', data._csrf);
   req.send(JSON.stringify(data));
+  console.log(document.getElementsByClassName('task').length);
+
+  // Display #no-items and remove all task containers
+  if ( document.getElementsByClassName('task').length <= 1 ) {
+    document.getElementById('no-items').style.display = 'block';
+    var taskContainers = document.getElementsByClassName('container');
+    for ( i = 0; i < taskContainers.length; i++) {
+      taskContainers[i].remove();
+    }
+  }
 }
 
 module.exports = {
@@ -1213,7 +1227,8 @@ require('../templates');
     }
   }
 
-  //Handles all timer interactions
+  // Handles all timer interactions
+  // New tasks are added through this function
   function handleTimer(event) {
 
     var seconds = document.getElementById('seconds');
@@ -1307,7 +1322,8 @@ require('../templates');
         newTask.task_name = "(No description)";
       }
 
-      deleteActive();// Delete active timer from DB
+      // Delete active timer from DB
+      deleteActive();
 
       var currPageProj = document.getElementById('project-name').innerHTML;
       currPageProj = currPageProj.substring(currPageProj.indexOf('\"') + 1, currPageProj.lastIndexOf('\"'));
@@ -1322,7 +1338,12 @@ require('../templates');
       newTask.start_time = timeStamp.start;
       newTask.end_time = timeStamp.end;
 
+      if ( uniqueIDs.length <= 0 ) {
+        document.getElementById('no-items').style.display = 'none';
+      }
+
       addTask(newTask);
+
       document.getElementById('task-name').value = '';
       document.getElementById('task-amt').value = document.getElementById('hidden-value').value;
       document.getElementById('timer-project').style.backgroundColor = '#' + document.getElementById('hidden-color').value;
@@ -1401,7 +1422,7 @@ function getTasks() {
 
       if ( res.length > 0 ) {
         var noTasks = document.getElementById('no-items');
-        noTasks.remove();
+        noTasks.style.display = 'none';
         var ampm = "am";
 
         /* Generate all tasks */
@@ -1462,6 +1483,7 @@ function getTasks() {
   req.send();
 }
 
+// Adds a new task to the dashboard
 function addTask(task) {
   task.elapsed = task.elapsed.hours + ":" + task.elapsed.minutes + ":" + task.elapsed.seconds;
   task.color = task.color.replace('#', '');
